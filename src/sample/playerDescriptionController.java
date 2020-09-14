@@ -27,6 +27,10 @@ public class playerDescriptionController implements Initializable {
         this.cash.setText("$"+this.p.getCash());
     }
 
+    public void setName(String name) {
+        this.name.setText(name);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initPlayers();

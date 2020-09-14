@@ -10,8 +10,6 @@
 <!--            <fx:include fx:id="player" source="playerDescription.fxml" />-->
          </children>
       </AnchorPane>
-      <Button layoutX="10.0" layoutY="250.0" mnemonicParsing="false" onAction="#addCash" text="Add cash" />
-      <TextField fx:id="cashEntered" layoutX="10.0" layoutY="200.0" prefHeight="40.0" prefWidth="173.0" />
 
    </children>
 </AnchorPane>

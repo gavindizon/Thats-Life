@@ -29,7 +29,8 @@ public class Player {
      * 
      * @param career career card picked by the player
      */
-    public Player(CareerCard career) {
+    /*
+    public Player() {
 //        do {
 //            if (this.name != null)
 //                System.out.print("Enter valid name: ");
@@ -40,7 +41,8 @@ public class Player {
         this.cash = 20000;
         this.spaceTracker = 0;
         this.numKids = 0;
-    }
+    }*/
+
 
     public void addKids(int num) {
         this.numKids += num;
@@ -74,6 +76,10 @@ public class Player {
         this.cash = 20000;
         this.spaceTracker = 0;
 
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**

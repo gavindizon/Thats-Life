@@ -30,7 +30,15 @@
                <Insets bottom="16.0" />
             </VBox.margin>
          </Button>
-         <Button fx:id="opt2" onAction="#menuOptions" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="56.0" prefWidth="153.0" text="Quit" textAlignment="CENTER" textFill="#77b5fe">
+         <Button fx:id="opt2" onAction="#menuOptions" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="56.0" prefWidth="153.0" text="Settings" textAlignment="CENTER" textFill="#77b5fe">
+            <font>
+               <Font name="Segoe UI Bold" size="18.0" />
+            </font>
+            <VBox.margin>
+               <Insets bottom="16.0" />
+            </VBox.margin>
+         </Button>
+         <Button fx:id="opt3" onAction="#menuOptions" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="56.0" prefWidth="153.0" text="Quit" textAlignment="CENTER" textFill="#77b5fe">
             <font>
                <Font name="Segoe UI Bold" size="18.0" />
             </font>
