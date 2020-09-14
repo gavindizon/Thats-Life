@@ -30,27 +30,29 @@ public class MenuController {
     @FXML
     private void initialize()
     {
+        System.out.println("hello");
     }
 
 
     @FXML
     public void menuOptions(ActionEvent e) throws IOException {
-        Parent gameStart = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Scene play = new Scene(gameStart);
-        Stage stage = (Stage) opt0.getScene().getWindow();
-        stage.setScene(play);
-        stage.show();
-//        Stage stage = (Stage) opt2.getScene().getWindow();
-//        if(e.getTarget() == opt0)
-//            initNames(2);
-//        else if(e.getTarget() == opt1)
-//            initNames(3);
-//        else
-//            stage.close();
+//        Parent gameStart = FXMLLoader.load(getClass().getResource("sample.fxml"));
+//        Scene play = new Scene(gameStart);
+//        Stage stage = (Stage) opt0.getScene().getWindow();
+//        stage.setScene(play);
+//        stage.show();
+        Stage stage = (Stage) opt2.getScene().getWindow();
+        if(e.getTarget() == opt0)
+            initNames(2);
+        else if(e.getTarget() == opt1)
+            initNames(3);
+        else
+            stage.close();
     }
 
     private void initNames(int numOfPlayers) {
         //fxmlloader
+
 
     }
 

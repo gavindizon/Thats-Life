@@ -3,11 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <AnchorPane prefHeight="768.0" prefWidth="314.0" style="-fx-background-color: #fff;">
+      <AnchorPane fx:id="rootPane" prefHeight="768.0" prefWidth="314.0" style="-fx-background-color: #fff;">
          <children>
-            <fx:include fx:id="player" source="playerDescription.fxml" />
+<!--            <fx:include fx:id="player" source="playerDescription.fxml" />-->
          </children>
       </AnchorPane>
       <Button layoutX="10.0" layoutY="250.0" mnemonicParsing="false" onAction="#addCash" text="Add cash" />

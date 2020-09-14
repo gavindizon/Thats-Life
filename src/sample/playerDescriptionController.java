@@ -5,25 +5,31 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
+import phase1.*;
 
 public class playerDescriptionController implements Initializable {
-    private  Model model = new Model("Tyrone", 9000);
+//    private  Model model = new Model("Tyrone", 9000);
+    private Player p = new Player("Tyrone");
+
     @FXML private Label name;
     @FXML private Label cash;
+    @FXML private Label career;
 
-    private void init(){
-        this.name.setText(this.model.getName());
-        this.cash.setText("$"+ this.model.getCash());
+
+    public void initPlayers(){
+        this.name.setText(this.p.getName());
+        this.cash.setText("$"+ this.p.getCash());
+        this.career.setText(this.p.getCareer());
     }
 
     public void setCash(int cashEntered){
-        this.model.updateCash(cashEntered);
-        this.cash.setText("$"+this.model.getCash());
+        p.updateCash(cashEntered);
+        this.cash.setText("$"+this.p.getCash());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        init();
+        initPlayers();
     }
 
 }
