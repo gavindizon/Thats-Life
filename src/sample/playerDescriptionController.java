@@ -5,8 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
+import javafx.scene.layout.AnchorPane;
 import phase1.*;
-
+import phase1.Cards.*;
 public class playerDescriptionController {
 //    private  Model model = new Model("Tyrone", 9000);
 //    private Player p = new Player("Tyrone");
@@ -14,11 +15,17 @@ public class playerDescriptionController {
     @FXML private Label name;
     @FXML private Label cash;
     @FXML private Label career;
+    @FXML private AnchorPane playerPane;
 
 
-    public void setCash(int cashEntered, Player p){
-        p.updateCash(cashEntered);
+    public void setCash(double cash, Player p){
+//        p.updateCash(c.getValue());
+//        c.activate();
         this.cash.setText("$"+p.getCash());
+    }
+
+    public AnchorPane getPlayerPane(){
+        return this.playerPane;
     }
 
     public void setPlayerDetails(Player p) {
@@ -26,6 +33,9 @@ public class playerDescriptionController {
         this.cash.setText("$"+p.getCash());
         this.career.setText(p.getCareer());
 
+    }
+    public Label getName(){
+        return this.name;
     }
 //
 //    @Override

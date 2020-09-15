@@ -7,9 +7,8 @@
    <children>
       <AnchorPane fx:id="rootPane" prefHeight="768.0" prefWidth="314.0" style="-fx-background-color: #fff;">
          <children>
-            <TextField fx:id="nameEntered" layoutX="83.0" layoutY="406.0" />
-            <TextField fx:id="cashEntered" layoutX="83.0" layoutY="456.0" />
-            <Button onAction="#addCash" layoutX="131.0" layoutY="539.0" mnemonicParsing="false" text="Button" />
+<!--            <fx:include layoutY="400" source="cardContainer.fxml" />-->
+            <Button layoutX="164.0" layoutY="671.0" mnemonicParsing="false" onAction="#gameState" text="Draw Card" />
 
          </children>
       </AnchorPane>

@@ -26,25 +26,33 @@ public class Game {
      * 
      * @param NUM_PLAYERS number of players; 2 will be used if invalid
      */
-    public Game(int NUM_PLAYERS) {
+    public Game(int NUM_PLAYERS, String[] players) {
         this.NUM_PLAYERS = checkPlayerNumber(NUM_PLAYERS);
 
         this.players = new Player[this.NUM_PLAYERS];
 
         for (int i = 0; i < this.NUM_PLAYERS; i++) {
             System.out.println("Enter Player " + (i + 1) + " name: ");
-            players[i] = new Player("T");
+            this.players[i] = new Player(players[i]);
         }
 
         this.actionDeck = new Deck("Action", 50);
         this.salaryDeck = new Deck("Salary", 7);
         this.careerDeck = new Deck("Career", 7);
-        this.careerDeck = new Deck("Blue", 7);
+        this.blueDeck = new Deck("Blue", 7);
         actionDeck.shuffleDeck();
         careerDeck.shuffleDeck();
         salaryDeck.shuffleDeck();
         this.spaces = new Space[100];
         generateSpaces();
+    }
+
+    public Player getPlayerByName(String name){
+        Player p = null;
+        for(int i =0; i < this.NUM_PLAYERS; i++){
+            p = this.players[i].getName().equals(name) ? this.players[i] : null;
+        }
+        return p;
     }
 
     public void generateSpaces() {
