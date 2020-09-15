@@ -17,15 +17,26 @@ public class Controller implements Initializable {
 
     @FXML private TextField cashEntered;
     @FXML private AnchorPane rootPane;
+    @FXML private TextField nameEntered;
+    public FXMLLoader[] playerDesc;
     private Player[] players;
 
     public Controller(){
-
     }
 
 
-    public void addCash(){
-        //    playerController.setCash(Integer.parseInt(cashEntered.getText()));
+    @FXML
+    public void addCash() throws IOException {
+        int i = 0;
+        for(Player p : players){
+            if(p.getName().equals(nameEntered.getText())){
+                System.out.println(p.getName());
+                System.out.println(p.getCash());
+                playerDescriptionController playerController = (playerDescriptionController) playerDesc[i].<playerDescriptionController>getController();
+                playerController.setCash(Integer.parseInt(cashEntered.getText()), p);
+            }
+            i++;
+        }
     }
 
     @Override
@@ -35,17 +46,18 @@ public class Controller implements Initializable {
 
     public void initPlayers(String[] players) throws IOException{
         this.players = new Player[players.length];
+        playerDesc = new FXMLLoader[players.length];
 
         for(int i = 0; i < players.length; i++)
             this.players[i] = new Player(players[i]);
 
         for(int i = 0; i < players.length; i++){
-            FXMLLoader playerDesc = new FXMLLoader(getClass().getResource("playerDescription.fxml"));
-            Parent root = (Parent) playerDesc.load();
+            playerDesc[i] = new FXMLLoader(getClass().getResource("playerDescription.fxml"));
+            Parent root = (Parent) playerDesc[i].load();
 
             root.setLayoutY(150 * i);
-            playerDescriptionController playerController = (playerDescriptionController) playerDesc.<playerDescriptionController>getController();
-            playerController.setName(players[i]);
+            playerDescriptionController playerController = (playerDescriptionController) playerDesc[i].<playerDescriptionController>getController();
+            playerController.setPlayerDetails(this.players[i]);
             rootPane.getChildren().addAll(root);
         }
 

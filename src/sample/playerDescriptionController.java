@@ -7,33 +7,30 @@ import javafx.scene.control.Label;
 
 import phase1.*;
 
-public class playerDescriptionController implements Initializable {
+public class playerDescriptionController {
 //    private  Model model = new Model("Tyrone", 9000);
-    private Player p = new Player("Tyrone");
+//    private Player p = new Player("Tyrone");
 
     @FXML private Label name;
     @FXML private Label cash;
     @FXML private Label career;
 
 
-    public void initPlayers(){
-        this.name.setText(this.p.getName());
-        this.cash.setText("$"+ this.p.getCash());
-        this.career.setText(this.p.getCareer());
-    }
-
-    public void setCash(int cashEntered){
+    public void setCash(int cashEntered, Player p){
         p.updateCash(cashEntered);
-        this.cash.setText("$"+this.p.getCash());
+        this.cash.setText("$"+p.getCash());
     }
 
-    public void setName(String name) {
-        this.name.setText(name);
-    }
+    public void setPlayerDetails(Player p) {
+        this.name.setText(p.getName());
+        this.cash.setText("$"+p.getCash());
+        this.career.setText(p.getCareer());
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        initPlayers();
     }
+//
+//    @Override
+//    public void initialize(URL url, ResourceBundle rb) {
+//        initPlayers();
+//    }
 
 }
