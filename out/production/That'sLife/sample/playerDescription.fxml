@@ -17,9 +17,13 @@
                         </font>
                     </Label>
                     <Label fx:id="cash" prefHeight="21.0" prefWidth="124.0" text="\$6000" textFill="WHITE">
-                  <font>
-                     <Font size="14.0" />
-                  </font></Label>
+                        <font>
+                            <Font size="14.0" />
+                        </font></Label>
+                    <Label fx:id="loan" prefHeight="21.0" prefWidth="124.0" text="Loan: \$0" textFill="WHITE">
+                        <font>
+                            <Font size="14.0" />
+                        </font></Label>
                     <Label fx:id="career" prefHeight="20.0" prefWidth="124.0" text="Racecar Driver" textFill="WHITE">
                   <font>
                      <Font size="14.0" />

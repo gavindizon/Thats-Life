@@ -57,7 +57,6 @@ public class Deck {
      */
 
     private void generateActionDeck() {
-        String[] description;
         int fortyPercent = (int) (this.MAX * 0.4);
         int tenPercent = (int) (this.MAX * 0.1);
 

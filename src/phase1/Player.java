@@ -20,6 +20,7 @@ public class Player {
     private int spaceTracker;
     private boolean isMarried;
     private int numKids;
+    private int loan;
 
     Scanner scanner = new Scanner(System.in);
 
@@ -30,19 +31,31 @@ public class Player {
      * @param career career card picked by the player
      */
     /*
-    public Player() {
-//        do {
-//            if (this.name != null)
-//                System.out.print("Enter valid name: ");
-//            this.name = scanner.nextLine();
-//        } while (!nameValid(this.name));
+     * public Player() { // do { // if (this.name != null) //
+     * System.out.print("Enter valid name: "); // this.name = scanner.nextLine(); //
+     * } while (!nameValid(this.name));
+     * 
+     * this.career = career; this.cash = 20000; this.spaceTracker = 0; this.numKids
+     * = 0; }
+     */
 
-        this.career = career;
-        this.cash = 20000;
+    /**
+     * Initializes the player object. The starting cash value is 20000. The default
+     * career given is a racecar driver.
+     * 
+     */
+    public Player(String name) {
+        // do {
+        // if (this.name != null)
+        // System.out.print("Enter valid name: ");
+        // name = scanner.nextLine();
+        // } while (!nameValid(this.name));
+        this.name = name;
+        this.career = new CareerCard("Server", 5, false); // set as default career
+        this.cash = 2000;
         this.spaceTracker = 0;
-        this.numKids = 0;
-    }*/
-
+        this.loan = 0;
+    }
 
     public void addKids(int num) {
         this.numKids += num;
@@ -58,24 +71,6 @@ public class Player {
 
     public boolean isMarried() {
         return isMarried;
-    }
-
-    /**
-     * Initializes the player object. The starting cash value is 20000. The default
-     * career given is a racecar driver.
-     * 
-     */
-    public Player(String name) {
-//        do {
-//            if (this.name != null)
-//                System.out.print("Enter valid name: ");
-//            name = scanner.nextLine();
-//        } while (!nameValid(this.name));
-        this.name = name;
-        this.career = new CareerCard("Server", 5, false); // set as default career
-        this.cash = 20000;
-        this.spaceTracker = 0;
-
     }
 
     public void setName(String name) {
@@ -130,12 +125,60 @@ public class Player {
         return spaceTracker;
     }
 
+    public double getLoan() {
+        return loan * 25000;
+    }
+
     public Card getDrawnCard() {
         return drawnCard;
     }
 
     public void updateCash(double cash) {
-        this.cash += cash;
+        if (this.cash + cash >= 0)
+            this.cash += cash;
+        else {
+            loanFromBank();
+            this.cash += 20000;
+            updateCash(cash);
+        }
+    }
+
+
+    private void loanFromBank() {
+        System.out.println("Insufficient Funds Loaning $20000 from the Bank");
+
+        this.loan++;
+    }
+
+    public void chooseStartingPath(Deck salary, Deck career, int decision) {
+
+        if (decision == 1) {
+            this.cash += 40000;
+            this.career.setCareerName("Student");
+            this.teleportToSpace(11);
+        } else {
+            this.salaryCard = (SalaryCard) salary.drawCard();
+            this.career = (CareerCard) career.drawCard();
+
+            while (this.career.isDegreeRequired()) {
+                career.addCardBack(this.career);
+                career.shuffleDeck();
+                this.career = (CareerCard) career.drawCard();
+            }
+        }
+    }
+
+    public void payLoan() {
+        int cnt = 0;
+        while (this.cash >= 25000 && this.loan > 0) {
+            this.cash -= 25000;
+            this.loan--;
+            cnt++;
+        }
+        if (this.loan > 0) {
+            System.out.println(this.name + " was only able to pay $" + (cnt * 25000));
+        } else
+            System.out.println("Outstanding loan was payed successfully");
     }
 
     public void updateCareer(CareerCard career) {

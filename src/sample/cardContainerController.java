@@ -12,6 +12,7 @@ public class cardContainerController {
     public void setCard(Card c){
         this.cardType.setText(c.cardType());
         this.cardTitle.setText(c.getDescription());
+        this.cardDescription.setText(c.getLongDescription());
     }
 
 }

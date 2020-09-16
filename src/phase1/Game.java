@@ -3,8 +3,6 @@ package phase1;
 import java.util.*;
 import phase1.Spaces.*;
 
-import phase1.Spaces.MagentaSpace;
-
 /**
  * Creates a game that initalizes all decks and adds players to the game.
  * 
@@ -31,11 +29,6 @@ public class Game {
 
         this.players = new Player[this.NUM_PLAYERS];
 
-        for (int i = 0; i < this.NUM_PLAYERS; i++) {
-            System.out.println("Enter Player " + (i + 1) + " name: ");
-            this.players[i] = new Player(players[i]);
-        }
-
         this.actionDeck = new Deck("Action", 50);
         this.salaryDeck = new Deck("Salary", 7);
         this.careerDeck = new Deck("Career", 7);
@@ -44,9 +37,13 @@ public class Game {
         careerDeck.shuffleDeck();
         salaryDeck.shuffleDeck();
         this.spaces = new Space[100];
+
+        for (int i = 0; i < this.NUM_PLAYERS; i++) {
+            this.players[i] = new Player(players[i]);
+        }
+
         generateSpaces();
     }
-
     public Player getPlayerByName(String name){
         Player p = null;
         for(int i =0; i < this.NUM_PLAYERS; i++){
@@ -56,11 +53,8 @@ public class Game {
     }
 
     public void generateSpaces() {
-        this.spaces[0] = new WhichPathSpace("main", this.NUM_PLAYERS);
-        for (int j = 0; j < NUM_PLAYERS; j++)
-            this.spaces[0].getPlayers().add(players[j]);
-
         // Career Path
+        this.spaces[0] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[1] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[2] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[3] = new OrangeSpace("career", this.NUM_PLAYERS);
@@ -71,10 +65,9 @@ public class Game {
         this.spaces[8] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[9] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[10] = new OrangeSpace("career", this.NUM_PLAYERS);
-        this.spaces[11] = new OrangeSpace("career", this.NUM_PLAYERS);
 
         // College Path
-
+        this.spaces[11] = new OrangeSpace("college", this.NUM_PLAYERS);
         this.spaces[12] = new OrangeSpace("college", this.NUM_PLAYERS);
         this.spaces[13] = new OrangeSpace("college", this.NUM_PLAYERS);
         this.spaces[14] = new OrangeSpace("college", this.NUM_PLAYERS);
@@ -150,6 +143,9 @@ public class Game {
             this.spaces[i] = new OrangeSpace("main", this.NUM_PLAYERS); // implement a randomizer
         }
 
+        for (int j = 0; j < NUM_PLAYERS; j++)
+            this.spaces[players[j].getSpaceTracker()].getPlayers().add(players[j]);
+
     }
 
     private int spinWheel() {
@@ -167,20 +163,23 @@ public class Game {
             this.spaces[p.getSpaceTracker()].getPlayers().add(p);
             System.out.println("Test");
             moveCnt--;
-        } else {
-
         }
-
         System.out.println("Moving Player " + p.getName() + " to +" + moveCnt + " steps");
+
         for (; moveCnt > 0; moveCnt--) {
             this.spaces[p.getSpaceTracker()].getPlayers().remove(p); // removes from a player to the current shit
             p.updateSpaceTracker();
             this.spaces[p.getSpaceTracker()].getPlayers().add(p);
 
-            if ((this.spaces[p.getSpaceTracker()] instanceof MagentaSpace)) {
+            if ((this.spaces[p.getSpaceTracker()] instanceof MagentaSpace)
+                    && !(this.spaces[p.getSpaceTracker()] instanceof WhichPathSpace)) {
                 moveCnt = 0; // stop
                 System.out.println("STOP");
+                MagentaSpace m = (MagentaSpace) this.spaces[p.getSpaceTracker()];
+                m.doMagentaAction(p, this.players, getDecks(this.spaces[p.getSpaceTracker()]));
+
             } else {
+                this.spaces[p.getSpaceTracker()].getPlayers().remove(p);
                 switch (p.getSpaceTracker()) {
                     case 11:
                         p.teleportToSpace(22);
@@ -192,6 +191,8 @@ public class Game {
                         p.teleportToSpace(90);
                         break;
                 }
+                this.spaces[p.getSpaceTracker()].getPlayers().add(p);
+
             }
 
         }
@@ -226,6 +227,18 @@ public class Game {
      */
     public Deck getActionDeck() {
         return this.actionDeck;
+    }
+
+    public Deck getBlueDeck() {
+        return blueDeck;
+    }
+
+    public Deck getCareerDeck() {
+        return careerDeck;
+    }
+
+    public Deck getSalaryDeck() {
+        return salaryDeck;
     }
 
     /**

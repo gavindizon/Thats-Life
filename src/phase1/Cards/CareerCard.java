@@ -39,6 +39,14 @@ public class CareerCard extends Card {
         return this.careerName;
     }
 
+    public void setCareerName(String careerName) {
+        this.careerName = careerName;
+    }
+
+    public boolean isDegreeRequired() {
+        return degreeRequired;
+    }
+
     /**
      * Returns the maximum pay raise.
      * 

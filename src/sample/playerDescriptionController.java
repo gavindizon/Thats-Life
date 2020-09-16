@@ -14,6 +14,7 @@ public class playerDescriptionController {
 
     @FXML private Label name;
     @FXML private Label cash;
+    @FXML private Label loan;
     @FXML private Label career;
     @FXML private AnchorPane playerPane;
 
@@ -24,13 +25,15 @@ public class playerDescriptionController {
         this.cash.setText("$"+p.getCash());
     }
 
+
     public AnchorPane getPlayerPane(){
         return this.playerPane;
     }
 
     public void setPlayerDetails(Player p) {
         this.name.setText(p.getName());
-        this.cash.setText("$"+p.getCash());
+        this.cash.setText("Cash: $"+p.getCash());
+        this.loan.setText("Loan :$" +p.getLoan());
         this.career.setText(p.getCareer());
 
     }

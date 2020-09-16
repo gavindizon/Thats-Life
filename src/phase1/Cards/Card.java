@@ -1,10 +1,9 @@
 package phase1.Cards;
 
-import phase1.Player;
-
 public abstract class Card {
     String cardType;
     String description;
+    String longDescription;
 
     // public abstract String getDescription();
 
@@ -20,6 +19,12 @@ public abstract class Card {
         return this.description;
     }
 
-    // public abstract void activate();
+    public void setLongDescription(String longDescription) {
+        this.longDescription = longDescription;
+    }
+
+    public String getLongDescription() {
+        return longDescription;
+    }
 
 }
