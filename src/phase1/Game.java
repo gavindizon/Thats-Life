@@ -78,7 +78,7 @@ public class Game {
         this.spaces[15] = new OrangeSpace("college", this.NUM_PLAYERS);
         this.spaces[16] = new OrangeSpace("college", this.NUM_PLAYERS);
         this.spaces[17] = new OrangeSpace("college", this.NUM_PLAYERS);
-        this.spaces[18] = new CollegeCareerChoiceSpace("college", this.NUM_PLAYERS); // Palitan to Graduation Space
+        this.spaces[18] = new GraduationSpace("college", this.NUM_PLAYERS); // Palitan to Graduation Space
         this.spaces[19] = new OrangeSpace("college", this.NUM_PLAYERS);
         this.spaces[20] = new CollegeCareerChoiceSpace("college", this.NUM_PLAYERS);
         this.spaces[21] = new OrangeSpace("college", this.NUM_PLAYERS);
@@ -146,9 +146,13 @@ public class Game {
         for (int i = 90; i < 100; i++) {
             this.spaces[i] = new OrangeSpace("main", this.NUM_PLAYERS); // implement a randomizer
         }
+/*
+*/
+    }
 
-        for (int j = 0; j < NUM_PLAYERS; j++)
-            this.spaces[players[j].getSpaceTracker()].getPlayers().add(players[j]);
+    public void initializeStart(Player p){
+
+            this.spaces[p.getSpaceTracker()].getPlayers().add(p);
 
     }
 
@@ -338,5 +342,9 @@ public class Game {
             numPlayers = 2;
         }
         return numPlayers;
+    }
+
+    public Space[] getSpaces() {
+        return spaces;
     }
 }

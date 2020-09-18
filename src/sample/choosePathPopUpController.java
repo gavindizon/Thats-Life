@@ -5,9 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 import phase1.Game;
+import phase1.Player;
 
 public class choosePathPopUpController {
 
@@ -23,13 +25,16 @@ public class choosePathPopUpController {
     @FXML
     private Button confirm;
 
+    @FXML
+    Label textHeading;
 
     public choosePathPopUpController(){
     }
 
 
     public void initialize() {
-
+        opt1.setSelected(true);
+        value = 1;
     }
 
     @FXML
@@ -60,4 +65,9 @@ public class choosePathPopUpController {
     public int getValue() {
         return value;
     }
+
+    public void setPlayerText(Player p){
+            textHeading.setText("Choose path for: " + p.getName());
+    }
+
 }

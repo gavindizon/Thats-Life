@@ -26,14 +26,15 @@ public class Controller implements Initializable {
 //    @FXML
 //    private Label cash;
 
-    @FXML private TextField cashEntered;
-    @FXML private AnchorPane rootPane;
-    @FXML private TextField nameEntered;
+//    @FXML private TextField cashEntered;
+@FXML private AnchorPane rootPane;
+    @FXML private AnchorPane boardPane;
+//    @FXML private TextField nameEntered;
     @FXML private Parent[] root;
     @FXML private Button payBtn;
     @FXML private Button drawBtn;
     public FXMLLoader[] playerDesc;
-    public FXMLLoader choosePath;
+    @FXML private boardController boardController;
 
     @FXML private AnchorPane ap;
     private Game game;
@@ -86,6 +87,10 @@ public class Controller implements Initializable {
 
                 payBtn.setDisable(true);
             }
+
+            game.move(currPlayer);
+            boardController.updateBoardState(game);
+
             currPlayer.drawCard(game.getActionDeck());
 
             FXMLLoader card = renderCard();
@@ -158,6 +163,7 @@ public class Controller implements Initializable {
         Stage stage = (Stage) rootPane.getScene().getWindow();
         popup.show(stage);
 
+
         //confirm button action
         cpCont.getConfirm().setOnAction(e->{
             RadioButton[] radios;
@@ -212,7 +218,10 @@ public class Controller implements Initializable {
 
 
     public void initPlayers(String[] players) throws IOException{
+
         game = new Game (players.length, players);
+        boardController.initSpaceColor(game);
+
         this.root = new Parent[game.getNumPlayers()];
         int numPlayers = game.getNumPlayers();
 //        this.players = new Player[numPlayers];
@@ -221,7 +230,6 @@ public class Controller implements Initializable {
         for(int i = numPlayers -1; i >= 0; i--)
             initCareers(game.getPlayer(i));
 
- //       System.out.println("Alakazam");
 
 
     }
@@ -234,13 +242,18 @@ public class Controller implements Initializable {
         Parent root = (Parent) popChoose.load();
         popup.getContent().add(root);
         choosePathPopUpController cpCont = (choosePathPopUpController) popChoose.<choosePathPopUpController>getController();
+        cpCont.setPlayerText(p);
 
         Stage stage = (Stage) rootPane.getScene().getWindow();
         popup.show(stage);
 
         cpCont.getConfirm().setOnAction(e ->{
             System.out.println(cpCont.getValue());
+
             p.chooseStartingPath(game.getSalaryDeck(), game.getCareerDeck(), cpCont.getValue());
+            game.initializeStart(p);
+            boardController.updateBoardState(game);
+
             System.out.println(p.getCareer());
             popup.hide();
             for(int i = 0; i < game.getNumPlayers(); i++){
@@ -267,9 +280,7 @@ public class Controller implements Initializable {
                 ioException.printStackTrace();
             }
             updatePlayerCardColor();
-
         });
-
     }
 
 

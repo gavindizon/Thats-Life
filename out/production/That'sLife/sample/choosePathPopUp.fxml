@@ -9,7 +9,7 @@
    <children>
       <VBox layoutX="373.0" layoutY="327.0" prefHeight="114.0" prefWidth="279.0" style="-fx-background-color: DODGERBLUE; -fx-border-radius: 16px;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="288.0" style="-fx-opacity: 1;" text="Choose path:" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="textHeading" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="288.0" style="-fx-opacity: 1;" text="Choose path:" textAlignment="CENTER" textFill="WHITE">
                <VBox.margin>
                   <Insets bottom="16.0" />
                </VBox.margin>

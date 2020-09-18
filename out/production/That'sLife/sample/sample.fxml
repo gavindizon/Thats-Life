@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <AnchorPane fx:id="rootPane" prefHeight="768.0" prefWidth="314.0" style="-fx-background-color: #fff;">
          <children>
@@ -13,6 +13,11 @@
 
          </children>
       </AnchorPane>
+       <AnchorPane fx:id="boardPane" layoutX="312.0" layoutY="7.0" prefHeight="761.0" prefWidth="713.0">
+           <children>
+               <fx:include fx:id="board" source="Board.fxml"></fx:include>
+           </children>
+       </AnchorPane>
 
    </children>
 </AnchorPane>

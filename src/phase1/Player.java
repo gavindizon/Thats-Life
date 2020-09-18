@@ -19,6 +19,7 @@ public class Player {
     private SalaryCard salaryCard;
     private int spaceTracker;
     private boolean isMarried;
+    private boolean hasDegree;
     private int numKids;
     private int loan;
 
@@ -55,6 +56,7 @@ public class Player {
         this.cash = 2000;
         this.spaceTracker = 0;
         this.loan = 0;
+        this.hasDegree = false;
     }
 
     public void addKids(int num) {
@@ -142,6 +144,13 @@ public class Player {
             updateCash(cash);
         }
     }
+    public boolean isHasDegree() {
+        return hasDegree;
+    }
+
+    public void setHasDegree(boolean hasDegree) {
+        this.hasDegree = hasDegree;
+    }
 
 
     private void loanFromBank() {
@@ -155,7 +164,7 @@ public class Player {
         if (decision == 1) {
             this.cash += 40000;
             this.career.setCareerName("Student");
-            this.teleportToSpace(11);
+            this.teleportToSpace(12);
         } else {
             this.salaryCard = (SalaryCard) salary.drawCard();
             this.career = (CareerCard) career.drawCard();
