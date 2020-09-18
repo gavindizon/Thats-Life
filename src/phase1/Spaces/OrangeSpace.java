@@ -28,17 +28,17 @@ public class OrangeSpace extends Space {
 
         if (c instanceof CollectFromPlayer) {
             CollectFromPlayer d = (CollectFromPlayer) c;
-            d.activate(p, others);
+//            d.activate(p, others);
         } else if (c instanceof CollectFromBank) {
             CollectFromBank d = (CollectFromBank) c;
-            d.activate(p);
+//            d.activate(p);
         } else if (c instanceof PayPlayer) {
             PayPlayer d = (PayPlayer) c;
-            d.activate(p, others);
+//            d.activate(p, others);
 
         } else if (c instanceof PayBank) {
             PayBank d = (PayBank) c;
-            d.activate(p);
+//            d.activate(p);
 
         }
 

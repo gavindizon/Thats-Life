@@ -8,9 +8,11 @@ public class PayBank extends ActionCard {
         super(description, toAll);
     }
 
-    // @Override
-    public void activate(Player p) {
-        p.updateCash(-this.getValue());
+    @Override
+    public void activate(Player[] players, int currPlayerIndex) {
+        System.out.println("activated pay bank");
+
+        players[currPlayerIndex].updateCash(-this.getValue());
 
         // System.out.println("paid bank");
     }

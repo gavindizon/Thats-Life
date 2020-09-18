@@ -1,5 +1,7 @@
 package phase1.Cards;
 
+import phase1.Player;
+
 /**
  * implements an Action Card that has a description a cash value and a type. It
  * also has a boolean toAll which sets whether the cash value will be
@@ -49,9 +51,9 @@ public abstract class ActionCard extends Card {
      * @return type
      */
 
-    public void activate() {
-        System.out.println("Card activated");
-    }
+//    public void activate() {
+//        System.out.println("Card activated");
+//    }
 
     /**
      * returns whether the boolean toAll of the action card
@@ -81,4 +83,6 @@ public abstract class ActionCard extends Card {
         }
 
     }
+
+    public abstract void activate(Player[] players, int currPlayerIndex);
 }

@@ -10,40 +10,27 @@ public class CollectFromPlayer extends ActionCard {
         super(description, toAll);
     }
 
-    // @Override
-    public void activate(Player p, Player[] otherPlayers) {
-        if (this.getToAll()) {
-            for (Player player : otherPlayers) {
-                if (!p.equals(player) == true) {
-                    player.updateCash(-this.getValue());
-                    p.updateCash(this.getValue());
+    @Override
+    public void activate(Player[] players, int currPlayerIndex) {
+        System.out.println("activated collect from player");
+        System.out.println(players.length);
+
+        if(this.getToAll()){
+            double value = 0;
+            for(int i = 0; i < 2; i++){
+                if(i != currPlayerIndex){
+                    players[i].updateCash(-this.getValue());
+                    value += this.getValue();
                 }
             }
-        } else {
-            int i = 0;
-            int currPlayerIndex = 0;
-            int chosenPlayer = 0;
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Choose a player");
-            for (Player player : otherPlayers) {
-                if (!p.equals(player) == true) {
-                    System.out.printf("[%d] - Player %d\n", i + 1, i + 1);
-                } else {
-                    currPlayerIndex = i;
-                }
-                i++;
-            }
-            do {
-                try {
-                    System.out.print("Enter : ");
-                    chosenPlayer = Integer.parseInt(sc.nextLine());
-                } catch (Exception e) {
-                    System.out.println("Player not found");
-                }
-            } while (currPlayerIndex == chosenPlayer - 1 || chosenPlayer < 1 || chosenPlayer > i);
-            otherPlayers[chosenPlayer - 1].updateCash(-this.getValue());
-            p.updateCash(this.getValue());
+            players[currPlayerIndex].updateCash(value);
         }
+        else{
+            System.out.println("hello");
+            players[0].updateCash(-this.getValue());
+            players[currPlayerIndex].updateCash(this.getValue());
+        }
+
     }
 
 }

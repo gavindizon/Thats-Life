@@ -44,13 +44,17 @@ public class Game {
 
         generateSpaces();
     }
-    public Player getPlayerByName(String name){
-        Player p = null;
+    public int getPlayerByName(String name){
+        int p = 0;
         for(int i =0; i < this.NUM_PLAYERS; i++){
-            p = this.players[i].getName().equals(name) ? this.players[i] : null;
+            if(this.players[i].getName().equals(name)){
+                System.out.println("get "+i);
+                p = i;
+            }
         }
         return p;
     }
+
 
     public void generateSpaces() {
         // Career Path

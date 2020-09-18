@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -30,6 +31,7 @@ public class Controller implements Initializable {
     @FXML private TextField nameEntered;
     @FXML private Parent[] root;
     @FXML private Button payBtn;
+    @FXML private Button drawBtn;
     public FXMLLoader[] playerDesc;
     public FXMLLoader choosePath;
 
@@ -37,7 +39,7 @@ public class Controller implements Initializable {
     private Game game;
     private int turn = 0;
     private int playerIndex = 0;
-
+    private String chosenPlayerName;
 
 //    private Player[] players;
 
@@ -64,7 +66,8 @@ public class Controller implements Initializable {
 
         if(!game.gameOver()){
             playerDescriptionController playerController = (playerDescriptionController) playerDesc[this.playerIndex].<playerDescriptionController>getController();
-            playerController.getPlayerPane().setStyle("-fx-background-color:blue");
+//            playerController.getPlayerPane().setStyle("-fx-background-color:blue");
+            updatePlayerCardColor();
             Player currPlayer = game.getPlayer(this.playerIndex);
 
             //PLAYER PAY LOAN BUTTON
@@ -90,71 +93,108 @@ public class Controller implements Initializable {
             cardContainerController cardControl = (cardContainerController) card.<cardContainerController>getController();
             cardControl.setCard(currPlayer.getDrawnCard());
 
-
-
-            System.out.println(this.playerIndex);
             activateCard(currPlayer);
+            updatePlayerDetails();
 
-         //   addCash(currPlayer, ((ActionCard)currPlayer.getDrawnCard()).getValue());
-
-            playerController.setPlayerDetails(currPlayer);
             turn++;
             this.playerIndex = this.turn % game.getNumPlayers();
-            playerController = (playerDescriptionController) playerDesc[this.playerIndex].<playerDescriptionController>getController();
-            playerController.getPlayerPane().setStyle("-fx-background-color:pink");
-//            playerController.getPlayerPane().setOpacity(0.8);
-
-
+//            playerController = (playerDescriptionController) playerDesc[this.playerIndex].<playerDescriptionController>getController();
 
 
         }
     }
+    
+    private void updatePlayerDetails(){
+        playerDescriptionController playerController;
+        // update every player details
+        for(int i = 0; i < game.getNumPlayers(); i++){
+            playerController = (playerDescriptionController) playerDesc[i].<playerDescriptionController>getController();
+            playerController.setPlayerDetails(game.getPlayer(i));
+            System.out.println(game.getPlayer(i).toString());
+        }
+    }
 
-    private void activateCard(Player currPlayer){
+    private void updatePlayerCardColor(){
+        playerDescriptionController playerController;
+        // update every player details
+        for(int i = 0; i < game.getNumPlayers(); i++){
+            playerController = (playerDescriptionController) playerDesc[i].<playerDescriptionController>getController();
 
-        if(currPlayer.getDrawnCard() instanceof PayPlayer || currPlayer.getDrawnCard() instanceof CollectFromPlayer ){
-            System.out.println("Choose players: ");
-            int x = activateChoosePlayers();
-            System.out.println("Player chosen: " + game.getPlayer(x).toString());
-        }else{
-            if(currPlayer.getDrawnCard() instanceof CollectFromBank){
-                System.out.println("X");
-                ((CollectFromBank) currPlayer.getDrawnCard()).activate(currPlayer);
-            }else{
-                System.out.println("X");
-                ((PayBank) currPlayer.getDrawnCard()).activate(currPlayer);
-
+            if(i == this.playerIndex){
+                playerController.getPlayerPane().setStyle("-fx-background-color:blue");
+            }
+            else{
+                playerController.getPlayerPane().setStyle("-fx-background-color:pink");
             }
         }
     }
 
-    private int activateChoosePlayers(){
-        for (int i = 0; i < game.getNumPlayers(); i++){
-            if(i != this.playerIndex){
-                playerDescriptionController playerController = (playerDescriptionController) playerDesc[i].<playerDescriptionController>getController();
-//                index = i;
-                root[i].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>(){
-//                    int x = i;
-                    @Override
-                    public void handle(MouseEvent e) {
-                        String name = playerController.getName().getText();
-                        Player p = game.getPlayerByName(name);
+    private void activateCard(Player currPlayer) throws IOException {
+//        Player[] = game.getPlayers();
+        ActionCard drawnCard = (ActionCard)currPlayer.getDrawnCard();
+        if(drawnCard instanceof PayPlayer || drawnCard instanceof CollectFromPlayer){
+            if(drawnCard.getToAll()){
+                drawnCard.activate(game.getPlayers(), this.playerIndex);
+            } else{
+                System.out.println("Choose Player: ");
+                choosePlayers(drawnCard, currPlayer);
 
-                        //TODO: search player by name @see game
-                        if(p != null){
-                            System.out.println("xD");
-                            doSomething(p);
-//                            index = i;
-//                            return i;
+            }
+        }
+        else{
+            drawnCard.activate(game.getPlayers(), this.playerIndex);
+        }
+
+    }
+
+    private void choosePlayers(ActionCard drawnCard, Player currPlayer) throws IOException {
+        String playerName = "";
+        Popup popup = new Popup();
+        FXMLLoader choose = new FXMLLoader(getClass().getResource("choosePlayerPopUp.fxml"));
+        Parent root = (Parent) choose.load();
+        popup.getContent().add(root);
+        choosePlayerPopUpController cpCont = (choosePlayerPopUpController) choose.<choosePlayerPopUpController>getController();
+        cpCont.generateChoices(game.getPlayers(), currPlayer);
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        popup.show(stage);
+
+        //confirm button action
+        cpCont.getConfirm().setOnAction(e->{
+            RadioButton[] radios;
+            radios = cpCont.getRadios();
+            for(RadioButton r : radios){
+                if(r.isSelected()){
+                        System.out.println(r.getText());
+                        setName(r.getText());
+                        Player[] temp = new Player[2];
+                        int otherPlayerIndex = game.getPlayerByName(this.chosenPlayerName);
+                        System.out.println("Chosen player: " + this.chosenPlayerName);
+                        temp[0] = game.getPlayer(otherPlayerIndex) ;
+                        temp[1] = currPlayer;
+                        try{
+                            drawnCard.activate(temp, 1);
+                        } catch (Exception x){
+                            System.out.println("error" + drawnCard.getDescription());
                         }
-                    }
+                        popup.hide();
+                        updatePlayerDetails();
 
-                });
+
+                }
             }
-
-        }
-        return 0;
+        });
     }
+
+
+
+    private String getChosenPlayerName(){
+        return this.chosenPlayerName;
+    }
+
+    private void setName(String s){
+        this.chosenPlayerName = s;
+    }
+
     private void doSomething(Player p){
         System.out.println(p.getName());
     }
@@ -218,13 +258,16 @@ public class Controller implements Initializable {
             }
 
 
-            playerDescriptionController playerController = (playerDescriptionController) playerDesc[0].<playerDescriptionController>getController();
-            playerController.getPlayerPane().setStyle("-fx-background-color:blue");
+//            playerDescriptionController playerController = (playerDescriptionController) playerDesc[0].<playerDescriptionController>getController();
+//            playerController.getPlayerPane().setStyle("-fx-background-color:blue");
             try {
                 renderCard();
+
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
+            updatePlayerCardColor();
+
         });
 
     }

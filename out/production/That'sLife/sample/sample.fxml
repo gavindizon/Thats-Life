@@ -3,13 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <AnchorPane fx:id="rootPane" prefHeight="768.0" prefWidth="314.0" style="-fx-background-color: #fff;">
          <children>
 <!--            <fx:include layoutY="400" source="cardContainer.fxml" />-->
-            <Button layoutX="164.0" layoutY="694.0" mnemonicParsing="false" onAction="#gameState" text="Draw Card" />
-            <Button layoutX="82.0" layoutY="694.0" mnemonicParsing="false" fx:id="payBtn" onAction="#gameState" text="Pay Loan" />
+            <Button fx:id="drawBtn" layoutX="165.0" layoutY="625.0" mnemonicParsing="false" onAction="#gameState" text="Draw Card" />
+            <Button fx:id="payBtn" layoutX="81.0" layoutY="625.0" mnemonicParsing="false" onAction="#gameState" text="Pay Loan" />
 
          </children>
       </AnchorPane>

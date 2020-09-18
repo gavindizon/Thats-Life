@@ -8,9 +8,11 @@ public class CollectFromBank extends ActionCard {
         super(description, toAll);
     }
 
-    // @Override
-    public void activate(Player p) {
-        p.updateCash(this.getValue());
+    @Override
+    public void activate(Player[] players, int currPlayerIndex) {
+        System.out.println("activated collect from bank");
+
+        players[currPlayerIndex].updateCash(this.getValue());
     }
 
 }
