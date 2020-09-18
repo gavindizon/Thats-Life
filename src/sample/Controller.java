@@ -35,7 +35,7 @@ public class Controller implements Initializable {
     @FXML private Button drawBtn;
     public FXMLLoader[] playerDesc;
     @FXML private boardController boardController;
-
+    @FXML private Label txtUpdates;
     @FXML private AnchorPane ap;
     private Game game;
     private int turn = 0;
@@ -88,7 +88,7 @@ public class Controller implements Initializable {
                 payBtn.setDisable(true);
             }
 
-            game.move(currPlayer);
+            txtUpdates.setText(currPlayer.getName() + " spinned for "+ game.move(currPlayer));
             boardController.updateBoardState(game);
 
             currPlayer.drawCard(game.getActionDeck());
@@ -209,7 +209,7 @@ public class Controller implements Initializable {
     private FXMLLoader renderCard() throws IOException {
         FXMLLoader card = new FXMLLoader(getClass().getResource("cardContainer.fxml"));
         Parent root = (Parent) card.load();
-        root.setLayoutY(400);
+        root.setLayoutY(450);
         rootPane.getChildren().addAll(root);
 
         return card;

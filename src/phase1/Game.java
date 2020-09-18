@@ -160,9 +160,9 @@ public class Game {
         return (int) (Math.random() * (9 - 1 + 1) + 1);
     }
 
-    public void move(Player p) {
+    public int move(Player p) {
         int moveCnt = spinWheel();
-
+        int spinHolder = moveCnt;
         // Special Treatment for Junctions
         if ((this.spaces[p.getSpaceTracker()] instanceof WhichPathSpace)) {
             MagentaSpace m = (MagentaSpace) this.spaces[p.getSpaceTracker()];
@@ -208,6 +208,7 @@ public class Game {
             this.spaces[p.getSpaceTracker()].doAction(p, this.players, getDecks(this.spaces[p.getSpaceTracker()]));
         }
 
+        return spinHolder;
     }
 
     public ArrayList<Deck> getDecks(Space s) {
