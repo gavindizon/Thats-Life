@@ -167,7 +167,7 @@ public class Game {
         if ((this.spaces[p.getSpaceTracker()] instanceof WhichPathSpace)) {
             MagentaSpace m = (MagentaSpace) this.spaces[p.getSpaceTracker()];
             this.spaces[p.getSpaceTracker()].getPlayers().remove(p);
-            m.doMagentaAction(p, this.players, getDecks(this.spaces[p.getSpaceTracker()]));
+//            m.doMagentaAction(p, this.players, getDecks(this.spaces[p.getSpaceTracker()]));
             this.spaces[p.getSpaceTracker()].getPlayers().add(p);
             System.out.println("Test");
             moveCnt--;
@@ -184,7 +184,7 @@ public class Game {
                 moveCnt = 0; // stop
                 System.out.println("STOP");
                 MagentaSpace m = (MagentaSpace) this.spaces[p.getSpaceTracker()];
-                m.doMagentaAction(p, this.players, getDecks(this.spaces[p.getSpaceTracker()]));
+//                m.doMagentaAction(p, this.players, getDecks(this.spaces[p.getSpaceTracker()]));
 
             } else {
                 this.spaces[p.getSpaceTracker()].getPlayers().remove(p);
@@ -205,7 +205,10 @@ public class Game {
 
         }
         if (!(this.spaces[p.getSpaceTracker()] instanceof MagentaSpace)) {
-            this.spaces[p.getSpaceTracker()].doAction(p, this.players, getDecks(this.spaces[p.getSpaceTracker()]));
+//            this.spaces[p.getSpaceTracker()].doAction(p, this.players, getDecks(this.spaces[p.getSpaceTracker()]));
+        }
+        if(p.getSpaceTracker() >= 100){
+            p.setToRetire(true);
         }
 
         return spinHolder;

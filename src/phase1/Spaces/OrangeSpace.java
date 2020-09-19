@@ -23,24 +23,24 @@ public class OrangeSpace extends Space {
     }
 
     public void doAction(Player p, Player[] others, ArrayList<Deck> actionDeck) {
+        p.drawCard(actionDeck.get(0));
+//        ActionCard c = (ActionCard) actionDeck.get(0).drawCard();
 
-        ActionCard c = (ActionCard) actionDeck.get(0).drawCard();
-
-        if (c instanceof CollectFromPlayer) {
-            CollectFromPlayer d = (CollectFromPlayer) c;
-//            d.activate(p, others);
-        } else if (c instanceof CollectFromBank) {
-            CollectFromBank d = (CollectFromBank) c;
-//            d.activate(p);
-        } else if (c instanceof PayPlayer) {
-            PayPlayer d = (PayPlayer) c;
-//            d.activate(p, others);
-
-        } else if (c instanceof PayBank) {
-            PayBank d = (PayBank) c;
-//            d.activate(p);
-
-        }
+//        if (c instanceof CollectFromPlayer) {
+//            CollectFromPlayer d = (CollectFromPlayer) c;
+////            d.activate(p, others);
+//        } else if (c instanceof CollectFromBank) {
+//            CollectFromBank d = (CollectFromBank) c;
+////            d.activate(p);
+//        } else if (c instanceof PayPlayer) {
+//            PayPlayer d = (PayPlayer) c;
+////            d.activate(p, others);
+//
+//        } else if (c instanceof PayBank) {
+//            PayBank d = (PayBank) c;
+////            d.activate(p);
+//
+//        }
 
     }
 

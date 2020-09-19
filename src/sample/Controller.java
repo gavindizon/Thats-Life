@@ -27,7 +27,7 @@ public class Controller implements Initializable {
 //    private Label cash;
 
 //    @FXML private TextField cashEntered;
-@FXML private AnchorPane rootPane;
+    @FXML private AnchorPane rootPane;
     @FXML private AnchorPane boardPane;
 //    @FXML private TextField nameEntered;
     @FXML private Parent[] root;
@@ -37,6 +37,7 @@ public class Controller implements Initializable {
     @FXML private boardController boardController;
     @FXML private Label txtUpdates;
     @FXML private AnchorPane ap;
+    private FXMLLoader card;
     private Game game;
     private int turn = 0;
     private int playerIndex = 0;
@@ -90,15 +91,13 @@ public class Controller implements Initializable {
 
             txtUpdates.setText(currPlayer.getName() + " spinned for "+ game.move(currPlayer));
             boardController.updateBoardState(game);
+            boardController.boardAction(game, this.playerIndex, this);
 
-            currPlayer.drawCard(game.getActionDeck());
+//            currPlayer.drawCard(game.getActionDeck());
 
-            FXMLLoader card = renderCard();
+            card = renderCard();
 
-            cardContainerController cardControl = (cardContainerController) card.<cardContainerController>getController();
-            cardControl.setCard(currPlayer.getDrawnCard());
-
-            activateCard(currPlayer);
+//            activateCard(currPlayer);
             updatePlayerDetails();
 
             turn++;
@@ -134,9 +133,11 @@ public class Controller implements Initializable {
         }
     }
 
-    private void activateCard(Player currPlayer) throws IOException {
+    public void activateCard(Player currPlayer) throws IOException {
 //        Player[] = game.getPlayers();
         ActionCard drawnCard = (ActionCard)currPlayer.getDrawnCard();
+        cardContainerController cardControl = (cardContainerController) card.<cardContainerController>getController();
+        cardControl.setCard(currPlayer.getDrawnCard());
         if(drawnCard instanceof PayPlayer || drawnCard instanceof CollectFromPlayer){
             if(drawnCard.getToAll()){
                 drawnCard.activate(game.getPlayers(), this.playerIndex);
@@ -149,6 +150,7 @@ public class Controller implements Initializable {
         else{
             drawnCard.activate(game.getPlayers(), this.playerIndex);
         }
+
 
     }
 

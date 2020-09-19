@@ -5,8 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.text.TextFlow;
 import phase1.Game;
+import phase1.Player;
 import phase1.Spaces.*;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -54,6 +56,8 @@ public class boardController {
             Space space = game.getSpace(i);
             for(int j = 0; j < game.getNumPlayers(); j++){
                 label = (Label) spaceView.getChildren().get(j);
+                label.setStyle("-fx-text-fill:blue; -fx-font-weight:bold");
+
                 try{
                     label.setText(space.getPlayers().get(j).getName());
                 }catch(Exception e){
@@ -61,5 +65,40 @@ public class boardController {
                 }
             }
             i++;
+        }
     }
-}}
+
+
+    public void boardAction(Game game, int currPlayerIndex, Controller gameControl) throws IOException {
+        Space currSpace = game.getSpace(game.getPlayer(currPlayerIndex).getSpaceTracker());
+        Player currPlayer = game.getPlayer(currPlayerIndex);
+        if(currSpace instanceof OrangeSpace){
+            currSpace.doAction(currPlayer, game.getPlayers(), game.getDecks(currSpace));
+            try{
+                gameControl.activateCard(currPlayer);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        } else if(currSpace instanceof MagentaSpace){
+            MagentaSpace m = (MagentaSpace) currSpace;
+            if(m instanceof CollegeCareerChoiceSpace || m instanceof WhichPathSpace){
+                System.out.println("hello world");
+            } else{
+                System.out.println("hi");
+            }
+
+//            m.doAction(currPlayer, game.getPlayers(), game.getDecks(currSpace));
+        } else {
+            currSpace.doAction(currPlayer, game.getPlayers(), game.getDecks(currSpace));
+        }
+    }
+
+
+    private int choosePath(){
+        // TODO: pop up and return value to do action
+        return 0 ;
+    }
+
+
+
+}
