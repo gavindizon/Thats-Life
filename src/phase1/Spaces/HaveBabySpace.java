@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import phase1.Player;
 import phase1.Deck;
 
-public class HaveBabySpace extends MagentaSpace {
+public class HaveBabySpace extends MagentaSpace{
     public HaveBabySpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
     }
 
+    @Override
     public void doMagentaAction(Player p, Player[] others, ArrayList<Deck> decks) {
         System.out.println("I just gave birth");
 

@@ -58,6 +58,7 @@ public class Controller implements Initializable {
 
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         payBtn.setDisable(true);
@@ -93,16 +94,20 @@ public class Controller implements Initializable {
             boardController.updateBoardState(game);
             boardController.boardAction(game, this.playerIndex, this);
 
-//            currPlayer.drawCard(game.getActionDeck());
-
             card = renderCard();
 
-//            activateCard(currPlayer);
+            try{
+                cardContainerController cardControl = (cardContainerController) card.<cardContainerController>getController();
+                cardControl.setCard(currPlayer.getDrawnCard());
+                System.out.println(currPlayer.getDrawnCard().getDescription());
+            } catch (Exception ex){
+                System.out.println("error");
+            }
+
             updatePlayerDetails();
 
             turn++;
             this.playerIndex = this.turn % game.getNumPlayers();
-//            playerController = (playerDescriptionController) playerDesc[this.playerIndex].<playerDescriptionController>getController();
 
 
         }
@@ -114,7 +119,7 @@ public class Controller implements Initializable {
         for(int i = 0; i < game.getNumPlayers(); i++){
             playerController = (playerDescriptionController) playerDesc[i].<playerDescriptionController>getController();
             playerController.setPlayerDetails(game.getPlayer(i));
-            System.out.println(game.getPlayer(i).toString());
+//            System.out.println(game.getPlayer(i).toString());
         }
     }
 
@@ -136,8 +141,7 @@ public class Controller implements Initializable {
     public void activateCard(Player currPlayer) throws IOException {
 //        Player[] = game.getPlayers();
         ActionCard drawnCard = (ActionCard)currPlayer.getDrawnCard();
-        cardContainerController cardControl = (cardContainerController) card.<cardContainerController>getController();
-        cardControl.setCard(currPlayer.getDrawnCard());
+
         if(drawnCard instanceof PayPlayer || drawnCard instanceof CollectFromPlayer){
             if(drawnCard.getToAll()){
                 drawnCard.activate(game.getPlayers(), this.playerIndex);
@@ -276,7 +280,7 @@ public class Controller implements Initializable {
 //            playerDescriptionController playerController = (playerDescriptionController) playerDesc[0].<playerDescriptionController>getController();
 //            playerController.getPlayerPane().setStyle("-fx-background-color:blue");
             try {
-                renderCard();
+                card = renderCard();
 
             } catch (IOException ioException) {
                 ioException.printStackTrace();
@@ -284,6 +288,11 @@ public class Controller implements Initializable {
             updatePlayerCardColor();
         });
     }
+
+    public AnchorPane getRootPane() {
+        return rootPane;
+    }
+
 
 
 }

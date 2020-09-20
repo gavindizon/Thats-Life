@@ -37,6 +37,12 @@ public class choosePathPopUpController {
         value = 1;
     }
 
+    public void setChoice(String opt1, String opt2){
+        this.opt1.setText(opt1);
+        this.opt2.setText(opt2);
+
+    }
+
     @FXML
     public void choose(ActionEvent e){
         System.out.println("Hello");

@@ -5,7 +5,7 @@ import java.util.Scanner;
 import phase1.Player;
 import phase1.Deck;
 
-public class WhichPathSpace extends MagentaSpace {
+public class WhichPathSpace extends MagentaSpace implements ChoiceSpace{
     Scanner sc = new Scanner(System.in);
     int chosenPath;
 
@@ -39,6 +39,23 @@ public class WhichPathSpace extends MagentaSpace {
 
         }
 
+    }
+
+    @Override
+    public void choiceAction(Player p, ArrayList<Deck> decks, int choice){
+        System.out.println("choice");
+    }
+
+    @Override
+    public String[] getChoices(Player p, ArrayList<Deck> decks){
+        String[] s = new String[2];
+        s[1] = "Main";
+        if(p.getSpaceTracker() == 38){
+            s[0] = "Change career";
+        } else{
+            s[0] = "Start a Family";
+        }
+        return s;
     }
 
 }

@@ -10,5 +10,6 @@ public abstract class GreenSpace extends Space {
         super(path, noOfPlayers);
     }
 
+    @Override
     public abstract void doAction(Player p, Player[] others, ArrayList<Deck> decks);
 }

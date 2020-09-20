@@ -9,7 +9,8 @@ public class PayRaiseSpace extends GreenSpace {
     public PayRaiseSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
     }
-
+    
+    @Override
     public void doAction(Player p, Player[] others, ArrayList<Deck> decks) {
         p.getSalaryCard().raiseSalary();
         p.updateCash(p.getSalaryCard().getSalary());

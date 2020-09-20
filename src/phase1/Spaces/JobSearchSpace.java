@@ -6,7 +6,7 @@ import phase1.Cards.CareerCard;
 import phase1.Deck;
 import java.util.Scanner;
 
-public class JobSearchSpace extends MagentaSpace {
+public class JobSearchSpace extends MagentaSpace implements ChoiceSpace {
     Scanner sc = new Scanner(System.in);
 
     public JobSearchSpace(String path, int noOfPlayers) {
@@ -31,5 +31,20 @@ public class JobSearchSpace extends MagentaSpace {
         }
 
     }
+
+    @Override
+    public void choiceAction(Player p, ArrayList<Deck> decks, int choice){
+        System.out.println("choice");
+    }
+    @Override
+    public String[] getChoices(Player p, ArrayList<Deck> decks){
+        String[] s = new String[2];
+        CareerCard c = (CareerCard) decks.get(0).drawCard();
+        s[0] = "Retain Job";
+        s[1] = "Change to " + c.getCareerName();
+
+        return s;
+    }
+
 
 }

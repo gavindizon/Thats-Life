@@ -17,6 +17,7 @@ public class BlueSpace extends Space {
         return deckType;
     }
 
+    @Override
     public void doAction(Player p, Player[] others, ArrayList<Deck> blueDeck) {
 
         BlueCard c = (BlueCard) blueDeck.get(0).drawCard();

@@ -7,7 +7,7 @@ import phase1.Cards.SalaryCard;
 import phase1.Deck;
 import java.util.Scanner;
 
-public class CollegeCareerChoiceSpace extends MagentaSpace {
+public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpace{
     Scanner sc = new Scanner(System.in);
 
     public CollegeCareerChoiceSpace(String path, int noOfPlayers) {
@@ -48,6 +48,21 @@ public class CollegeCareerChoiceSpace extends MagentaSpace {
             decks.get(0).addCardBack(salary1);
         }
 
+    }
+
+    @Override
+    public void choiceAction(Player p, ArrayList<Deck> decks, int chosen){
+        System.out.println("choice");
+    }
+
+    @Override
+    public String[] getChoices(Player p, ArrayList<Deck> decks){
+        String[] s = new String[2];
+        CareerCard career1 = (CareerCard) decks.get(0).drawCard();
+        CareerCard career2 = (CareerCard) decks.get(0).drawCard();
+        s[0] = career1.getCareerName();
+        s[1] = career2.getCareerName();
+        return s;
     }
 
 }

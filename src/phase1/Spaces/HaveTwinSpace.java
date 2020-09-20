@@ -9,6 +9,7 @@ public class HaveTwinSpace extends MagentaSpace {
         super(path, noOfPlayers);
     }
 
+    @Override
     public void doMagentaAction(Player p, Player[] others, ArrayList<Deck> decks) {
         System.out.println("I just gave birth");
 

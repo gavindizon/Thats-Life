@@ -10,6 +10,7 @@ public class PayDaySpace extends GreenSpace {
         super(path, noOfPlayers);
     }
 
+    @Override
     public void doAction(Player p, Player[] others, ArrayList<Deck> decks) {
         p.updateCash(p.getSalaryCard().getSalary());
     }
