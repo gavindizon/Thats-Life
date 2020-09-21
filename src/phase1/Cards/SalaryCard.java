@@ -29,4 +29,10 @@ public class SalaryCard extends Card {
         this.tax += 2000;
     }
 
+    @Override
+    public String toString(){
+        return  "Salary: " + this.salary + "Raise Value: " + this.raiseValue + "Tax: " + this.tax;
+    }
+
+
 }

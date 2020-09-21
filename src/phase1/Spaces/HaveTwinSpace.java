@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import phase1.Player;
 import phase1.Deck;
 
-public class HaveTwinSpace extends MagentaSpace {
+public class HaveTwinSpace extends MagentaSpace implements NoChoiceSpace{
     public HaveTwinSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
     }

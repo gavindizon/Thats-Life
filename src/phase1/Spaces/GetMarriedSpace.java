@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import phase1.Player;
 import phase1.Deck;
 
-public class GetMarriedSpace extends MagentaSpace {
+public class GetMarriedSpace extends MagentaSpace implements NoChoiceSpace {
     public GetMarriedSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
     }

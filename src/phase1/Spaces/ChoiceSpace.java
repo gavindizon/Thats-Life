@@ -8,5 +8,5 @@ import java.util.ArrayList;
 public interface ChoiceSpace {
 
     String[] getChoices(Player p, ArrayList<Deck> decks);
-    void choiceAction(Player p, ArrayList<Deck> decks, int choice);
+    void doMagentaAction(Player p, ArrayList<Deck> decks, int choice);
 }

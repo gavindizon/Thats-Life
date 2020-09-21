@@ -15,11 +15,11 @@ public abstract class MagentaSpace extends Space {
         return deckType;
     }
 
-     public  void doAction(Player p, Player[] others, ArrayList<Deck> decks){
+     public void doAction(Player p, Player[] others, ArrayList<Deck> decks){
          System.out.println();
      }
 
-     public abstract void doMagentaAction(Player p, Player[] others, ArrayList<Deck> decks);
+    //  public abstract void doMagentaAction(Player p, Player[] others, ArrayList<Deck> decks);
 
 //    
 
