@@ -98,7 +98,7 @@ public class Controller implements Initializable {
 
             try{
                 cardContainerController cardControl = (cardContainerController) card.<cardContainerController>getController();
-                cardControl.setCard(currPlayer.getDrawnCard());
+                cardControl.setCard(currPlayer.getDrawnCard(), game.getSpaces()[currPlayer.getSpaceTracker()]);
                 System.out.println(currPlayer.getDrawnCard().getDescription());
             } catch (Exception ex){
                 System.out.println("error");
