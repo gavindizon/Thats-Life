@@ -30,24 +30,24 @@
          </Label>
           </children>
       </TextFlow>
-   <HBox layoutX="8.0" layoutY="65.0" prefHeight="32.0" prefWidth="286.0">
+   <HBox layoutX="8.0" layoutY="65.0" prefHeight="48.0" prefWidth="286.0">
       <children>
-         <ImageView fx:id="degree" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
+         <ImageView fx:id="degree" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
             <image>
                <Image url="@../assets/graduate_icon.png" />
             </image>
          </ImageView>
-         <ImageView fx:id="married" fitHeight="32.0" fitWidth="32.0" layoutX="52.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
+         <ImageView fx:id="married" fitHeight="48.0" fitWidth="48.0" layoutX="52.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
             <image>
                <Image url="@../assets/married_icon.png" />
             </image>
          </ImageView>
-          <ImageView fx:id="kids" fitHeight="32.0" fitWidth="32.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
+          <ImageView fx:id="kids" fitHeight="48.0" fitWidth="48.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
               <image>
                   <Image url="@../assets/kids_icon.png" />
               </image>
           </ImageView>
-          <ImageView fx:id="house" fitHeight="32.0" fitWidth="32.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
+          <ImageView fx:id="house" fitHeight="48.0" fitWidth="48.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.4;">
               <image>
                   <Image url="@../assets/house_icon.png" />
               </image>
