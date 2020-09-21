@@ -8,10 +8,14 @@ import phase1.Deck;
 import java.util.Scanner;
 
 public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpace{
-    Scanner sc = new Scanner(System.in);
 
     public CollegeCareerChoiceSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
+        this.actionDescription = "College Career Choice";
+        this.longDescription = "You can now choose careers with degrees :)))))))";
+
+
+
     }
 
     // public void doMagentaAction(Player p, Player[] others, ArrayList<Deck> decks) {
@@ -75,11 +79,6 @@ public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpac
 //            ctr++;
         }
 
-
-//        CareerCard career1 = (CareerCard) decks.get(0).drawCard();
-//        CareerCard career2 = (CareerCard) decks.get(0).drawCard();
-//        s[0] = career1.getCareerName();
-//        s[1] = career2.getCareerName();
         return s;
     }
 

@@ -11,6 +11,9 @@ public class BlueSpace extends Space {
     public BlueSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
         this.deckType = "Blue";
+        this.type = "Blue";
+        this.actionDescription = "Draw Card from Blue Deck";
+
     }
 
     public String getDeckType() {

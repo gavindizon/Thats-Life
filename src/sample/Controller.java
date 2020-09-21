@@ -73,42 +73,47 @@ public class Controller implements Initializable {
             updatePlayerCardColor();
             Player currPlayer = game.getPlayer(this.playerIndex);
 
-            //PLAYER PAY LOAN BUTTON
-            if(currPlayer.getLoan() > 0 && currPlayer.getLoan() <= currPlayer.getCash()){
-                System.out.println(currPlayer.getName()+ " Player has loan");
-                payBtn.setDisable(false);
+            if(!currPlayer.getIsRetired()){
+                //PLAYER PAY LOAN BUTTON
+                if(currPlayer.getLoan() > 0 && currPlayer.getLoan() <= currPlayer.getCash()){
+                    System.out.println(currPlayer.getName()+ " Player has loan");
+                    payBtn.setDisable(false);
 
-                playerDescriptionController finalPlayerController = playerController;
-                payBtn.setOnAction(ex->{
-                    currPlayer.payLoan();
-                    finalPlayerController.setPlayerDetails(currPlayer);
-                });
+                    playerDescriptionController finalPlayerController = playerController;
+                    payBtn.setOnAction(ex->{
+                        currPlayer.payLoan();
+                        finalPlayerController.setPlayerDetails(currPlayer);
+                    });
+                }
+                else{
+                    System.out.println(currPlayer.getName() + " Player has no loan");
+
+                    payBtn.setDisable(true);
+                }
+
+                txtUpdates.setText(currPlayer.getName() + " spinned for "+ game.move(currPlayer));
+                boardController.updateBoardState(game);
+                boardController.boardAction(game, this.playerIndex, this);
+
+                card = renderCard();
+
+                try{
+                    cardContainerController cardControl = (cardContainerController) card.<cardContainerController>getController();
+                    cardControl.setCard(currPlayer.getDrawnCard(), game.getSpaces()[currPlayer.getSpaceTracker()]);
+                    System.out.println(currPlayer.getDrawnCard().getDescription());
+                } catch (Exception ex){
+                    System.out.println("error");
+                }
+
+                updatePlayerDetails();
+
             }
-            else{
-                System.out.println(currPlayer.getName() + " Player has no loan");
-
-                payBtn.setDisable(true);
-            }
-
-            txtUpdates.setText(currPlayer.getName() + " spinned for "+ game.move(currPlayer));
-            boardController.updateBoardState(game);
-            boardController.boardAction(game, this.playerIndex, this);
-
-            card = renderCard();
-
-            try{
-                cardContainerController cardControl = (cardContainerController) card.<cardContainerController>getController();
-                cardControl.setCard(currPlayer.getDrawnCard(), game.getSpaces()[currPlayer.getSpaceTracker()]);
-                System.out.println(currPlayer.getDrawnCard().getDescription());
-            } catch (Exception ex){
-                System.out.println("error");
-            }
-
-            updatePlayerDetails();
 
             turn++;
             this.playerIndex = this.turn % game.getNumPlayers();
 
+
+        }else{
 
         }
     }

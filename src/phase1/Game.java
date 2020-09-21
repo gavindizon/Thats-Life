@@ -78,7 +78,7 @@ public class Game {
         this.spaces[15] = new OrangeSpace("college", this.NUM_PLAYERS);
         this.spaces[16] = new OrangeSpace("college", this.NUM_PLAYERS);
         this.spaces[17] = new OrangeSpace("college", this.NUM_PLAYERS);
-        this.spaces[18] = new GraduationSpace("college", this.NUM_PLAYERS); // Palitan to Graduation Space
+        this.spaces[18] = new GraduationSpace("college", this.NUM_PLAYERS);
         this.spaces[19] = new OrangeSpace("college", this.NUM_PLAYERS);
         this.spaces[20] = new CollegeCareerChoiceSpace("college", this.NUM_PLAYERS);
         this.spaces[21] = new OrangeSpace("college", this.NUM_PLAYERS);
@@ -94,6 +94,7 @@ public class Game {
 
         // Change Career Path
         this.spaces[39] = new PayDaySpace("change career", this.NUM_PLAYERS);
+        this.spaces[39].setJunctionStart(true);
         this.spaces[40] = new CollegeCareerChoiceSpace("change career", this.NUM_PLAYERS); // palitan to CareerChoice
         this.spaces[41] = new OrangeSpace("change career", this.NUM_PLAYERS);
         this.spaces[42] = new BlueSpace("change career", this.NUM_PLAYERS);
@@ -105,6 +106,7 @@ public class Game {
 
         // Main Path
         this.spaces[48] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[48].setJunctionStart(true);
         this.spaces[49] = new OrangeSpace("main", this.NUM_PLAYERS);
         this.spaces[50] = new OrangeSpace("main", this.NUM_PLAYERS);
         this.spaces[51] = new OrangeSpace("main", this.NUM_PLAYERS);
@@ -121,6 +123,7 @@ public class Game {
 
         // Start a Family Path
         this.spaces[71] = new BlueSpace("family", this.NUM_PLAYERS);
+        this.spaces[71].setJunctionStart(true);
         this.spaces[72] = new OrangeSpace("family", this.NUM_PLAYERS);
         this.spaces[73] = new PayDaySpace("family", this.NUM_PLAYERS);
         this.spaces[74] = new GetMarriedSpace("family", this.NUM_PLAYERS);
@@ -133,6 +136,7 @@ public class Game {
 
         // Main Path
         this.spaces[81] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[81].setJunctionStart(true);
         this.spaces[82] = new OrangeSpace("main", this.NUM_PLAYERS);
         this.spaces[83] = new OrangeSpace("main", this.NUM_PLAYERS);
         this.spaces[84] = new OrangeSpace("main", this.NUM_PLAYERS);
@@ -164,14 +168,18 @@ public class Game {
         int moveCnt = spinWheel();
         int spinHolder = moveCnt;
         // Special Treatment for Junctions
-        if ((this.spaces[p.getSpaceTracker()] instanceof WhichPathSpace)) {
-            MagentaSpace m = (MagentaSpace) this.spaces[p.getSpaceTracker()];
+
+        if(moveCnt + p.getSpaceTracker() >= 99){
             this.spaces[p.getSpaceTracker()].getPlayers().remove(p);
-//            m.doMagentaAction(p, this.players, getDecks(this.spaces[p.getSpaceTracker()]));
+            p.teleportToSpace(99);
             this.spaces[p.getSpaceTracker()].getPlayers().add(p);
-            System.out.println("Test");
+
+        }else{
+
+        if (p.getSpaceTracker() != 0 && this.spaces[p.getSpaceTracker()].isJunctionStart() && moveCnt != 1) {
             moveCnt--;
         }
+
         System.out.println("Moving Player " + p.getName() + " to +" + moveCnt + " steps");
 
         for (; moveCnt > 0; moveCnt--) {
@@ -179,12 +187,10 @@ public class Game {
             p.updateSpaceTracker();
             this.spaces[p.getSpaceTracker()].getPlayers().add(p);
 
-            if ((this.spaces[p.getSpaceTracker()] instanceof MagentaSpace)
-                    && !(this.spaces[p.getSpaceTracker()] instanceof WhichPathSpace)) {
+            if ((this.spaces[p.getSpaceTracker()] instanceof MagentaSpace)) {
                 moveCnt = 0; // stop
                 System.out.println("STOP");
                 MagentaSpace m = (MagentaSpace) this.spaces[p.getSpaceTracker()];
-//                m.doMagentaAction(p, this.players, getDecks(this.spaces[p.getSpaceTracker()]));
 
             } else {
                 this.spaces[p.getSpaceTracker()].getPlayers().remove(p);
@@ -204,13 +210,12 @@ public class Game {
             }
 
         }
-        if (!(this.spaces[p.getSpaceTracker()] instanceof MagentaSpace)) {
-//            this.spaces[p.getSpaceTracker()].doAction(p, this.players, getDecks(this.spaces[p.getSpaceTracker()]));
+
         }
-        if(p.getSpaceTracker() >= 100){
+        if(p.getSpaceTracker() == 99){
             p.setToRetire(true);
         }
-
+        playerDupRemover();
         return spinHolder;
     }
 
@@ -350,5 +355,21 @@ public class Game {
 
     public Space[] getSpaces() {
         return spaces;
+    }
+
+    private void playerDupRemover(){
+        boolean match = false;
+        for(int i = 0; i < this.getNumPlayers(); i++){
+            match = false;
+            for(int j = 99; j >= 0; j--){
+                if(match && this.spaces[j].getPlayers().contains(this.players[i]))
+                    this.spaces[j].getPlayers().remove(this.players[i]);
+
+                if(this.spaces[j].getPlayers().contains(this.players[i]))
+                    match = true;
+            }
+        }
+
+
     }
 }

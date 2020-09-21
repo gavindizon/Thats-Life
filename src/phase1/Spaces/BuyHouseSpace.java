@@ -7,6 +7,9 @@ import phase1.Deck;
 public class BuyHouseSpace extends MagentaSpace implements NoChoiceSpace{
     public BuyHouseSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
+        this.actionDescription = "Buy a House";
+        this.longDescription = "Your parents don't want you to live with them anymore. You need to buy a house.";
+
     }
 
     @Override

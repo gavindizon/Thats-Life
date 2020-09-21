@@ -7,6 +7,9 @@ import phase1.Deck;
 public class GetMarriedSpace extends MagentaSpace implements NoChoiceSpace {
     public GetMarriedSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
+        this.actionDescription = "Just Got Married";
+        this.longDescription = "Congratulation You married the love of your life.";
+
     }
 
     @Override

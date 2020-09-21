@@ -8,6 +8,9 @@ public class PayRaiseSpace extends GreenSpace {
 
     public PayRaiseSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
+        this.actionDescription = "Pay Raise Space";
+        this.longDescription = "Congratulations!, you just received a raise and got paid.";
+
     }
     
     @Override

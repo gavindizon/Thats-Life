@@ -5,22 +5,16 @@ import phase1.Player;
 import java.util.ArrayList;
 
 public abstract class MagentaSpace extends Space {
-    private String deckType;
 
     public MagentaSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
+        this.type = "Magenta Space";
     }
 
-    public String getDeckType() {
-        return deckType;
-    }
 
      public void doAction(Player p, Player[] others, ArrayList<Deck> decks){
          System.out.println();
      }
 
-    //  public abstract void doMagentaAction(Player p, Player[] others, ArrayList<Deck> decks);
-
-//    
 
 }

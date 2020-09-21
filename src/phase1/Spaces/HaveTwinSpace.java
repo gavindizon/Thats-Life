@@ -7,6 +7,9 @@ import phase1.Deck;
 public class HaveTwinSpace extends MagentaSpace implements NoChoiceSpace{
     public HaveTwinSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
+        this.actionDescription = "Have a Twin";
+        this.longDescription = "Congratulations on the Twins vroooo!";
+
     }
 
     @Override

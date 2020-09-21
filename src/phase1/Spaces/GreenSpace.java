@@ -8,6 +8,8 @@ public abstract class GreenSpace extends Space {
 
     public GreenSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
+        this.type = "Green Space";
+
     }
 
     @Override

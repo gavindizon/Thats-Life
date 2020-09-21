@@ -7,6 +7,9 @@ import phase1.Deck;
 public class HaveBabySpace extends MagentaSpace implements NoChoiceSpace {
     public HaveBabySpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
+        this.actionDescription = "Have a Baby";
+        this.longDescription = "Congratulations on the Baby vroooo!";
+
     }
 
     @Override

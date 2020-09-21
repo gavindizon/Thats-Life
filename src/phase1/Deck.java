@@ -109,15 +109,15 @@ public class Deck {
     private void generateSalaryDeck() {
         int salaryNum = 10;
         for (int i = 0; i < salaryNum; i++) {
-            double salary = (Math.random() * 9) * 10000;
-            double tax = (Math.random() * 9) * 1000;
-            double raiseValue = (Math.random() * 9) * 1000;
+            double salary = (int) (Math.random() * 9 + 1) * 10000;
+            double tax = (int) (Math.random() * 9 + 1) * 1000;
+            double raiseValue = (int)  (Math.random() * 9 + 1) * 1000;
             this.cards.add(new SalaryCard(salary, tax, raiseValue));
         }
     }
 
     private void generateBlueDeck() {
-        this.cards.add(new Lawsuit("Lawsuit", "Lawyer", 10000.00 * ((Math.random() * (15 - 5 + 1)) + 5)));
+        this.cards.add(new Lawsuit("Lawsuit", "Lawyer", (int) 10000.00 * ((Math.random() * (15 - 5 + 1)) + 5)));
         this.cards.add(new SalaryTaxDue("Salary Tax Due", "Accountant"));
         this.cards.add(new ComputerRepair("Computer Repair", "Computer Consultant"));
         this.cards.add(new SkiAccident("Ski Accident", "Doctor"));

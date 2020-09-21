@@ -16,6 +16,9 @@ public class OrangeSpace extends Space {
     public OrangeSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
         this.deckType = "Action";
+        this.type = "Orange Space";
+        this.actionDescription = "Draw from Action Deck";
+//        this.longDescription = "Card drawn is ";
     }
 
     public String getDeckType() {

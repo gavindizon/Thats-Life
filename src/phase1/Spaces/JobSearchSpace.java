@@ -11,6 +11,9 @@ public class JobSearchSpace extends MagentaSpace implements ChoiceSpace{
 
     public JobSearchSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
+        this.actionDescription = "Job Search";
+        this.longDescription = "It's job hunting season! There are some jobs available for you.";
+
     }
 
 //    public void doMagentaAction(Player p, Player[] others, ArrayList<Deck> decks) {

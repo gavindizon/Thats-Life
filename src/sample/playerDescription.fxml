@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="playerPane" prefHeight="117.0" prefWidth="308.0" style="-fx-background-color: #FF85FF; -fx-background-radius: 8px; -fx-opacity: 0.8;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.playerDescriptionController">
+<AnchorPane fx:id="playerPane" prefHeight="117.0" prefWidth="308.0" style="-fx-background-color: #FF85FF; -fx-background-radius: 12px; -fx-opacity: 0.8;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.playerDescriptionController">
       <TextFlow layoutX="11.0" layoutY="14.0" prefHeight="50.0" prefWidth="286.0">
           <children>
               <Label fx:id="name" prefHeight="27.0" prefWidth="159.0" text="John Doe" textFill="#f8f4f4">
