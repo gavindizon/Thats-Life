@@ -95,7 +95,7 @@ public class Game {
         // Change Career Path
         this.spaces[39] = new PayDaySpace("change career", this.NUM_PLAYERS);
         this.spaces[39].setJunctionStart(true);
-        this.spaces[40] = new CollegeCareerChoiceSpace("change career", this.NUM_PLAYERS); // palitan to CareerChoice
+        this.spaces[40] = new CollegeCareerChoiceSpace("change career", this.NUM_PLAYERS);
         this.spaces[41] = new OrangeSpace("change career", this.NUM_PLAYERS);
         this.spaces[42] = new BlueSpace("change career", this.NUM_PLAYERS);
         this.spaces[43] = new PayRaiseSpace("change career", this.NUM_PLAYERS);
@@ -108,7 +108,7 @@ public class Game {
         this.spaces[48] = new OrangeSpace("main", this.NUM_PLAYERS);
         this.spaces[48].setJunctionStart(true);
         this.spaces[49] = new OrangeSpace("main", this.NUM_PLAYERS);
-        this.spaces[50] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[50] = new JobSearchSpace("main", this.NUM_PLAYERS);
         this.spaces[51] = new OrangeSpace("main", this.NUM_PLAYERS);
         this.spaces[52] = new OrangeSpace("main", this.NUM_PLAYERS);
         this.spaces[53] = new OrangeSpace("main", this.NUM_PLAYERS);

@@ -53,7 +53,7 @@ public class Player {
         // } while (!nameValid(this.name));
         this.name = name;
         this.career = new CareerCard("Server", 5, false); // set as default career
-        this.cash = 2000;
+        this.cash = 20000;
         this.spaceTracker = 0;
         this.loan = 0;
         this.hasDegree = false;

@@ -1,12 +1,18 @@
 package sample;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 import phase1.*;
 import phase1.Cards.*;
 
@@ -19,12 +25,30 @@ public class playerDescriptionController {
     @FXML private Label cash;
     @FXML private Label loan;
     @FXML private Label career;
-
     @FXML private ImageView married;
     @FXML private ImageView kids;
     @FXML private ImageView degree;
 
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("showInfo.fxml"));
+
+
+    @FXML private Label sm_playername;
+    @FXML private Label sm_career;
+    @FXML private Label sm_cash;
+    @FXML private Label sm_loan;
+    @FXML private Label sm_salary;
+    @FXML private Label sm_tax;
+    @FXML private Label sm_payraiseCnt;
+    @FXML private Label sm_married;
+    @FXML private Label sm_kidsCnt;
+    @FXML private Label sm_houseVal;
+    @FXML private Label sm_degree;
+
+    private Player p;
+
+
     @FXML private AnchorPane playerPane;
+
 
 
     public void setCash(double cash, Player p){
@@ -39,6 +63,7 @@ public class playerDescriptionController {
     }
 
     public void setPlayerDetails(Player p) {
+        this.p = p;
         this.name.setText(p.getName());
         this.cash.setText("Cash: $"+p.getCash());
         this.loan.setText("Loan :$" +p.getLoan());
@@ -53,9 +78,33 @@ public class playerDescriptionController {
         if(p.getNumKids() > 0)
             kids.setStyle("-fx-opacity: 1;");
 
+
+
+
     }
     public Label getName(){
         return this.name;
+    }
+
+    public void showMore(ActionEvent actionEvent) {
+
+        Popup popup = new Popup();
+        FXMLLoader sm = new FXMLLoader(getClass().getResource("showInfo.fxml"));
+        Parent root = null;
+        try {
+            root = (Parent) sm.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        showInfoController showInfoCont = (showInfoController) sm.<showInfoController>getController();
+
+        popup.getContent().add(root);
+        Stage stage = (Stage) playerPane.getScene().getWindow();
+        popup.show(stage);
+        showInfoCont.setAdditionalInfo(this.p);
+
+
+        popup.setAutoHide(true);
     }
 //
 //    @Override

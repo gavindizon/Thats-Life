@@ -52,6 +52,8 @@
                   <Image url="@../assets/house_icon.png" />
               </image>
           </ImageView>
+         <Button fx:id="showMoreBtn" onAction="#showMore" mnemonicParsing="false" prefHeight="46.0" prefWidth="97.0" text="Show More" textAlignment="RIGHT" />
+
       </children>
    </HBox>
 

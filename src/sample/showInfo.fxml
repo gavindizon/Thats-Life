@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="430.0" prefWidth="569.0" style="-fx-background-color: DODGERBLUE; -fx-background-radius: 16px;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.showInfoController">
+         <children>
+            <VBox layoutX="42.0" layoutY="26.0" prefHeight="378.0" prefWidth="485.0">
+               <children>
+                  <Label fx:id="sm_playername" alignment="CENTER" prefHeight="42.0" prefWidth="485.0" text="Player Name" textAlignment="CENTER" textFill="#e8e6e6">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="485.0">
+                     <children>
+                        <Label fx:id="sm_career" prefHeight="29.0" prefWidth="182.0" text="Career: " textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="sm_cash" layoutX="10.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Cash: " textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="sm_loan" layoutX="192.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Loan: " textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="52.0" prefHeight="51.0" prefWidth="485.0">
+                     <children>
+                        <Label fx:id="sm_salary" prefHeight="29.0" prefWidth="182.0" text="Salary: " textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="sm_tax" layoutX="10.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Tax: " textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="sm_payraiseCnt" layoutX="192.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Pay Raise Count: " textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="103.0" prefHeight="51.0" prefWidth="485.0">
+                     <children>
+                        <Label fx:id="sm_married" prefHeight="29.0" prefWidth="182.0" text="Civil Status:" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="sm_retired" layoutX="10.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Retired: " textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="sm_kidsCnt" layoutX="192.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Number of Kids: " textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="154.0" prefHeight="51.0" prefWidth="485.0">
+                     <children>
+                        <Label fx:id="sm_degree" layoutX="192.0" layoutY="21.0" prefHeight="29.0" prefWidth="204.0" text="College Graduate: " textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                  <Label fx:id="sm_houseVal" layoutX="79.0" layoutY="21.0" prefHeight="29.0" prefWidth="207.0" text="House Value:" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children></AnchorPane>
