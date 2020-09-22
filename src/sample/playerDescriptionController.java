@@ -28,21 +28,11 @@ public class playerDescriptionController {
     @FXML private ImageView married;
     @FXML private ImageView kids;
     @FXML private ImageView degree;
+    @FXML private ImageView house;
 
     FXMLLoader loader = new FXMLLoader(getClass().getResource("showInfo.fxml"));
 
 
-    @FXML private Label sm_playername;
-    @FXML private Label sm_career;
-    @FXML private Label sm_cash;
-    @FXML private Label sm_loan;
-    @FXML private Label sm_salary;
-    @FXML private Label sm_tax;
-    @FXML private Label sm_payraiseCnt;
-    @FXML private Label sm_married;
-    @FXML private Label sm_kidsCnt;
-    @FXML private Label sm_houseVal;
-    @FXML private Label sm_degree;
 
     private Player p;
 
@@ -52,8 +42,6 @@ public class playerDescriptionController {
 
 
     public void setCash(double cash, Player p){
-//        p.updateCash(c.getValue());
-//        c.activate();
         this.cash.setText("$"+p.getCash());
     }
 
@@ -77,7 +65,8 @@ public class playerDescriptionController {
 
         if(p.getNumKids() > 0)
             kids.setStyle("-fx-opacity: 1;");
-
+        if(p.getHouse() != null)
+            house.setStyle("-fx-opacity: 1;");
 
 
 

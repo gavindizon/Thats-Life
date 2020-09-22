@@ -22,8 +22,8 @@ public class Player {
     private boolean hasDegree;
     private int numKids;
     private int loan;
+    private HouseCard house;
 
-    Scanner scanner = new Scanner(System.in);
 
     /**
      * Initializes the player object with the given career. The starting cash value
@@ -272,6 +272,17 @@ public class Player {
         // else
         // this.career = (CareerCard) c;
     }
+
+    public HouseCard getHouse() {
+        return house;
+    }
+
+    public void setHouse(HouseCard house) {
+        this.house = house;
+        System.out.println(getHouse().getDescription());
+    }
+
+
 
     private void blueCardEffect(BlueCard c, Player[] otherPlayers) {
         double cash;

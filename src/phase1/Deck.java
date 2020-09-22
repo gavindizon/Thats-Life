@@ -46,6 +46,9 @@ public class Deck {
             case "Blue":
                 generateBlueDeck();
                 break;
+            case "House":
+                generateHouseDeck();
+                break;
         }
     }
 
@@ -124,6 +127,14 @@ public class Deck {
         this.cards.add(new TipTheServer("Tip the Server", "Server"));
         this.cards.add(new F1Race("F1 Race", "Racecar Driver"));
         this.cards.add(new WorldCup("World Cup", "Athlete"));
+    }
+
+    private void generateHouseDeck() {
+        this.cards.add(new HouseCard("The Bungalow", 45000));
+        this.cards.add(new HouseCard("Small Cottage", 30000));
+        this.cards.add(new HouseCard("Tree House", 10000));
+        this.cards.add(new HouseCard("Isolated Cedar Cabin", 60000));
+        this.cards.add(new HouseCard("Marvelous Mansion", 100000));
     }
 
     /**

@@ -39,7 +39,11 @@ public class showInfoController {
         sm_kidsCnt.setText("Number of Kids: " + p.getNumKids());
         sm_retired.setText("Retired: " + (p.getIsRetired() ? "Yes" : "No"));
         sm_degree.setText("College Graduate: " + (p.isHasDegree() ? "Yes" : "No"));
-        sm_houseVal.setText("House Value: " + 0); //TODO bind value of incoming house card
+        if(p.getHouse() != null){
+            sm_houseVal.setText("House Value: $" + p.getHouse().getValue());
+        }else{
+            sm_houseVal.setText("House Value: " + 0);
+        }
     }
 
 

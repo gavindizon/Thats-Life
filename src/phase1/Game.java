@@ -15,6 +15,7 @@ public class Game {
     private Deck salaryDeck;
     private Deck careerDeck;
     private Deck blueDeck;
+    private Deck houseDeck;
     private Space spaces[];
 
     /**
@@ -33,9 +34,11 @@ public class Game {
         this.salaryDeck = new Deck("Salary", 7);
         this.careerDeck = new Deck("Career", 7);
         this.blueDeck = new Deck("Blue", 7);
+        this.houseDeck = new Deck("House", 5);
         actionDeck.shuffleDeck();
         careerDeck.shuffleDeck();
         salaryDeck.shuffleDeck();
+        houseDeck.shuffleDeck();
         this.spaces = new Space[100];
 
         for (int i = 0; i < this.NUM_PLAYERS; i++) {
@@ -61,7 +64,7 @@ public class Game {
         this.spaces[0] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[1] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[2] = new OrangeSpace("career", this.NUM_PLAYERS);
-        this.spaces[3] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[3] = new BuyHouseSpace("career", this.NUM_PLAYERS);
         this.spaces[4] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[5] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[6] = new GetMarriedSpace("career", this.NUM_PLAYERS);
@@ -227,6 +230,7 @@ public class Game {
         } else if (s instanceof MagentaSpace) {
             decks.add(this.careerDeck);
             decks.add(this.salaryDeck);
+            decks.add(this.houseDeck);
         } else if (s instanceof BlueSpace) {
             decks.add(this.blueDeck);
         } else {
