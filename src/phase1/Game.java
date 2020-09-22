@@ -173,7 +173,7 @@ public class Game {
         int place = 1;
         // Special Treatment for Junctions
 
-        if((moveCnt + p.getSpaceTracker() )>= 5){
+        if((moveCnt + p.getSpaceTracker() )>= 99){
             this.spaces[p.getSpaceTracker()].getPlayers().remove(p);
             p.teleportToSpace(99);
             this.spaces[p.getSpaceTracker()].getPlayers().add(p);
