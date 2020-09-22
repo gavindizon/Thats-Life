@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Popup;
@@ -97,11 +98,13 @@ public class boardController {
                 if((ChoiceSpace) magentaSpace instanceof CollegeCareerChoiceSpace){
                     String[] choice1 = Arrays.copyOfRange(choices, 0, 2);
                     String[] choice2 = Arrays.copyOfRange(choices, 2, choices.length);
-                    System.out.println("xxx" + choice2[0]);
+//                    System.out.println("xxx" + choice2[0]);
                     choosePath(currPlayer, gameControl.getRootPane(), choice2, magentaSpace, game);
                     choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game);
 
-                } else{
+                }else if((ChoiceSpace) magentaSpace instanceof BuyHouseSpace){
+                    chooseHouse(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game);
+                }else{
                     choosePath(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game);
 //                    magentaSpace
                 }
@@ -141,6 +144,34 @@ public class boardController {
         });
 
     }
+
+
+
+    private void chooseHouse(Player p, AnchorPane rootPane, String[] choices,
+                            MagentaSpace magentaSpace, Game game) throws IOException {
+        // TODO: pop up and return value to do action
+        Popup popup = new Popup();
+        FXMLLoader popChoose = new FXMLLoader(getClass().getResource("chooseHouse.fxml"));
+        Parent root = (Parent) popChoose.load();
+        popup.getContent().add(root);
+        chooseHouseController chCont = (chooseHouseController) popChoose.<chooseHouseController>getController();
+        chCont.setPlayerText(p);
+        chCont.setChoice(choices);
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        popup.show(stage);
+
+        chCont.getConfirm().setOnAction(e->{
+////            ((NoChoiceSpace) magentaSpace).doMagentaAction(p, game.getPlayers(), game.getDecks(magentaSpace));
+            popup.hide();
+            RadioButton selectedRadioButton = (RadioButton) chCont.choicePicker.getSelectedToggle();
+
+
+            ((ChoiceSpace) magentaSpace).doMagentaAction(p, game.getDecks(magentaSpace), (int) selectedRadioButton.getUserData() );
+//
+        });
+
+    }
+
 
     private void setChoice(int value){
         this.choice = value;
