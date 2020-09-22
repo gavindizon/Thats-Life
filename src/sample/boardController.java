@@ -166,7 +166,7 @@ public class boardController {
             RadioButton selectedRadioButton = (RadioButton) chCont.choicePicker.getSelectedToggle();
 
 
-            ((ChoiceSpace) magentaSpace).doMagentaAction(p, game.getDecks(magentaSpace), (int) selectedRadioButton.getUserData() );
+            ((ChoiceSpace) magentaSpace).doMagentaAction(p, game.getDecks(magentaSpace), (int) selectedRadioButton.getUserData());
 //
         });
 

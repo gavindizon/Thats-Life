@@ -39,6 +39,8 @@ public class chooseHouseController {
 
         for(int i = 0; i < choices.length; i++){
             RadioButton radBtn = new RadioButton(choices[i]);
+            if(i == 0)
+                radBtn.setSelected(true);
             radBtn.setToggleGroup(choicePicker);
             radBtn.setUserData(i);
             this.choices.getChildren().add(radBtn);
