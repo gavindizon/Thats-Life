@@ -97,7 +97,7 @@ public class boardController {
                 // TODO CollegeCareerChoice should pick 2 times, 1 for career, 1 for salary
                 if((ChoiceSpace) magentaSpace instanceof CollegeCareerChoiceSpace){
                     String[] choice1 = Arrays.copyOfRange(choices, 0, 2);
-                    String[] choice2 = Arrays.copyOfRange(choices, 2, choices.length);
+                    String[] choice2 = Arrays.copyOfRange(choices, 2, 4);
 //                    System.out.println("xxx" + choice2[0]);
                     choosePath(currPlayer, gameControl.getRootPane(), choice2, magentaSpace, game);
                     choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game);

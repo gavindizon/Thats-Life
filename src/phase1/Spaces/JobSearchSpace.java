@@ -37,13 +37,12 @@ public class JobSearchSpace extends MagentaSpace implements ChoiceSpace{
 
     @Override
     public void doMagentaAction(Player p, ArrayList<Deck> decks, int choice){
-        CareerCard c = (CareerCard) decks.get(0).drawCard();
-        if (choice == 1) {
-            decks.get(0).addCardBack(c);
-        } else {
+        if(choice == 2){
+            CareerCard c = (CareerCard) decks.get(0).drawCard(decks.get(0).getCards().size() - choice);
             decks.get(0).addCardBack(p.getCareerCard());
             p.setCareer(c);
         }
+
     }
     @Override
     public String[] getChoices(Player p, ArrayList<Deck> decks){

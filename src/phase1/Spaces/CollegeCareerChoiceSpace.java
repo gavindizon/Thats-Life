@@ -1,6 +1,8 @@
 package phase1.Spaces;
 
 import java.util.ArrayList;
+
+import phase1.Cards.Card;
 import phase1.Player;
 import phase1.Cards.CareerCard;
 import phase1.Cards.SalaryCard;
@@ -56,7 +58,16 @@ public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpac
 
     @Override
     public void doMagentaAction(Player p, ArrayList<Deck> decks, int choice){
-        System.out.println("choice");
+        CareerCard careerCard;
+        SalaryCard salaryCard;
+        if(p.getCareer().equals("Student")){
+            careerCard = (CareerCard) decks.get(0).drawCard(decks.get(0).getCards().size() - choice);
+            p.setCareer(careerCard);
+        }
+        else{
+            salaryCard = (SalaryCard) decks.get(1).drawCard(decks.get(1).getCards().size() - choice);
+            p.setSalaryCard(salaryCard);
+        }
     }
 
     @Override
@@ -67,19 +78,24 @@ public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpac
         int ctr = 0;
 
         for(int i = careerDeck.getCards().size() - 1; i > careerDeck.getCards().size() - 3; i--){
-            s[ctr] = ((CareerCard)careerDeck.getCards().get(i - 1)).getCareerName();
+            s[ctr] = ((CareerCard)careerDeck.getCards().get(i)).getCareerName();
             ctr++;
-            System.out.println(ctr);
+
         }
 
         for(int i = salaryDeck.getCards().size() - 1; i > salaryDeck.getCards().size() - 3; i--){
-            double salary = ((SalaryCard) salaryDeck.getCards().get(i - 1)).getSalary() ;
+            double salary = ((SalaryCard) salaryDeck.getCards().get(i)).getSalary() ;
             s[ctr] =  String.format("%.2f", salary);
             System.out.println(s[ctr]);
-//            ctr++;
+            ctr++;
         }
 
         return s;
+    }
+
+    private void putCardToTop(ArrayList<Card> cards, Card card){
+        cards.remove(card);
+        cards.add(card);
     }
 
 }

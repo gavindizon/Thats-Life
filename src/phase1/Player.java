@@ -100,6 +100,10 @@ public class Player {
         return this.salaryCard;
     }
 
+    public void setSalaryCard(SalaryCard salaryCard){
+        this.salaryCard = salaryCard;
+    }
+
     /**
      * Returns the player's name
      * 

@@ -187,8 +187,17 @@ public class Deck {
         return a;
     }
 
+    public Card drawCard(int index){
+        checkDeck();
+        Card a = this.cards.remove(index);
+        this.numCards--;
+        shuffleDeck();
+        return a;
+
+    }
+
     public void addCardBack(Card a) {
-//        cards.add(a);
+        cards.add(a);
         this.numCards++;
     }
 
