@@ -4,12 +4,13 @@
 ### What was done:
 - Fixed what is needed to be fixed in 1.0
 - Added an overload method in draw card which will specify the index 
+- Added retirement evaluations. 
 
 ### What needs to be fixed:
 - Job search needs an option to filter no degree careers to players without degree
 
 ### What is yet to be implemented:
-- Retirement/ Endgame
+- Endgame interface 
 - Overall UI Improvements
 
 ### Blockers:

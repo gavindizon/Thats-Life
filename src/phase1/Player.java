@@ -225,8 +225,33 @@ public class Player {
      * 
      * @param isRetired true if the player is retired, false if not.
      */
-    public void setToRetire(boolean isRetired) {
+    public void setToRetire(boolean isRetired, int place) {
         this.isRetired = isRetired;
+        retirement(place);
+    }
+
+    private  void retirement(int place){
+        switch(place){
+            case 1:
+                updateCash(100000);
+                break;
+            case 2:
+                updateCash(50000);
+                break;
+            case 3:
+                updateCash(20000);
+                break;
+            default:
+                break;
+        }
+        if(numKids > 0){
+            updateCash(10000 * numKids);
+        }
+        if(this.house != null){
+            updateCash(this.house.getValue());
+        }
+        payLoan();
+
     }
 
     /**

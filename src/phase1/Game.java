@@ -170,55 +170,59 @@ public class Game {
     public int move(Player p) {
         int moveCnt = spinWheel();
         int spinHolder = moveCnt;
+        int place = 1;
         // Special Treatment for Junctions
 
-        if(moveCnt + p.getSpaceTracker() >= 99){
+        if((moveCnt + p.getSpaceTracker() )>= 5){
             this.spaces[p.getSpaceTracker()].getPlayers().remove(p);
             p.teleportToSpace(99);
             this.spaces[p.getSpaceTracker()].getPlayers().add(p);
+            p.setToRetire(true, place);
+            place++;
 
         }else{
 
-        if (p.getSpaceTracker() != 0 && this.spaces[p.getSpaceTracker()].isJunctionStart() && moveCnt != 1) {
-            moveCnt--;
-        }
+            if (p.getSpaceTracker() != 0 && this.spaces[p.getSpaceTracker()].isJunctionStart() && moveCnt != 1) {
+                moveCnt--;
+            }
 
-        System.out.println("Moving Player " + p.getName() + " to +" + moveCnt + " steps");
+            System.out.println("Moving Player " + p.getName() + " to +" + moveCnt + " steps");
 
-        for (; moveCnt > 0; moveCnt--) {
-            this.spaces[p.getSpaceTracker()].getPlayers().remove(p); // removes from a player to the current shit
-            p.updateSpaceTracker();
-            this.spaces[p.getSpaceTracker()].getPlayers().add(p);
-
-            if ((this.spaces[p.getSpaceTracker()] instanceof MagentaSpace)) {
-                moveCnt = 0; // stop
-                System.out.println("STOP");
-                MagentaSpace m = (MagentaSpace) this.spaces[p.getSpaceTracker()];
-
-            } else {
-                this.spaces[p.getSpaceTracker()].getPlayers().remove(p);
-                switch (p.getSpaceTracker()) {
-                    case 11:
-                        p.teleportToSpace(22);
-                        break;
-                    case 47:
-                        p.teleportToSpace(54);
-                        break;
-                    case 80:
-                        p.teleportToSpace(90);
-                        break;
-                }
+            for (; moveCnt > 0; moveCnt--) {
+                this.spaces[p.getSpaceTracker()].getPlayers().remove(p); // removes from a player to the current shit
+                p.updateSpaceTracker();
                 this.spaces[p.getSpaceTracker()].getPlayers().add(p);
+
+                if ((this.spaces[p.getSpaceTracker()] instanceof MagentaSpace)) {
+                    moveCnt = 0; // stop
+                    System.out.println("STOP");
+                    MagentaSpace m = (MagentaSpace) this.spaces[p.getSpaceTracker()];
+
+                } else {
+                    this.spaces[p.getSpaceTracker()].getPlayers().remove(p);
+                    switch (p.getSpaceTracker()) {
+                        case 11:
+                            p.teleportToSpace(22);
+                            break;
+                        case 47:
+                            p.teleportToSpace(54);
+                            break;
+                        case 80:
+                            p.teleportToSpace(90);
+                            break;
+                    }
+                    this.spaces[p.getSpaceTracker()].getPlayers().add(p);
+
+                }
 
             }
 
         }
 
-        }
-        if(p.getSpaceTracker() == 99){
-            p.setToRetire(true);
-        }
         playerDupRemover();
+        if(gameOver()){
+            System.out.println("game over xD");
+        }
         return spinHolder;
     }
 
@@ -317,7 +321,7 @@ public class Game {
      */
     public void retireAll() { // to be removed after phase 1(?)
         for (int i = 0; i < NUM_PLAYERS; i++) {
-            this.players[i].setToRetire(true);
+            this.players[i].setToRetire(true, 0);
         }
     }
 
