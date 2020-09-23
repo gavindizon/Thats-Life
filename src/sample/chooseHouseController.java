@@ -14,7 +14,7 @@ public class chooseHouseController {
     @FXML
     private Button confirm;
 
-    ToggleGroup choicePicker = new ToggleGroup();
+    private ToggleGroup choicePicker = new ToggleGroup();
 
     @FXML VBox choices;
 
@@ -42,6 +42,9 @@ public class chooseHouseController {
 
     }
 
+    public ToggleGroup getChoicePicker() {
+        return choicePicker;
+    }
 
     public Button getConfirm() {
         return confirm;

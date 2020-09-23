@@ -8,8 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import phase1.Game;
@@ -24,7 +24,7 @@ import java.util.List;
 public class boardController {
 
     @FXML
-    List<TextFlow> spacesView;
+    List<VBox> spacesView;
 
     private int choice;
 
@@ -33,7 +33,7 @@ public class boardController {
         int count = 1;
         Label label = new Label("Label");
 
-        for(TextFlow space : spacesView){
+        for(VBox space : spacesView){
             space.setStyle("-fx-border-color: #FFF; -fx-background-color: #000;");
             for(int j = 0; j < 3; j++){
                 label = (Label) space.getChildren().get(j);
@@ -45,7 +45,9 @@ public class boardController {
 
     public void initSpaceColor(Game game){
         int i = 0;
-        for(TextFlow spaceView: spacesView){
+
+        for(VBox spaceView: spacesView){
+
             Space space = game.getSpace(i);
             if(space instanceof OrangeSpace){
                 spaceView.setStyle("-fx-border-color: #FFF; -fx-background-color: #FFBC3A;");
@@ -62,7 +64,7 @@ public class boardController {
 
     public void updateBoardState(Game game){
         int i = 0;
-        for(TextFlow spaceView : spacesView){
+        for(VBox spaceView : spacesView){
 
             Space space = game.getSpace(i);
                 spaceView.getChildren().clear();
@@ -87,7 +89,7 @@ public class boardController {
         }
 
         i = 0;
-        for(TextFlow spaceView : spacesView){
+        for(VBox spaceView : spacesView){
 
             Space space = game.getSpace(i);
             if((space instanceof GreenSpace || space instanceof MagentaSpace) && space.getPlayers().size() == 0){
@@ -198,11 +200,11 @@ public class boardController {
         Stage stage = (Stage) rootPane.getScene().getWindow();
         popup.show(stage);
 
-        chCont.getConfirm().setOnAction(e->{
+        chCont.getConfirm().setOnAction(e ->{
 ////            ((NoChoiceSpace) magentaSpace).doMagentaAction(p, game.getPlayers(), game.getDecks(magentaSpace));
             popup.hide();
-            RadioButton selectedRadioButton = (RadioButton) chCont.choicePicker.getSelectedToggle();
 
+            RadioButton selectedRadioButton = (RadioButton) chCont.getChoicePicker().getSelectedToggle();
 
             ((ChoiceSpace) magentaSpace).doMagentaAction(p, game.getDecks(magentaSpace), (int) selectedRadioButton.getUserData());
 //
