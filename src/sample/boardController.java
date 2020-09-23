@@ -1,12 +1,14 @@
 package sample;
 
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -36,20 +38,26 @@ public class boardController {
             for(int j = 0; j < 3; j++){
                 label = (Label) space.getChildren().get(j);
                 label.setText("");
+
             }
         }
     }
 
     public void initSpaceColor(Game game){
         int i = 0;
+        Label label;
         for(TextFlow spaceView: spacesView){
             Space space = game.getSpace(i);
             if(space instanceof OrangeSpace){
                 spaceView.setStyle("-fx-border-color: #FFF; -fx-background-color: #FFBC3A;");
             }else if(space instanceof MagentaSpace){
                 spaceView.setStyle("-fx-border-color: #FFF; -fx-background-color: #FF00FF;");
+                label = (Label) spaceView.getChildren().get(1);
+                label.setText(space.getActionDescription());
             }else if(space instanceof GreenSpace){
                 spaceView.setStyle("-fx-border-color: #FFF; -fx-background-color: #008000;");
+                label = (Label) spaceView.getChildren().get(1);
+                label.setText(space.getActionDescription());
             }else{
                 spaceView.setStyle("-fx-border-color: #FFF; -fx-background-color: #ADD8E6;");
             }
@@ -58,23 +66,54 @@ public class boardController {
     }
 
     public void updateBoardState(Game game){
-        Label label;
         int i = 0;
         for(TextFlow spaceView : spacesView){
 
             Space space = game.getSpace(i);
-            for(int j = 0; j < game.getNumPlayers(); j++){
-                label = (Label) spaceView.getChildren().get(j);
-                label.setStyle("-fx-text-fill:blue; -fx-font-weight:bold");
+                spaceView.getChildren().clear();
+                for(int j = 0; j < game.getNumPlayers(); j++){
+  //                  System.out.println(spaceView.getChildren().toString());
+                    Label label = new Label();
 
-                try{
-                    label.setText(space.getPlayers().get(j).getName());
-                }catch(Exception e){
-                    label.setText("");
+                    label.setStyle("-fx-text-fill:blue; -fx-font-weight:bold");
+
+                    try{
+                        label.setText(space.getPlayers().get(j).getName());
+                    }catch(Exception e){
+                        label.setText("");
+                    }
+                    spaceView.getChildren().add(j, label);
                 }
+                i++;
+        }
+
+        i = 0;
+        for(TextFlow spaceView : spacesView){
+
+            Space space = game.getSpace(i);
+            if((space instanceof GreenSpace || space instanceof MagentaSpace) && space.getPlayers().size() == 0){
+                spaceView.getChildren().clear();
+                Label label = new Label();
+
+                label.setStyle("-fx-text-fill:white; -fx-font-weight:bold; -fx-font-size: 10px");
+                label.setMaxHeight(50);
+                label.setText(space.getActionDescription());
+                label.setTextAlignment(TextAlignment.CENTER);
+                label.setWrapText(true);
+                label.setMaxWidth(45);
+
+
+                if(space instanceof GraduationSpace)
+                    label.setText("Finished College");
+                spaceView.getChildren().add(label);
+
+
             }
+
+
             i++;
         }
+
     }
 
 
