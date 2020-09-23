@@ -165,19 +165,23 @@ public class Player {
 
     public void chooseStartingPath(Deck salary, Deck career, int decision) {
 
+        boolean gotCareer= false;
         if (decision == 1) {
             this.cash += 40000;
             this.career.setCareerName("Student");
             this.teleportToSpace(12);
         } else {
             this.salaryCard = (SalaryCard) salary.drawCard();
-            this.career = (CareerCard) career.drawCard();
+            for(int i = career.getCards().size() - 1; i >= 0 && !gotCareer; i--){
+                CareerCard c = (CareerCard) career.getCards().get(i);
+                if(!c.isDegreeRequired()){
+                    this.career = (CareerCard) career.getCards().remove(i);
+                    gotCareer = true;
+                }
 
-            while (this.career.isDegreeRequired()) {
-                career.addCardBack(this.career);
-                career.shuffleDeck();
-                this.career = (CareerCard) career.drawCard();
             }
+
+
         }
     }
 

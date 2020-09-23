@@ -87,7 +87,7 @@ public class MenuController {
                 Scene play = new Scene(root);
                 stage.setScene(play);
                 stage.show();
-//                Stage stage2 = (Stage) opt2.getScene().getWindow();
+                Stage stage2 = (Stage) opt2.getScene().getWindow();
 
             } catch (IOException ex) {
                 ex.printStackTrace();
