@@ -45,19 +45,14 @@ public class boardController {
 
     public void initSpaceColor(Game game){
         int i = 0;
-        Label label;
         for(TextFlow spaceView: spacesView){
             Space space = game.getSpace(i);
             if(space instanceof OrangeSpace){
                 spaceView.setStyle("-fx-border-color: #FFF; -fx-background-color: #FFBC3A;");
             }else if(space instanceof MagentaSpace){
                 spaceView.setStyle("-fx-border-color: #FFF; -fx-background-color: #FF00FF;");
-                label = (Label) spaceView.getChildren().get(1);
-                label.setText(space.getActionDescription());
             }else if(space instanceof GreenSpace){
                 spaceView.setStyle("-fx-border-color: #FFF; -fx-background-color: #008000;");
-                label = (Label) spaceView.getChildren().get(1);
-                label.setText(space.getActionDescription());
             }else{
                 spaceView.setStyle("-fx-border-color: #FFF; -fx-background-color: #ADD8E6;");
             }
@@ -74,14 +69,18 @@ public class boardController {
                 for(int j = 0; j < game.getNumPlayers(); j++){
   //                  System.out.println(spaceView.getChildren().toString());
                     Label label = new Label();
-
-                    label.setStyle("-fx-text-fill:blue; -fx-font-weight:bold");
-
                     try{
                         label.setText(space.getPlayers().get(j).getName());
                     }catch(Exception e){
                         label.setText("");
                     }
+                    label.setStyle("-fx-text-fill:blue; -fx-font-weight:bold");
+                    label.setMaxHeight(50);
+                    label.setTextAlignment(TextAlignment.CENTER);
+                    label.setWrapText(true);
+                    label.setMaxWidth(45);
+
+
                     spaceView.getChildren().add(j, label);
                 }
                 i++;
