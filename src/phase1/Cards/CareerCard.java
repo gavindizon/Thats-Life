@@ -1,5 +1,7 @@
 package phase1.Cards;
 
+import phase1.Deck;
+
 /**
  * implements a Career Card that has the name of the career, the maximum pay
  * raise, and a boolean type which determines whether the career needs a degree
@@ -69,4 +71,23 @@ public class CareerCard extends Card {
     public void activate() {
         System.out.println();
     }
+
+    public static int getNoDegreeIndex(Deck careerDeck){
+        for(int i = careerDeck.getCards().size() - 1; i > 0 ; i--){
+            if( !(((CareerCard) careerDeck.getCards().get(i)).isDegreeRequired())){
+                return i ;
+            }
+        }
+        return -1;
+    }
+
+    public static int getNoDegreeIndex(Deck careerDeck, int index){
+        for(int i = careerDeck.getCards().size() - 1; i > 0 ; i--){
+            if( !(((CareerCard) careerDeck.getCards().get(i)).isDegreeRequired()) && i != index){
+                return i ;
+            }
+        }
+        return -1;
+    }
+
 }

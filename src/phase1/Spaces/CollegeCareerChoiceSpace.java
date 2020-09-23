@@ -60,11 +60,29 @@ public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpac
     public void doMagentaAction(Player p, ArrayList<Deck> decks, int choice){
         CareerCard careerCard;
         SalaryCard salaryCard;
-        if(p.getCareer().equals("Student")){
-            careerCard = (CareerCard) decks.get(0).drawCard(decks.get(0).getCards().size() - choice);
+        if(p.getCareer().equals("Student") || p.getSalaryCard() != null){
+            int chosen;
+            chosen = decks.get(0).getCards().size() - choice;
+            if (!p.isHasDegree()){
+                if(choice == 1){
+                    choice = CareerCard.getNoDegreeIndex(decks.get(0));
+                } else if(choice == 2) {
+                    int index = CareerCard.getNoDegreeIndex(decks.get(0));
+                    choice = CareerCard.getNoDegreeIndex(decks.get(0), index);
+
+                }
+                chosen = choice;
+//                System.out.println("career "+choice);
+            }
+            if(!p.getCareer().equals("Student")){
+                decks.get(0).addCardBack(p.getCareerCard());
+            }
+            careerCard = (CareerCard) decks.get(0).drawCard(chosen);
             p.setCareer(careerCard);
-        }
-        else{
+            p.setSalaryCard(null);
+
+
+        } else if(p.getSalaryCard() == null){
             salaryCard = (SalaryCard) decks.get(1).drawCard(decks.get(1).getCards().size() - choice);
             p.setSalaryCard(salaryCard);
         }
@@ -77,10 +95,19 @@ public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpac
         Deck salaryDeck = decks.get(1);
         int ctr = 0;
 
-        for(int i = careerDeck.getCards().size() - 1; i > careerDeck.getCards().size() - 3; i--){
-            s[ctr] = ((CareerCard)careerDeck.getCards().get(i)).getCareerName();
-            ctr++;
+        for(int i = careerDeck.getCards().size() - 1; i > 0; i--){
+            if(p.isHasDegree()){
+                s[ctr] = ((CareerCard)careerDeck.getCards().get(i)).getCareerName();
+                ctr++;
+            } else if(!(((CareerCard)careerDeck.getCards().get(i)).isDegreeRequired())){
+                s[ctr] = ((CareerCard)careerDeck.getCards().get(i)).getCareerName();
+                System.out.println("choice " + i);
+                ctr++;
+            }
 
+            if(ctr == 2){
+                break;
+            }
         }
 
         for(int i = salaryDeck.getCards().size() - 1; i > salaryDeck.getCards().size() - 3; i--){
