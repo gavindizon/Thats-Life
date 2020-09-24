@@ -175,7 +175,7 @@ public class Player {
             for(int i = career.getCards().size() - 1; i >= 0 && !gotCareer; i--){
                 CareerCard c = (CareerCard) career.getCards().get(i);
                 if(!c.isDegreeRequired()){
-                    this.career = (CareerCard) career.getCards().remove(i);
+                    this.career = (CareerCard) career.drawCard(i);
                     gotCareer = true;
                 }
 
