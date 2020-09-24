@@ -164,14 +164,9 @@ public class Controller implements Initializable {
     private void choosePlayers(ActionCard drawnCard, Player currPlayer) throws IOException {
         String playerName = "";
         Popup popup = new Popup();
-        FXMLLoader choose = new FXMLLoader(getClass().getResource("choosePlayerPopUp.fxml"));
-        Parent root = (Parent) choose.load();
-        popup.getContent().add(root);
-        choosePlayerPopUpController cpCont = (choosePlayerPopUpController) choose.<choosePlayerPopUpController>getController();
+        choosePlayerPopUpController cpCont = initPopup(popup);
+        cpCont.getTextLabel().setText("Choose Player: ");
         cpCont.generateChoices(game.getPlayers(), currPlayer);
-        Stage stage = (Stage) rootPane.getScene().getWindow();
-        popup.show(stage);
-
 
         //confirm button action
         cpCont.getConfirm().setOnAction(e->{
@@ -245,21 +240,26 @@ public class Controller implements Initializable {
 
 
     public void initCareers(Player p) throws IOException{
+        String[] choices = new String[]{"Career", "College"};
         System.out.println(p.getName());
-        Popup popup = new Popup();
-        FXMLLoader popChoose = new FXMLLoader(getClass().getResource("choosePathPopUp.fxml"));
-        Parent root = (Parent) popChoose.load();
-        popup.getContent().add(root);
-        choosePathPopUpController cpCont = (choosePathPopUpController) popChoose.<choosePathPopUpController>getController();
-        cpCont.setPlayerText(p);
 
-        Stage stage = (Stage) rootPane.getScene().getWindow();
-        popup.show(stage);
+        Popup popup = new Popup();
+        choosePlayerPopUpController cpCont = initPopup(popup);
+
+        cpCont.getTextLabel().setText("Choose path for: " + p.getName());
+        cpCont.generateChoices(choices);
+
 
         cpCont.getConfirm().setOnAction(e ->{
-            System.out.println(cpCont.getValue());
+            int choice;
+            RadioButton[] radio = cpCont.getRadios();
+            for(int i = 0; i < radio.length; i++){
+                if(radio[i].isSelected()){
+                    System.out.println(radio[i].isSelected());
+                    p.chooseStartingPath(game.getSalaryDeck(), game.getCareerDeck(), i);
+                }
+            }
 
-            p.chooseStartingPath(game.getSalaryDeck(), game.getCareerDeck(), cpCont.getValue());
             game.initializeStart(p);
             boardController.updateBoardState(game);
 
@@ -280,8 +280,7 @@ public class Controller implements Initializable {
             }
 
 
-//            playerDescriptionController playerController = (playerDescriptionController) playerDesc[0].<playerDescriptionController>getController();
-//            playerController.getPlayerPane().setStyle("-fx-background-color:blue");
+
             try {
                 card = renderCard();
 
@@ -296,6 +295,23 @@ public class Controller implements Initializable {
         return rootPane;
     }
 
+    private choosePlayerPopUpController initPopup(Popup popup) throws IOException {
+        try{
+            FXMLLoader popChoose = new FXMLLoader(getClass().getResource("choosePlayerPopUp.fxml"));
+            Parent root = (Parent) popChoose.load();
+            popup.getContent().add(root);
+            choosePlayerPopUpController cpCont = (choosePlayerPopUpController) popChoose.<choosePlayerPopUpController>getController();
+            Stage stage = (Stage) rootPane.getScene().getWindow();
+            popup.show(stage);
+            return cpCont;
+
+        } catch (IOException e){
+            System.out.println("FXML File not found");
+            e.printStackTrace();
+        }
+        return null;
+
+    }
 
 
 }

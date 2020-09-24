@@ -29,7 +29,7 @@ public class cardContainerController {
         }
 
         if(s instanceof OrangeSpace || s instanceof BlueSpace){
-            cardTitle.setText(s.getActionDescription());
+            cardTitle.setText(c.getDescription());
             cardType.setText(s.getType());
             cardDescription.setText(c.getDescription() + " - " + c.getLongDescription());
 

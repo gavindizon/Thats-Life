@@ -26,8 +26,6 @@ public class boardController {
     @FXML
     List<VBox> spacesView;
 
-    private int choice;
-
 
     public void initialize(){
         int count = 1;
@@ -69,7 +67,6 @@ public class boardController {
             Space space = game.getSpace(i);
                 spaceView.getChildren().clear();
                 for(int j = 0; j < game.getNumPlayers(); j++){
-  //                  System.out.println(spaceView.getChildren().toString());
                     Label label = new Label();
                     try{
                         label.setText(space.getPlayers().get(j).getName());
@@ -103,15 +100,10 @@ public class boardController {
                 label.setWrapText(true);
                 label.setMaxWidth(45);
 
-
                 if(space instanceof GraduationSpace)
                     label.setText("Finished College");
                 spaceView.getChildren().add(label);
-
-
             }
-
-
             i++;
         }
 
@@ -138,7 +130,7 @@ public class boardController {
                 if((ChoiceSpace) magentaSpace instanceof CollegeCareerChoiceSpace){
                     String[] choice1 = Arrays.copyOfRange(choices, 0, 2);
                     String[] choice2 = Arrays.copyOfRange(choices, 2, 4);
-//                    System.out.println("xxx" + choice2[0]);
+
                     choosePath(currPlayer, gameControl.getRootPane(), choice2, magentaSpace, game);
                     choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game);
 
@@ -146,7 +138,6 @@ public class boardController {
                     chooseHouse(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game);
                 }else{
                     choosePath(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game);
-//                    magentaSpace
                 }
 
             } else{
@@ -159,30 +150,27 @@ public class boardController {
 
 
     private void choosePath(Player p, AnchorPane rootPane, String[] choices,
-                           MagentaSpace magentaSpace, Game game) throws IOException {
+                           MagentaSpace magentaSpace, Game game) throws IOException{
         // TODO: pop up and return value to do action
         Popup popup = new Popup();
-        FXMLLoader popChoose = new FXMLLoader(getClass().getResource("choosePathPopUp.fxml"));
-        Parent root = (Parent) popChoose.load();
-        popup.getContent().add(root);
-        choosePathPopUpController cpCont = (choosePathPopUpController) popChoose.<choosePathPopUpController>getController();
-        cpCont.setPlayerText(p);
-        cpCont.setChoice(choices[0], choices[1]);
-        Stage stage = (Stage) rootPane.getScene().getWindow();
-        popup.show(stage);
+        try{
+            choosePlayerPopUpController cpCont = initPopup(popup, rootPane);
+            cpCont.getTextLabel().setText("Choose path for: " + p.getName());
+            cpCont.generateChoices(choices);
+            cpCont.getConfirm().setOnAction(e->{
+                popup.hide();
+                RadioButton[] radio = cpCont.getRadios();
+                for(int i = 0; i < radio.length; i++){
+                    if(radio[i].isSelected()){
+                        ((ChoiceSpace) magentaSpace).doMagentaAction(p, game.getDecks(magentaSpace), i + 1);
+                    }
+                }
 
-        cpCont.getConfirm().setOnAction(e->{
-//            ((NoChoiceSpace) magentaSpace).doMagentaAction(p, game.getPlayers(), game.getDecks(magentaSpace));
-            popup.hide();
-            if (cpCont.opt1.isSelected()){
-                setChoice(1);
-            } else{
-                setChoice(2);
-            }
-            ((ChoiceSpace) magentaSpace).doMagentaAction(p, game.getDecks(magentaSpace), this.choice );
-
-        });
-
+            });
+        }catch (IOException e){
+            System.out.println("FXML File not found");
+            e.printStackTrace();
+        }
     }
 
 
@@ -201,20 +189,32 @@ public class boardController {
         popup.show(stage);
 
         chCont.getConfirm().setOnAction(e ->{
-////            ((NoChoiceSpace) magentaSpace).doMagentaAction(p, game.getPlayers(), game.getDecks(magentaSpace));
             popup.hide();
 
             RadioButton selectedRadioButton = (RadioButton) chCont.getChoicePicker().getSelectedToggle();
 
             ((ChoiceSpace) magentaSpace).doMagentaAction(p, game.getDecks(magentaSpace), (int) selectedRadioButton.getUserData());
-//
         });
 
     }
 
 
-    private void setChoice(int value){
-        this.choice = value;
+    private choosePlayerPopUpController initPopup(Popup popup, AnchorPane rootPane) throws IOException{
+        try{
+            FXMLLoader popChoose = new FXMLLoader(getClass().getResource("choosePlayerPopUp.fxml"));
+            Parent root = (Parent) popChoose.load();
+            popup.getContent().add(root);
+            choosePlayerPopUpController cpCont = (choosePlayerPopUpController) popChoose.<choosePlayerPopUpController>getController();
+            Stage stage = (Stage) rootPane.getScene().getWindow();
+            popup.show(stage);
+            return cpCont;
+
+        } catch (IOException e){
+            System.out.println("FXML File not found");
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
 

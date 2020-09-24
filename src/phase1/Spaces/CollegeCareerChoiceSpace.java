@@ -60,55 +60,66 @@ public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpac
     public void doMagentaAction(Player p, ArrayList<Deck> decks, int choice){
         CareerCard careerCard;
         SalaryCard salaryCard;
-        if(p.getCareer().equals("Student") || p.getSalaryCard() != null){
-            int chosen;
-            chosen = decks.get(0).getCards().size() - choice;
-            if (!p.isHasDegree()){
-                if(choice == 1){
-                    choice = CareerCard.getNoDegreeIndex(decks.get(0));
-                } else if(choice == 2) {
-                    int index = CareerCard.getNoDegreeIndex(decks.get(0));
-                    choice = CareerCard.getNoDegreeIndex(decks.get(0), index);
+        try{
 
+            if(p.getCareer().equals("Student") || p.getSalaryCard() != null){
+                int chosen;
+                chosen = decks.get(0).getCards().size() - choice;
+                if (!p.isHasDegree()){
+                    if(choice == 1){
+                        choice = CareerCard.getNoDegreeIndex(decks.get(0));
+                    } else if(choice == 2) {
+
+                        int index = CareerCard.getNoDegreeIndex(decks.get(0));
+                        choice = CareerCard.getNoDegreeIndex(decks.get(0), index);
+
+                    }
+                    chosen = choice;
+    //                System.out.println("career "+choice);
                 }
-                chosen = choice;
-//                System.out.println("career "+choice);
-            }
-            if(!p.getCareer().equals("Student")){
-                decks.get(0).addCardBack(p.getCareerCard());
-            }
-            careerCard = (CareerCard) decks.get(0).drawCard(chosen);
-            p.setCareer(careerCard);
-            p.setSalaryCard(null);
+                if(!p.getCareer().equals("Student") && chosen != -1){
+                    decks.get(0).addCardBack(p.getCareerCard());
+                    p.setCareer(null);
+                }
+                careerCard = (CareerCard) decks.get(0).drawCard(chosen);
+                p.setCareer(careerCard);
+                p.setSalaryCard(null);
 
-
-        } else if(p.getSalaryCard() == null){
-            salaryCard = (SalaryCard) decks.get(1).drawCard(decks.get(1).getCards().size() - choice);
-            p.setSalaryCard(salaryCard);
+            } else if(p.getSalaryCard() == null){
+                salaryCard = (SalaryCard) decks.get(1).drawCard(decks.get(1).getCards().size() - choice);
+                p.setSalaryCard(salaryCard);
+            }
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("No degree xD");
         }
     }
 
     @Override
     public String[] getChoices(Player p, ArrayList<Deck> decks){
         String[] s = new String[4];
+        String careerName = null;
         Deck careerDeck = decks.get(0);
         Deck salaryDeck = decks.get(1);
         int ctr = 0;
 
         for(int i = careerDeck.getCards().size() - 1; i > 0; i--){
             if(p.isHasDegree()){
-                s[ctr] = ((CareerCard)careerDeck.getCards().get(i)).getCareerName();
-                ctr++;
+                careerName = ((CareerCard)careerDeck.getCards().get(i)).getCareerName();
             } else if(!(((CareerCard)careerDeck.getCards().get(i)).isDegreeRequired())){
-                s[ctr] = ((CareerCard)careerDeck.getCards().get(i)).getCareerName();
-                System.out.println("choice " + i);
-                ctr++;
+                careerName = ((CareerCard)careerDeck.getCards().get(i)).getCareerName();
             }
+
+            s[ctr] = careerName;
+            ctr++;
 
             if(ctr == 2){
                 break;
             }
         }
+        if (s[0] == null && s[1] == null) {
+            s[0] = "No degree choice";
+        }
+
 
         for(int i = salaryDeck.getCards().size() - 1; i > salaryDeck.getCards().size() - 3; i--){
             double salary = ((SalaryCard) salaryDeck.getCards().get(i)).getSalary() ;
@@ -120,9 +131,6 @@ public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpac
         return s;
     }
 
-    private void putCardToTop(ArrayList<Card> cards, Card card){
-        cards.remove(card);
-        cards.add(card);
-    }
+
 
 }
