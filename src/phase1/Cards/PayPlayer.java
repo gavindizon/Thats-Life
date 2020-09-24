@@ -17,7 +17,7 @@ public class PayPlayer extends ActionCard {
         if(this.getToAll()){
             double value = 0;
             for(int i = 0; i < 2; i++){
-                if(i != currPlayerIndex){
+                if(i != currPlayerIndex && !players[i].getIsRetired()){
                     players[i].updateCash(this.getValue());
                     value += this.getValue();
                 }

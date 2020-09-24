@@ -20,7 +20,7 @@ public class HaveTwinSpace extends MagentaSpace implements NoChoiceSpace{
             p.addKids(2);
             for (Player other : others)
                 if (!p.equals(other))
-                    if (other.isMarried())
+                    if (other.isMarried() && !other.getIsRetired())
                         p.updateCash(5000 * other.getNumKids());
 
         }
