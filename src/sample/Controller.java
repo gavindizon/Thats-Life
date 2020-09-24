@@ -113,6 +113,8 @@ public class Controller implements Initializable {
             this.playerIndex = this.turn % game.getNumPlayers();
 
 
+        }else{
+            game.rankPlayers();
         }
     }
     

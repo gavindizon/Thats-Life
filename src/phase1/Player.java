@@ -1,6 +1,5 @@
 package phase1;
 
-import java.util.Scanner;
 import phase1.Cards.*;
 
 /**
@@ -10,7 +9,7 @@ import phase1.Cards.*;
  * career
  */
 
-public class Player {
+public class Player{
     private String name;
     private double cash;
     private ActionCard drawnCard;
@@ -177,7 +176,7 @@ public class Player {
 
         boolean gotCareer= false;
         if (decision == 1) {
-            this.cash += 40000;
+            this.setLoan(2);
             this.career.setCareerName("Student");
             this.teleportToSpace(12);
         } else {
@@ -208,9 +207,8 @@ public class Player {
             System.out.println("Outstanding loan was payed successfully");
     }
 
-    public void updateCareer(CareerCard career) {
-        this.career = career;
-
+    public void setLoan(int loan) {
+        this.loan = loan;
     }
 
     public void updateSalary(SalaryCard salary) {
@@ -379,5 +377,6 @@ public class Player {
     public String toString() {
         return this.name + "$: " + this.cash;
     }
+
 
 }

@@ -395,7 +395,22 @@ public class Game {
                     match = true;
             }
         }
+    }
 
 
+    public void rankPlayers(){
+
+        for (int i = 0; i < this.NUM_PLAYERS-1; i++){
+            int max = i;
+            for (int j = i+1; j < this.NUM_PLAYERS; j++)
+                if (this.players[j].getCash() >= this.players[max].getCash())
+                    max = j;
+
+            Player temp = this.players[max];
+            this.players[max] = this.players[i];
+            this.players[i] = temp;
+        }
+        for(Player p: this.players)
+            System.out.println(p.getName() + " : " + p.getCash());
     }
 }
