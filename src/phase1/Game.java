@@ -5,7 +5,7 @@ import phase1.Spaces.*;
 
 /**
  * Creates a game that initalizes all decks and adds players to the game.
- * 
+ *
  */
 public class Game {
     Scanner scanner = new Scanner(System.in);
@@ -22,7 +22,7 @@ public class Game {
      * Implements a game object that has the number of players as a parameter. The
      * number of players may be 2 to 3. For invalid values for number of players
      * provided, 2 will be used.
-     * 
+     *
      * @param NUM_PLAYERS number of players; 2 will be used if invalid
      */
     public Game(int NUM_PLAYERS, String[] players) {
@@ -64,13 +64,13 @@ public class Game {
         this.spaces[0] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[1] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[2] = new OrangeSpace("career", this.NUM_PLAYERS);
-        this.spaces[3] = new BuyHouseSpace("career", this.NUM_PLAYERS);
-        this.spaces[4] = new CollegeCareerChoiceSpace("career", this.NUM_PLAYERS);
+        this.spaces[3] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[4] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[5] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[6] = new GetMarriedSpace("career", this.NUM_PLAYERS);
         this.spaces[7] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[8] = new OrangeSpace("career", this.NUM_PLAYERS);
-        this.spaces[9] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[9] = new PayDaySpace("career", this.NUM_PLAYERS);
         this.spaces[10] = new OrangeSpace("career", this.NUM_PLAYERS);
 
         // College Path
@@ -89,7 +89,7 @@ public class Game {
         // Meet at Some Point
 
         for (int i = 22; i < 38; i++) {
-            this.spaces[i] = new OrangeSpace("main", this.NUM_PLAYERS); // implement a randomizer
+            this.spaces[i] = spaceRandomizer("main"); // implement a randomizer
         }
 
         // Junction
@@ -119,7 +119,7 @@ public class Game {
         // Meet at some point
 
         for (int i = 54; i < 70; i++) {
-            this.spaces[i] = new OrangeSpace("main", this.NUM_PLAYERS); // implement a randomizer
+            this.spaces[i] = spaceRandomizer("main"); // implement a randomizer
         }
 
         this.spaces[70] = new WhichPathSpace("main", this.NUM_PLAYERS);
@@ -151,15 +151,33 @@ public class Game {
 
         // Meet at some point
         for (int i = 90; i < 100; i++) {
-            this.spaces[i] = new OrangeSpace("main", this.NUM_PLAYERS); // implement a randomizer
+            this.spaces[i] = spaceRandomizer("main"); // implement a randomizer
         }
-/*
-*/
+        /*
+         */
+    }
+
+    public Space spaceRandomizer(String path){
+        int rand = (int) (Math.random() * (8 - 1 + 1) + 1);
+
+        switch(rand){
+            case 1:
+            case 2:
+                return new BlueSpace(path, this. NUM_PLAYERS);
+            case 3:
+                return new PayDaySpace(path, this.NUM_PLAYERS);
+            case 4:
+                return new PayRaiseSpace(path, this.NUM_PLAYERS);
+            default:
+                return new OrangeSpace(path, this.NUM_PLAYERS);
+        }
+
+
     }
 
     public void initializeStart(Player p){
 
-            this.spaces[p.getSpaceTracker()].getPlayers().add(p);
+        this.spaces[p.getSpaceTracker()].getPlayers().add(p);
 
     }
 
@@ -247,7 +265,7 @@ public class Game {
 
     /**
      * returns Deck class of the actionDeck.
-     * 
+     *
      * @return Deck class of the actionDeck.
      */
     public Deck getActionDeck() {
@@ -268,7 +286,7 @@ public class Game {
 
     /**
      * returns the number of players in the game.
-     * 
+     *
      * @return the number of players in the game.
      */
     public int getNumPlayers() {
@@ -277,8 +295,8 @@ public class Game {
 
     /**
      * returns Player class of the player chosen.
-     * 
-     * 
+     *
+     *
      * @param index of player chosen
      * @return Player class o f the player chosen.
      */
@@ -289,7 +307,7 @@ public class Game {
 
     /**
      * returns an array of Players containing the current players in the game.
-     * 
+     *
      * @return an array of Players containing the current players in the game.
      */
     public Player[] getPlayers() {
@@ -303,7 +321,7 @@ public class Game {
 
     /**
      * Checks if the game is over when all the players are retired.
-     * 
+     *
      * @return true if all players are retired; false if not.
      */
     public boolean gameOver() {
@@ -327,7 +345,7 @@ public class Game {
 
     /**
      * Displays the current cash of each player and career.
-     * 
+     *
      */
     public void displayState() {
         System.out.println("\nCurrent State: ");
@@ -348,9 +366,9 @@ public class Game {
 
     /**
      * Checks if the number of players are valid or not.
-     * 
+     *
      * @param numPlayers indicated the specified number of player
-     * 
+     *
      * @return the final number of players indicated.
      */
     private int checkPlayerNumber(int numPlayers) {
