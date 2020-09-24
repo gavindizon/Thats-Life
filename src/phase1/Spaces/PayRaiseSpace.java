@@ -15,7 +15,13 @@ public class PayRaiseSpace extends GreenSpace {
     
     @Override
     public void doAction(Player p, Player[] others, ArrayList<Deck> decks) {
-        p.getSalaryCard().raiseSalary();
+        if(p.getPayRaiseCnt() < p.getCareerCard().getMaxPayRaise()){
+            p.getSalaryCard().raiseSalary();
+            p.setPayRaiseCnt(p.getPayRaiseCnt() + 1);
+        }else{
+            System.out.println("Pay raise count is at max");
+        }
+
         p.updateCash(p.getSalaryCard().getSalary());
     }
 

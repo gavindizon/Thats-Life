@@ -64,13 +64,13 @@ public class Game {
         this.spaces[0] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[1] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[2] = new OrangeSpace("career", this.NUM_PLAYERS);
-        this.spaces[3] = new BuyHouseSpace("career", this.NUM_PLAYERS);
+        this.spaces[3] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[4] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[5] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[6] = new GetMarriedSpace("career", this.NUM_PLAYERS);
         this.spaces[7] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[8] = new OrangeSpace("career", this.NUM_PLAYERS);
-        this.spaces[9] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[9] = new PayDaySpace("career", this.NUM_PLAYERS);
         this.spaces[10] = new OrangeSpace("career", this.NUM_PLAYERS);
 
         // College Path
@@ -89,7 +89,7 @@ public class Game {
         // Meet at Some Point
 
         for (int i = 22; i < 38; i++) {
-            this.spaces[i] = new OrangeSpace("main", this.NUM_PLAYERS); // implement a randomizer
+            this.spaces[i] = spaceRandomizer("main"); // implement a randomizer
         }
 
         // Junction
@@ -119,7 +119,7 @@ public class Game {
         // Meet at some point
 
         for (int i = 54; i < 70; i++) {
-            this.spaces[i] = new OrangeSpace("main", this.NUM_PLAYERS); // implement a randomizer
+            this.spaces[i] = spaceRandomizer("main"); // implement a randomizer
         }
 
         this.spaces[70] = new WhichPathSpace("main", this.NUM_PLAYERS);
@@ -151,10 +151,28 @@ public class Game {
 
         // Meet at some point
         for (int i = 90; i < 100; i++) {
-            this.spaces[i] = new OrangeSpace("main", this.NUM_PLAYERS); // implement a randomizer
+            this.spaces[i] = spaceRandomizer("main"); // implement a randomizer
         }
 /*
 */
+    }
+
+    public Space spaceRandomizer(String path){
+        int rand = (int) (Math.random() * (8 - 1 + 1) + 1);
+
+        switch(rand){
+            case 1:
+            case 2:
+                return new BlueSpace(path, this. NUM_PLAYERS);
+            case 3:
+                return new PayDaySpace(path, this.NUM_PLAYERS);
+            case 4:
+                return new PayRaiseSpace(path, this.NUM_PLAYERS);
+            default:
+                return new OrangeSpace(path, this.NUM_PLAYERS);
+        }
+
+
     }
 
     public void initializeStart(Player p){

@@ -34,7 +34,12 @@ public class showInfoController {
             sm_tax.setText("Tax: $" + 0);
 
         }
-        sm_payraiseCnt.setText("Pay Raise: " + 0); //TODO add pay raise to player model
+
+        if(p.getCareerCard() != null)
+            sm_payraiseCnt.setText("Pay Raise: " + (p.getPayRaiseCnt()) + "/" + (p.getCareerCard().getMaxPayRaise()));
+        else
+            sm_payraiseCnt.setText("Pay Raise: " + "-");
+
         sm_married.setText("Civil Status: " + (p.isMarried() ? "Married" : "Single"));
         sm_kidsCnt.setText("Number of Kids: " + p.getNumKids());
         sm_retired.setText("Retired: " + (p.getIsRetired() ? "Yes" : "No"));

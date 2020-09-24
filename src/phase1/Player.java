@@ -22,6 +22,7 @@ public class Player {
     private boolean hasDegree;
     private int numKids;
     private int loan;
+    private int payRaiseCnt;
     private HouseCard house;
 
 
@@ -59,6 +60,14 @@ public class Player {
         this.hasDegree = false;
     }
 
+    public void setPayRaiseCnt(int payRaiseCnt) {
+        this.payRaiseCnt = payRaiseCnt;
+    }
+
+    public int getPayRaiseCnt() {
+        return payRaiseCnt;
+    }
+
     public void addKids(int num) {
         this.numKids += num;
     }
@@ -94,6 +103,7 @@ public class Player {
 
     public void setCareer(CareerCard career) {
         this.career = career;
+        this.setPayRaiseCnt(0);
     }
 
     public SalaryCard getSalaryCard() {
