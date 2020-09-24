@@ -100,13 +100,13 @@ public class Deck {
 
     private void generateCareerDeck() {
 
-        this.cards.add(new CareerCard("Lawyer", 5, true));// pay raise [5, 8]
-        this.cards.add(new CareerCard("Accountant", 5, true));// pay raise [4, 7]
-        this.cards.add(new CareerCard("Computer Consultant", 5, true));// pay raise [3, 7]
-        this.cards.add(new CareerCard("Doctor", 5, true));// pay raise [5, 8]
-        this.cards.add(new CareerCard("Server", 1, false));// pay raise [1, 4]
-        this.cards.add(new CareerCard("Racecar Driver", 2, false));// pay raise [2, 8]
-        this.cards.add(new CareerCard("Athlete", 5, false));// pay raise [1, 6]
+        this.cards.add(new CareerCard("Lawyer", rangeDomizer(5, 8), true));// pay raise [5, 8]
+        this.cards.add(new CareerCard("Accountant", rangeDomizer(4, 7), true));// pay raise [4, 7]
+        this.cards.add(new CareerCard("Computer Consultant", rangeDomizer(3, 7), true));// pay raise [3, 7]
+        this.cards.add(new CareerCard("Doctor", rangeDomizer(5, 8), true));// pay raise [5, 8]
+        this.cards.add(new CareerCard("Server", rangeDomizer(1, 4), false));// pay raise [1, 4]
+        this.cards.add(new CareerCard("Racecar Driver", rangeDomizer(2, 8), false));// pay raise [2, 8]
+        this.cards.add(new CareerCard("Athlete", rangeDomizer(1, 6), false));// pay raise [1, 6]
     }
 
     private void generateSalaryDeck() {
@@ -117,6 +117,13 @@ public class Deck {
             double raiseValue = (int)  (Math.random() * 9 + 1) * 1000;
             this.cards.add(new SalaryCard(salary, tax, raiseValue));
         }
+    }
+
+    private int rangeDomizer(int min, int max){
+        max++;
+        int value = (int)  (Math.random() * (max - min + 1) + min);
+        System.out.println(value);
+        return value;
     }
 
     private void generateBlueDeck() {
