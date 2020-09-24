@@ -126,13 +126,15 @@ public class boardController {
             String choices[];
             if(magentaSpace instanceof ChoiceSpace){
                 choices = ((ChoiceSpace) magentaSpace).getChoices(currPlayer, game.getDecks(currSpace));
-                // TODO CollegeCareerChoice should pick 2 times, 1 for career, 1 for salary
                 if((ChoiceSpace) magentaSpace instanceof CollegeCareerChoiceSpace){
                     String[] choice1 = Arrays.copyOfRange(choices, 0, 2);
                     String[] choice2 = Arrays.copyOfRange(choices, 2, 4);
-
-                    choosePath(currPlayer, gameControl.getRootPane(), choice2, magentaSpace, game);
-                    choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game);
+                    if (!choices[0].equalsIgnoreCase("No careers available")){
+                        choosePath(currPlayer, gameControl.getRootPane(), choice2, magentaSpace, game);
+                        choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game);
+                    } else {
+                        choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game);
+                    }
 
                 }else if((ChoiceSpace) magentaSpace instanceof BuyHouseSpace){
                     chooseHouse(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game);
@@ -160,14 +162,18 @@ public class boardController {
             cpCont.getConfirm().setOnAction(e->{
                 popup.hide();
                 RadioButton[] radio = cpCont.getRadios();
-                for(int i = 0; i < radio.length; i++){
-                    if(radio[i].isSelected()){
-                        ((ChoiceSpace) magentaSpace).doMagentaAction(p, game.getDecks(magentaSpace), i + 1);
+                try{
+                    for(int i = 0; i < radio.length; i++){
+                        if(radio[i].isSelected() && !radio[i].getText().equalsIgnoreCase("No careers available")){
+                            ((ChoiceSpace) magentaSpace).doMagentaAction(p, game.getDecks(magentaSpace), i + 1);
+                        }
                     }
+                } catch(NullPointerException d){
+                    System.out.println("hello world");
                 }
 
             });
-        }catch (IOException e){
+        }catch (Exception e){
             System.out.println("FXML File not found");
             e.printStackTrace();
         }

@@ -76,7 +76,7 @@ public class Controller implements Initializable {
             if(!currPlayer.getIsRetired()){
                 //PLAYER PAY LOAN BUTTON
                 if(currPlayer.getLoan() > 0 && currPlayer.getLoan() <= currPlayer.getCash()){
-                    System.out.println(currPlayer.getName()+ " Player has loan");
+//                    System.out.println(currPlayer.getName()+ " Player has loan");
                     payBtn.setDisable(false);
 
                     playerDescriptionController finalPlayerController = playerController;
@@ -86,7 +86,7 @@ public class Controller implements Initializable {
                     });
                 }
                 else{
-                    System.out.println(currPlayer.getName() + " Player has no loan");
+//                    System.out.println(currPlayer.getName() + " Player has no loan");
 
                     payBtn.setDisable(true);
                 }
@@ -100,7 +100,7 @@ public class Controller implements Initializable {
                 try{
                     cardContainerController cardControl = (cardContainerController) card.<cardContainerController>getController();
                     cardControl.setCard(currPlayer.getDrawnCard(), game.getSpaces()[currPlayer.getSpaceTracker()]);
-                    System.out.println(currPlayer.getDrawnCard().getDescription());
+//                    System.out.println(currPlayer.getDrawnCard().getDescription());
                 } catch (Exception ex){
                     System.out.println("error");
                 }
@@ -169,30 +169,31 @@ public class Controller implements Initializable {
         cpCont.generateChoices(game.getPlayers(), currPlayer);
 
         //confirm button action
-        cpCont.getConfirm().setOnAction(e->{
-            RadioButton[] radios;
-            radios = cpCont.getRadios();
-            for(RadioButton r : radios){
-                if(r.isSelected()){
-                        System.out.println(r.getText());
-                        setName(r.getText());
-                        Player[] temp = new Player[2];
-                        int otherPlayerIndex = game.getPlayerByName(this.chosenPlayerName);
-                        System.out.println("Chosen player: " + this.chosenPlayerName);
-                        temp[0] = game.getPlayer(otherPlayerIndex) ;
-                        temp[1] = currPlayer;
-                        try{
-                            drawnCard.activate(temp, 1);
-                        } catch (Exception x){
-                            System.out.println("error" + drawnCard.getDescription());
-                        }
-                        popup.hide();
-                        updatePlayerDetails();
-
-
+        RadioButton[] radios;
+        radios = cpCont.getRadios();
+        if(radios.length > 0 ){
+            cpCont.getConfirm().setOnAction(e->{
+                for(RadioButton r : radios){
+                    if(r.isSelected()){
+                            System.out.println(r.getText());
+                            setName(r.getText());
+                            Player[] temp = new Player[2];
+                            int otherPlayerIndex = game.getPlayerByName(this.chosenPlayerName);
+                            temp[0] = game.getPlayer(otherPlayerIndex) ;
+                            temp[1] = currPlayer;
+                            try{
+                                drawnCard.activate(temp, 1);
+                            } catch (Exception x){
+                                System.out.println("error" + drawnCard.getDescription());
+                            }
+                            popup.hide();
+                            updatePlayerDetails();
+                    }
                 }
-            }
-        });
+            });
+        } else{
+            popup.hide();
+        }
     }
 
 
@@ -255,7 +256,7 @@ public class Controller implements Initializable {
             RadioButton[] radio = cpCont.getRadios();
             for(int i = 0; i < radio.length; i++){
                 if(radio[i].isSelected()){
-                    System.out.println(radio[i].isSelected());
+//                    System.out.println(radio[i].isSelected());
                     p.chooseStartingPath(game.getSalaryDeck(), game.getCareerDeck(), i);
                 }
             }

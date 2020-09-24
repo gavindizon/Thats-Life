@@ -21,7 +21,7 @@ public class choosePlayerPopUpController {
         int i = 0;
         System.out.println("PLAYER LENGTH: " + players.length);
         for(Player p : players){
-            if (!p.equals(currPlayer)) {
+            if (!p.equals(currPlayer) && !p.getIsRetired()) {
                 radio = new RadioButton();
                 radio.setText(p.getName());
                 radio.setToggleGroup(group);
@@ -40,13 +40,15 @@ public class choosePlayerPopUpController {
 
         int i = 0;
         for(String choice : choices){
-            radio = new RadioButton();
-            radio.setText(choice);
-            radio.setToggleGroup(group);
+            if(choice != null){
+                radio = new RadioButton();
+                radio.setText(choice);
+                radio.setToggleGroup(group);
 
-            radioCont.getChildren().addAll(radio);
-            radios[i] = radio;
-            i++;
+                radioCont.getChildren().addAll(radio);
+                radios[i] = radio;
+                i++;
+            }
         }
     }
 

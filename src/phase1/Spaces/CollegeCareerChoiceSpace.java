@@ -102,29 +102,35 @@ public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpac
         Deck salaryDeck = decks.get(1);
         int ctr = 0;
 
-        for(int i = careerDeck.getCards().size() - 1; i > 0; i--){
+        for(int i = careerDeck.getCards().size() - 1; i >= 0; i--){
             if(p.isHasDegree()){
                 careerName = ((CareerCard)careerDeck.getCards().get(i)).getCareerName();
+                s[ctr] = careerName;
+                ctr++;
+
             } else if(!(((CareerCard)careerDeck.getCards().get(i)).isDegreeRequired())){
                 careerName = ((CareerCard)careerDeck.getCards().get(i)).getCareerName();
+                s[ctr] = careerName;
+                ctr++;
             }
 
-            s[ctr] = careerName;
-            ctr++;
 
             if(ctr == 2){
                 break;
             }
-        }
-        if (s[0] == null && s[1] == null) {
-            s[0] = "No degree choice";
-        }
 
+        }
+        if(s[0] == null && s[1] == null){
+            ctr+=2;
+            s[0] = "No careers available";
+        }
 
         for(int i = salaryDeck.getCards().size() - 1; i > salaryDeck.getCards().size() - 3; i--){
             double salary = ((SalaryCard) salaryDeck.getCards().get(i)).getSalary() ;
+            if(ctr == 1){
+                ctr++;
+            }
             s[ctr] =  String.format("%.2f", salary);
-            System.out.println(s[ctr]);
             ctr++;
         }
 
