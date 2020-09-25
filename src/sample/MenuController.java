@@ -107,4 +107,16 @@ public class MenuController {
 
     }
 
+
+    public void updateFromGame(String name1, String name2, String name3){
+        player1 = name1;
+        player2 = name2;
+        player3 = name3;
+    }
+
+    public void updateFromGame(String name1, String name2){
+        player1 = name1;
+        player2 = name2;
+    }
+
 }

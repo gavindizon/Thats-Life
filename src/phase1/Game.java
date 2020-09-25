@@ -64,103 +64,102 @@ public class Game {
 
     public void generateSpaces() {
         // Career Path
-        for(int i = 0; i < 100; i++){
-            this.spaces[i] = new BlueSpace("career", this.NUM_PLAYERS);
-        }
-//        this.spaces[0] = new OrangeSpace("career", this.NUM_PLAYERS);
-//        this.spaces[1] = new OrangeSpace("career", this.NUM_PLAYERS);
-//        this.spaces[2] = new OrangeSpace("career", this.NUM_PLAYERS);
-//        this.spaces[3] = new OrangeSpace("career", this.NUM_PLAYERS);
-//        this.spaces[4] = new OrangeSpace("career", this.NUM_PLAYERS);
-//        this.spaces[5] = new OrangeSpace("career", this.NUM_PLAYERS);
-//        this.spaces[6] = new GetMarriedSpace("career", this.NUM_PLAYERS);
-//        this.spaces[7] = new OrangeSpace("career", this.NUM_PLAYERS);
-//        this.spaces[8] = new OrangeSpace("career", this.NUM_PLAYERS);
-//        this.spaces[9] = new PayDaySpace("career", this.NUM_PLAYERS);
-//        this.spaces[10] = new OrangeSpace("career", this.NUM_PLAYERS);
+//        for(int i = 0; i < 100; i++){
+//            this.spaces[i] = new BlueSpace("career", this.NUM_PLAYERS);
+//        }
 
-        // College Path
-//        this.spaces[11] = new OrangeSpace("college", this.NUM_PLAYERS);
-//        this.spaces[12] = new OrangeSpace("college", this.NUM_PLAYERS);
-//        this.spaces[13] = new OrangeSpace("college", this.NUM_PLAYERS);
-//        this.spaces[14] = new OrangeSpace("college", this.NUM_PLAYERS);
-//        this.spaces[15] = new OrangeSpace("college", this.NUM_PLAYERS);
-//        this.spaces[16] = new OrangeSpace("college", this.NUM_PLAYERS);
-//        this.spaces[17] = new OrangeSpace("college", this.NUM_PLAYERS);
-//        this.spaces[18] = new GraduationSpace("college", this.NUM_PLAYERS);
-//        this.spaces[19] = new OrangeSpace("college", this.NUM_PLAYERS);
-//        this.spaces[20] = new CollegeCareerChoiceSpace("college", this.NUM_PLAYERS);
-//        this.spaces[21] = new OrangeSpace("college", this.NUM_PLAYERS);
-//
-//        // Meet at Some Point
-//
-//        for (int i = 22; i < 38; i++) {
-//            this.spaces[i] = spaceRandomizer("main"); // implement a randomizer
-//        }
-//
-//        // Junction
-//        this.spaces[38] = new WhichPathSpace("main", this.NUM_PLAYERS);
-//
-//        // Change Career Path
-//        this.spaces[39] = new PayDaySpace("change career", this.NUM_PLAYERS);
-//        this.spaces[39].setJunctionStart(true);
-//        this.spaces[40] = new CollegeCareerChoiceSpace("change career", this.NUM_PLAYERS);
-//        this.spaces[41] = new OrangeSpace("change career", this.NUM_PLAYERS);
-//        this.spaces[42] = new BlueSpace("change career", this.NUM_PLAYERS);
-//        this.spaces[43] = new PayRaiseSpace("change career", this.NUM_PLAYERS);
-//        this.spaces[44] = new OrangeSpace("change career", this.NUM_PLAYERS);
-//        this.spaces[45] = new BlueSpace("change career", this.NUM_PLAYERS);
-//        this.spaces[46] = new OrangeSpace("change career", this.NUM_PLAYERS);
-//        this.spaces[47] = new OrangeSpace("change career", this.NUM_PLAYERS);
-//
-//        // Main Path
-//        this.spaces[48] = new OrangeSpace("main", this.NUM_PLAYERS);
-//        this.spaces[48].setJunctionStart(true);
-//        this.spaces[49] = new OrangeSpace("main", this.NUM_PLAYERS);
-//        this.spaces[50] = new JobSearchSpace("main", this.NUM_PLAYERS);
-//        this.spaces[51] = new OrangeSpace("main", this.NUM_PLAYERS);
-//        this.spaces[52] = new OrangeSpace("main", this.NUM_PLAYERS);
-//        this.spaces[53] = new OrangeSpace("main", this.NUM_PLAYERS);
-//
-//        // Meet at some point
-//
-//        for (int i = 54; i < 70; i++) {
-//            this.spaces[i] = spaceRandomizer("main"); // implement a randomizer
-//        }
-//
-//        this.spaces[70] = new WhichPathSpace("main", this.NUM_PLAYERS);
-//
-//        // Start a Family Path
-//        this.spaces[71] = new BlueSpace("family", this.NUM_PLAYERS);
-//        this.spaces[71].setJunctionStart(true);
-//        this.spaces[72] = new OrangeSpace("family", this.NUM_PLAYERS);
-//        this.spaces[73] = new PayDaySpace("family", this.NUM_PLAYERS);
-//        this.spaces[74] = new GetMarriedSpace("family", this.NUM_PLAYERS);
-//        this.spaces[75] = new BlueSpace("family", this.NUM_PLAYERS);
-//        this.spaces[76] = new BuyHouseSpace("family", this.NUM_PLAYERS);
-//        this.spaces[77] = new HaveBabySpace("family", this.NUM_PLAYERS);
-//        this.spaces[78] = new OrangeSpace("family", this.NUM_PLAYERS);
-//        this.spaces[79] = new OrangeSpace("family", this.NUM_PLAYERS);
-//        this.spaces[80] = new PayRaiseSpace("family", this.NUM_PLAYERS);
-//
-//        // Main Path
-//        this.spaces[81] = new OrangeSpace("main", this.NUM_PLAYERS);
-//        this.spaces[81].setJunctionStart(true);
-//        this.spaces[82] = new OrangeSpace("main", this.NUM_PLAYERS);
-//        this.spaces[83] = new OrangeSpace("main", this.NUM_PLAYERS);
-//        this.spaces[84] = new OrangeSpace("main", this.NUM_PLAYERS);
-//        this.spaces[85] = new OrangeSpace("main", this.NUM_PLAYERS);
-//        this.spaces[86] = new OrangeSpace("main", this.NUM_PLAYERS);
-//        this.spaces[87] = new OrangeSpace("main", this.NUM_PLAYERS);
-//        this.spaces[88] = new OrangeSpace("main", this.NUM_PLAYERS);
-//        this.spaces[89] = new OrangeSpace("main", this.NUM_PLAYERS);
-//
-//        // Meet at some point
-//        for (int i = 90; i < 100; i++) {
-//            this.spaces[i] = spaceRandomizer("main"); // implement a randomizer
-//        }
-        /*
-         */
+        this.spaces[0] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[1] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[2] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[3] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[4] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[5] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[6] = new GetMarriedSpace("career", this.NUM_PLAYERS);
+        this.spaces[7] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[8] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[9] = new PayDaySpace("career", this.NUM_PLAYERS);
+        this.spaces[10] = new OrangeSpace("career", this.NUM_PLAYERS);
+
+//         College Path
+        this.spaces[11] = new OrangeSpace("college", this.NUM_PLAYERS);
+        this.spaces[12] = new OrangeSpace("college", this.NUM_PLAYERS);
+        this.spaces[13] = new OrangeSpace("college", this.NUM_PLAYERS);
+        this.spaces[14] = new OrangeSpace("college", this.NUM_PLAYERS);
+        this.spaces[15] = new OrangeSpace("college", this.NUM_PLAYERS);
+        this.spaces[16] = new OrangeSpace("college", this.NUM_PLAYERS);
+        this.spaces[17] = new OrangeSpace("college", this.NUM_PLAYERS);
+        this.spaces[18] = new GraduationSpace("college", this.NUM_PLAYERS);
+        this.spaces[19] = new OrangeSpace("college", this.NUM_PLAYERS);
+        this.spaces[20] = new CollegeCareerChoiceSpace("college", this.NUM_PLAYERS);
+        this.spaces[21] = new OrangeSpace("college", this.NUM_PLAYERS);
+
+        // Meet at Some Point
+
+        for (int i = 22; i < 38; i++) {
+            this.spaces[i] = spaceRandomizer("main"); // implement a randomizer
+        }
+
+        // Junction
+        this.spaces[38] = new WhichPathSpace("main", this.NUM_PLAYERS);
+
+        // Change Career Path
+        this.spaces[39] = new PayDaySpace("change career", this.NUM_PLAYERS);
+        this.spaces[39].setJunctionStart(true);
+        this.spaces[40] = new CollegeCareerChoiceSpace("change career", this.NUM_PLAYERS);
+        this.spaces[41] = new OrangeSpace("change career", this.NUM_PLAYERS);
+        this.spaces[42] = new BlueSpace("change career", this.NUM_PLAYERS);
+        this.spaces[43] = new PayRaiseSpace("change career", this.NUM_PLAYERS);
+        this.spaces[44] = new OrangeSpace("change career", this.NUM_PLAYERS);
+        this.spaces[45] = new BlueSpace("change career", this.NUM_PLAYERS);
+        this.spaces[46] = new OrangeSpace("change career", this.NUM_PLAYERS);
+        this.spaces[47] = new OrangeSpace("change career", this.NUM_PLAYERS);
+
+        // Main Path
+        this.spaces[48] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[48].setJunctionStart(true);
+        this.spaces[49] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[50] = new JobSearchSpace("main", this.NUM_PLAYERS);
+        this.spaces[51] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[52] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[53] = new OrangeSpace("main", this.NUM_PLAYERS);
+
+        // Meet at some point
+
+        for (int i = 54; i < 70; i++) {
+            this.spaces[i] = spaceRandomizer("main"); // implement a randomizer
+        }
+
+        this.spaces[70] = new WhichPathSpace("main", this.NUM_PLAYERS);
+
+        // Start a Family Path
+        this.spaces[71] = new BlueSpace("family", this.NUM_PLAYERS);
+        this.spaces[71].setJunctionStart(true);
+        this.spaces[72] = new OrangeSpace("family", this.NUM_PLAYERS);
+        this.spaces[73] = new PayDaySpace("family", this.NUM_PLAYERS);
+        this.spaces[74] = new GetMarriedSpace("family", this.NUM_PLAYERS);
+        this.spaces[75] = new BlueSpace("family", this.NUM_PLAYERS);
+        this.spaces[76] = new BuyHouseSpace("family", this.NUM_PLAYERS);
+        this.spaces[77] = new HaveBabySpace("family", this.NUM_PLAYERS);
+        this.spaces[78] = new OrangeSpace("family", this.NUM_PLAYERS);
+        this.spaces[79] = new OrangeSpace("family", this.NUM_PLAYERS);
+        this.spaces[80] = new PayRaiseSpace("family", this.NUM_PLAYERS);
+
+        // Main Path
+        this.spaces[81] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[81].setJunctionStart(true);
+        this.spaces[82] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[83] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[84] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[85] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[86] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[87] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[88] = new OrangeSpace("main", this.NUM_PLAYERS);
+        this.spaces[89] = new OrangeSpace("main", this.NUM_PLAYERS);
+
+        // Meet at some point
+        for (int i = 90; i < 100; i++) {
+            this.spaces[i] = spaceRandomizer("main"); // implement a randomizer
+        }
     }
 
     public Space spaceRandomizer(String path){

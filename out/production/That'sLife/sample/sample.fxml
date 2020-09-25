@@ -8,12 +8,14 @@
    <children>
       <AnchorPane fx:id="rootPane" prefHeight="768.0" prefWidth="314.0" style="-fx-background-color: #fff;">
          <children>
-<!--            <fx:include layoutY="400" source="cardContainer.fxml" />-->
-            <Button fx:id="drawBtn" layoutX="167.0" layoutY="644.0" mnemonicParsing="false" onAction="#gameState" prefHeight="83.0" prefWidth="88.0" style="-fx-background-radius: 100%; -fx-background-color: DODGERBLUE; -fx-background-border-radius: transparent;" text="SPIN" textFill="WHITE">
+            <Button fx:id="exitBtn" layoutX="6.0" layoutY="679.0" mnemonicParsing="false" onAction="#exit" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: #FF0000; -fx-background-radius: 100%; -fx-border-radius: 100%; -fx-border-color: #FFF; -fx-border-width: 2;" text="EXIT" textFill="WHITE" />
+
+             <!--            <fx:include layoutY="400" source="cardContainer.fxml" />-->
+            <Button fx:id="drawBtn" layoutX="165.0" layoutY="659.0" mnemonicParsing="false" onAction="#gameState" prefHeight="83.0" prefWidth="88.0" style="-fx-background-radius: 100%; -fx-background-color: DODGERBLUE; -fx-background-border-radius: transparent;" text="SPIN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button fx:id="payBtn" layoutX="59.0" layoutY="669.0" mnemonicParsing="false" onAction="#gameState" prefHeight="34.0" prefWidth="88.0" style="-fx-background-color: GREEN; -fx-background-radius: 16px;" text="Pay Loan" textFill="WHITE" />
+            <Button fx:id="payBtn" layoutX="57.0" layoutY="684.0" mnemonicParsing="false" onAction="#gameState" prefHeight="34.0" prefWidth="88.0" style="-fx-background-color: GREEN; -fx-background-radius: 16px;" text="Pay Loan" textFill="WHITE" />
             <Label fx:id="txtUpdates" layoutX="6.0" layoutY="399.0" prefHeight="40.0" prefWidth="297.0" text="Updates:">
                <font>
                   <Font size="18.0" />

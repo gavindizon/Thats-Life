@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -34,11 +35,14 @@ public class Controller implements Initializable {
     @FXML private AnchorPane boardPane;
     @FXML private Parent[] root;
     @FXML private Button payBtn;
-    @FXML private Button drawBtn;
+    @FXML private Button exitBtn;
+
     public FXMLLoader[] playerDesc;
+
     @FXML private boardController boardController;
     @FXML private Label txtUpdates;
     @FXML private AnchorPane ap;
+
     private FXMLLoader card;
     private Game game;
     private int turn = 0;
@@ -106,7 +110,7 @@ public class Controller implements Initializable {
 
 
         }else{
-            game.rankPlayers();
+            endGame();
         }
     }
     
@@ -340,6 +344,49 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
         return null;
+
+    }
+
+    public void exit(ActionEvent ae) {
+        Stage stage = (Stage)  exitBtn.getScene().getWindow();
+        FXMLLoader menu = new FXMLLoader(getClass().getResource("menu.fxml"));
+
+            try {
+                Parent root = (Parent) menu.load();
+                Scene play = new Scene(root);
+                stage.setScene(play);
+                stage.show();
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            MenuController mc = menu.<MenuController>getController();
+
+            if(game.getNumPlayers() == 2)
+                mc.updateFromGame(game.getPlayer(0).getName(), game.getPlayer(1).getName());
+            else
+                mc.updateFromGame(game.getPlayer(0).getName(), game.getPlayer(1).getName(), game.getPlayer(2).getName());
+    }
+
+    public void endGame() throws IOException{
+        Popup popup = new Popup();
+
+        game.rankPlayers();
+
+            FXMLLoader random = new FXMLLoader(getClass().getResource("endGame.fxml"));
+            Parent root = (Parent) random.load();
+            popup.getContent().add(root);
+            Stage stage = (Stage) rootPane.getScene().getWindow();
+            popup.show(stage);
+
+            endGameController egc = (endGameController) random.<endGameController>getController();
+            egc.listResult(game.getPlayers());
+            egc.endBtn.setOnAction(e ->{
+                popup.hide();
+                exit(e);
+        });
+
+
 
     }
 
