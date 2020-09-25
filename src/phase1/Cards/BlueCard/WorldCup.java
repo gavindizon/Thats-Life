@@ -5,6 +5,7 @@ import phase1.Player;
 public class WorldCup extends BlueCard implements NormalAction {
     public WorldCup(String description, String career) {
         super(description, career);
+        this.longDescription = "The player pays number of players ×5000.";
     }
 
     @Override

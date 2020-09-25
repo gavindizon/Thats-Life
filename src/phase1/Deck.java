@@ -129,7 +129,7 @@ public class Deck {
     }
 
     private void generateBlueDeck() {
-        this.cards.add(new Lawsuit("Lawsuit", "Lawyer", (int) 10000.00 * ((Math.random() * (15 - 5 + 1)) + 5)));
+        this.cards.add(new Lawsuit("Lawsuit", "Lawyer", 10000 * ((int) (Math.random() * (15 - 5 + 1)) + 5)));
         this.cards.add(new SalaryTaxDue("Salary Tax Due", "Accountant"));
         this.cards.add(new ComputerRepair("Computer Repair", "Computer Consultant"));
         this.cards.add(new SkiAccident("Ski Accident", "Doctor"));

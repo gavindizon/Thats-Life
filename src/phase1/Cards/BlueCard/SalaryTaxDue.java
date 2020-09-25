@@ -6,6 +6,7 @@ public class SalaryTaxDue extends BlueCard implements NormalAction {
 
     public SalaryTaxDue(String description, String career) {
         super(description, career);
+        this.longDescription = "The player pays the tax due for on his current salary.";
     }
 
     @Override

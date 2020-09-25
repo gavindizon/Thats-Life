@@ -5,6 +5,7 @@ import phase1.Player;
 public class F1Race extends BlueCard implements NormalAction {
     public F1Race(String description, String career) {
         super(description, career);
+        this.longDescription = "The player pays 10% of his current salary.\n";
     }
 
     @Override

@@ -6,6 +6,8 @@ import phase1.Player;
 public class ComputerRepair extends BlueCard implements RandomAction {
     public ComputerRepair(String description, String career) {
         super(description, career);
+        this.longDescription = "The player presses for a random number. He pays $5000 if the number is even, and $10000 if the " +
+                "number is odd";
     }
 
     @Override

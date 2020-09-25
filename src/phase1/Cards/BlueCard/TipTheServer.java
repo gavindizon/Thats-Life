@@ -6,6 +6,7 @@ import phase1.Player;
 public class TipTheServer extends BlueCard implements RandomAction{
     public TipTheServer(String description, String career) {
         super(description, career);
+        this.longDescription = "The player presses for a random number. He pays generated number ×1000.";
     }
 
     @Override

@@ -7,7 +7,9 @@ public class Lawsuit extends BlueCard implements NormalAction {
 
     public Lawsuit(String description, String career, double amount) {
         super(description, career);
-        this.amount = amount;
+        this.amount = (int) amount;
+        this.longDescription = "The player pays the amount indicated on the card. The amount is a multiple of $10000 and [$50000, $150000]. " +
+                "The amount is randomly generated and fixed at the start of every game.";
     }
 
     @Override
