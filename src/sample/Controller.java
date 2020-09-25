@@ -2,11 +2,10 @@ package sample;
 //import javafx.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
-import java.security.spec.RSAOtherPrimeInfo;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,22 +13,25 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import phase1.*;
-import phase1.Cards.*;
+import phase1.Cards.ActionCard.ActionCard;
+import phase1.Cards.ActionCard.CollectFromPlayer;
+import phase1.Cards.ActionCard.PayPlayer;
+import phase1.Cards.BlueCard.BlueCard;
+import phase1.Cards.BlueCard.NormalAction;
+import phase1.Cards.BlueCard.RandomAction;
+import phase1.Cards.Card;
+
 public class Controller implements Initializable {
 
 //    @FXML
 //    private Label cash;
 
-//    @FXML private TextField cashEntered;
     @FXML private AnchorPane rootPane;
     @FXML private AnchorPane boardPane;
-//    @FXML private TextField nameEntered;
     @FXML private Parent[] root;
     @FXML private Button payBtn;
     @FXML private Button drawBtn;
@@ -46,16 +48,6 @@ public class Controller implements Initializable {
 //    private Player[] players;
 
     public Controller(){
-    }
-
-
-    @FXML
-    public void addCash(Player p, double cash ) throws IOException {
-
-        playerDescriptionController playerController = (playerDescriptionController) playerDesc[playerIndex].<playerDescriptionController>getController();
-        playerController.setCash(cash,p);
-
-
     }
 
 
@@ -145,23 +137,64 @@ public class Controller implements Initializable {
 
     public void activateCard(Player currPlayer) throws IOException {
 //        Player[] = game.getPlayers();
-        ActionCard drawnCard = (ActionCard)currPlayer.getDrawnCard();
+        Card drawnCard = currPlayer.getDrawnCard();
 
-        if(drawnCard instanceof PayPlayer || drawnCard instanceof CollectFromPlayer){
-            if(drawnCard.getToAll()){
-                drawnCard.activate(game.getPlayers(), this.playerIndex);
-            } else{
-                System.out.println("Choose Player: ");
-                choosePlayers(drawnCard, currPlayer);
+        if(drawnCard instanceof ActionCard){
+            ActionCard actionCard = (ActionCard) drawnCard;
+            if(drawnCard instanceof PayPlayer || drawnCard instanceof CollectFromPlayer){
+                if(actionCard.getToAll()){
+                    actionCard.activate(game.getPlayers(), this.playerIndex);
+                } else{
+                    System.out.println("Choose Player: ");
+                    choosePlayers(actionCard, currPlayer);
 
+                }
+            }
+            else{
+                actionCard.activate(game.getPlayers(), this.playerIndex);
+            }
+        } else if(drawnCard instanceof BlueCard){
+            BlueCard blueCard = (BlueCard) drawnCard;
+            if(blueCard instanceof RandomAction){
+                generateRandomNum(blueCard, currPlayer);
+            } else if (blueCard instanceof NormalAction){
+                ((NormalAction) blueCard).activate(currPlayer, game.getPlayers());
             }
         }
-        else{
-            drawnCard.activate(game.getPlayers(), this.playerIndex);
-        }
-
 
     }
+
+    private void generateRandomNum(BlueCard blueCard, Player currPlayer) throws IOException {
+        Popup popup = new Popup();
+        try{
+
+            FXMLLoader random = new FXMLLoader(getClass().getResource("randomGenPopup.fxml"));
+            Parent root = (Parent) random.load();
+            popup.getContent().add(root);
+            Stage stage = (Stage) rootPane.getScene().getWindow();
+            popup.show(stage);
+
+            RandomGenPopup randomGenPopup = (RandomGenPopup) random.<RandomGenPopup>getController();
+
+            randomGenPopup.getSpinButt().setOnAction(event->{
+                randomGenPopup.getSpinButt().setText(Integer.toString(Game.spinWheel()));
+                randomGenPopup.getSpinButt().setDisable(true);
+            });
+
+            randomGenPopup.getDoneButt().setOnAction(event->{
+                int randomNum = Integer.parseInt(randomGenPopup.getSpinButt().getText());
+                ((RandomAction)blueCard).activate(currPlayer, game.getPlayers(), randomNum);
+                popup.hide();
+            });
+//            popup.hide();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+
 
     private void choosePlayers(ActionCard drawnCard, Player currPlayer) throws IOException {
         String playerName = "";
@@ -208,10 +241,6 @@ public class Controller implements Initializable {
         this.chosenPlayerName = s;
     }
 
-    private void doSomething(Player p){
-        System.out.println(p.getName());
-    }
-
 
     private FXMLLoader renderCard() throws IOException {
         FXMLLoader card = new FXMLLoader(getClass().getResource("cardContainer.fxml"));
@@ -231,13 +260,11 @@ public class Controller implements Initializable {
 
         this.root = new Parent[game.getNumPlayers()];
         int numPlayers = game.getNumPlayers();
-//        this.players = new Player[numPlayers];
         playerDesc = new FXMLLoader[numPlayers];
 
-        for(int i = numPlayers -1; i >= 0; i--)
+        for(int i = numPlayers -1; i >= 0; i--){
             initCareers(game.getPlayer(i));
-
-
+        }
 
     }
 

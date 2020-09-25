@@ -1,6 +1,8 @@
 package phase1;
 
 import phase1.Cards.*;
+import phase1.Cards.ActionCard.ActionCard;
+import phase1.Cards.BlueCard.BlueCard;
 
 /**
  * Implements a Player that has a name, their current cash, the latest
@@ -12,7 +14,7 @@ import phase1.Cards.*;
 public class Player{
     private String name;
     private double cash;
-    private ActionCard drawnCard;
+    private Card drawnCard;
     private boolean isRetired;
     private CareerCard career;
     private SalaryCard salaryCard;
@@ -306,12 +308,7 @@ public class Player{
     // Career Deck & Salary Deck
     public void drawCard(Deck deck) {
         Card c = deck.drawCard();
-        this.drawnCard = (ActionCard) c;
-        // this.drawnCard.activate();
-        // if (c instanceof SalaryCard)
-        // this.salary = (SalaryCard) c;
-        // else
-        // this.career = (CareerCard) c;
+        this.drawnCard = c;
     }
 
     public HouseCard getHouse() {

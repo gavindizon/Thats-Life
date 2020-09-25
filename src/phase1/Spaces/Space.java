@@ -3,6 +3,7 @@ package phase1.Spaces;
 import java.util.ArrayList;
 import phase1.Player;
 import phase1.Deck;
+import phase1.Spaces.MagentaSpace.*;
 
 public abstract class Space {
     private String path;
@@ -64,7 +65,10 @@ public abstract class Space {
                   return "Magenta";
 
           }
-else if (this instanceof BlueSpace) return "Blue"; else return "Green"; }
+          else if (this instanceof BlueSpace) return "Blue";
+          else return "Green";
+
+      }
 
 
 }

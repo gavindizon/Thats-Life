@@ -1,7 +1,6 @@
 package sample;
 
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +14,8 @@ import javafx.stage.Stage;
 import phase1.Game;
 import phase1.Player;
 import phase1.Spaces.*;
+import phase1.Spaces.GreenSpace.GreenSpace;
+import phase1.Spaces.MagentaSpace.*;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -113,7 +114,7 @@ public class boardController {
     public void boardAction(Game game, int currPlayerIndex, Controller gameControl) throws IOException {
         Space currSpace = game.getSpace(game.getPlayer(currPlayerIndex).getSpaceTracker());
         Player currPlayer = game.getPlayer(currPlayerIndex);
-        if(currSpace instanceof OrangeSpace){
+        if(currSpace instanceof OrangeSpace || currSpace instanceof BlueSpace){
             currSpace.doAction(currPlayer, game.getPlayers(), game.getDecks(currSpace));
             System.out.println(currPlayer.getDrawnCard().getDescription());
             try{

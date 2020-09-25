@@ -6,6 +6,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import phase1.Cards.*;
 import phase1.Spaces.*;
+import phase1.Spaces.GreenSpace.GreenSpace;
+import phase1.Spaces.MagentaSpace.MagentaSpace;
 
 public class cardContainerController {
     @FXML Label cardTitle;

@@ -1,14 +1,20 @@
 package phase1.Cards;
 
 public abstract class Card {
-    String cardType;
-    String description;
-    String longDescription;
+    protected String cardType;
+    protected String description;
+    protected String longDescription;
 
     // public abstract String getDescription();
 
     public Card(String cardType) {
         this.cardType = cardType;
+    }
+
+    public Card(String cardType, String description, String longDescription){
+        this.cardType = cardType;
+        this.description = description;
+        this.longDescription = longDescription;
     }
 
     public String cardType() {

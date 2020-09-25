@@ -2,11 +2,6 @@ package phase1.Spaces;
 
 import phase1.Player;
 import phase1.Deck;
-import phase1.Cards.ActionCard;
-import phase1.Cards.CollectFromBank;
-import phase1.Cards.CollectFromPlayer;
-import phase1.Cards.PayBank;
-import phase1.Cards.PayPlayer;
 
 import java.util.ArrayList;
 
