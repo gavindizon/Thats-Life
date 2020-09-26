@@ -15,24 +15,7 @@ public class JobSearchSpace extends MagentaSpace implements ChoiceSpace{
 
     }
 
-//    public void doMagentaAction(Player p, Player[] others, ArrayList<Deck> decks) {
 
-//        CareerCard c = (CareerCard) decks.get(0).drawCard();
-//        int chosen = 0;
-//        System.out.println("Choose: ");
-//        System.out.println("[1] - Retain Job");
-//        System.out.println("[2] - Change to " + c.getCareerName());
-//
-//        chosen = Integer.parseInt(sc.nextLine());
-//
-//        if (chosen == 1) {
-//            decks.get(0).addCardBack(c);
-//        } else {
-//            decks.get(0).addCardBack(p.getCareerCard());
-//            p.setCareer(c);
-//        }
-
-//    }
 
     @Override
     public void doMagentaAction(Player p, ArrayList<Deck> decks, int choice){
@@ -71,7 +54,7 @@ public class JobSearchSpace extends MagentaSpace implements ChoiceSpace{
         }
         else{
             s[0] = "No job available";
-            s[1] = "";
+            s[1] = null;
         }
 
         return s;
