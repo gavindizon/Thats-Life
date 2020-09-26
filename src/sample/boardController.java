@@ -168,7 +168,6 @@ public class boardController {
         try{
             choosePlayerPopUpController cpCont = initPopup(popup, rootPane);
             cpCont.getTextLabel().setText("Choose path for: " + p.getName());
-            System.out.println("xxx"+ choices[1]);
             cpCont.generateChoices(choices);
             cpCont.getConfirm().setOnAction(e->{
                 popup.hide();

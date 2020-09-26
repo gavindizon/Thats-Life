@@ -8,8 +8,8 @@
 
 ### What needs to be fixed:
 - Green Space NPException
-- ~~Orange Space Lawsuit when one player is retired and the player chooses the other player~~
-- ~~Job Search two buttons when no~~ 
+- Orange Space Lawsuit when one player is retired and the player chooses the other playe
+- Job Search two buttons when no 
 
 ### What is yet to be done:
 - debugging no choicespace of magenta spaces

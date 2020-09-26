@@ -225,7 +225,7 @@ public class Controller implements Initializable {
 
         RadioButton[] radios;
         radios = cpCont.getRadios();
-        if(radios[0] != null){
+        if(radios.length > 0 ){
             cpCont.getConfirm().setOnAction(e->{
                 for(RadioButton r : radios){
                     if(r.isSelected()){
