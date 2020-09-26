@@ -127,7 +127,7 @@ public class boardController {
             String choices[];
             if(magentaSpace instanceof ChoiceSpace){
                 choices = ((ChoiceSpace) magentaSpace).getChoices(currPlayer, game.getDecks(currSpace));
-                if((ChoiceSpace) magentaSpace instanceof CollegeCareerChoiceSpace){
+                if(magentaSpace instanceof CollegeCareerChoiceSpace){
                     String[] choice1 = Arrays.copyOfRange(choices, 0, 2);
                     String[] choice2 = Arrays.copyOfRange(choices, 2, 4);
                     if (!choices[0].equalsIgnoreCase("No careers available")){
@@ -137,10 +137,13 @@ public class boardController {
                         choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game);
                     }
 
-                }else if((ChoiceSpace) magentaSpace instanceof BuyHouseSpace){
+
+                }else if(magentaSpace instanceof BuyHouseSpace){
                     chooseHouse(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game);
+
                 }else{
                     choosePath(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game);
+
                 }
 
             } else{
@@ -168,7 +171,18 @@ public class boardController {
                     for(int i = 0; i < radio.length; i++){
                         if(radio[i].isSelected() && !radio[i].getText().equalsIgnoreCase("No careers available")){
                             ((ChoiceSpace) magentaSpace).doMagentaAction(p, game.getDecks(magentaSpace), i + 1);
+                            if(magentaSpace instanceof JobSearchSpace){
+                                if (i == 1 && choices[0].equalsIgnoreCase("Retain job")){
+                                    String[] choice1 = new String[]{choices[2], choices[3]};
+                                    try{
+                                        choosePath(p, rootPane, choice1, magentaSpace, game);
+                                    }catch (Exception m){
+                                        System.out.println("x");
+                                    }
+                                }
+                            }
                         }
+
                     }
                 } catch(NullPointerException d){
                     System.out.println("hello world");

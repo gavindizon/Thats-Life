@@ -38,19 +38,18 @@ public class choosePlayerPopUpController {
         radios = new RadioButton[choices.length];
         RadioButton radio;
 
-        int i = 0;
         if(choices[1] != null){
-            for(String choice : choices){
-                if(choice != null){
+            for(int i = 0 ; i < 2; i++){
+                if(choices[i] != null){
                     radio = new RadioButton();
-                    radio.setText(choice);
+                    radio.setText(choices[i]);
                     radio.setToggleGroup(group);
 
                     radioCont.getChildren().addAll(radio);
                     radios[i] = radio;
-                    i++;
                 }
             }
+
         } else{
             Label label = new Label(choices[0]);
             radioCont.getChildren().add(label);
