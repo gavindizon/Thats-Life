@@ -110,6 +110,7 @@ public class Controller implements Initializable {
 
 
         }else{
+            game.endGameResult();
             endGame();
         }
     }
@@ -371,6 +372,7 @@ public class Controller implements Initializable {
     public void endGame() throws IOException{
         Popup popup = new Popup();
 
+        updatePlayerDetails();
         game.rankPlayers();
 
             FXMLLoader random = new FXMLLoader(getClass().getResource("endGame.fxml"));
