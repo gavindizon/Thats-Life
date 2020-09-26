@@ -34,7 +34,7 @@ public class Controller implements Initializable {
 //    private Label cash;
 
     @FXML private AnchorPane rootPane;
-    @FXML private AnchorPane boardPane;
+    @FXML private AnchorPane gameScreen;
     @FXML private Parent[] root;
     @FXML private Button payBtn;
     @FXML private Button exitBtn;
@@ -43,7 +43,8 @@ public class Controller implements Initializable {
 
     @FXML private boardController boardController;
     @FXML private Label txtUpdates;
-    @FXML private AnchorPane ap;
+
+    private AnchorPane overlay = new AnchorPane();
 
     private VBox descPlayers = new VBox();
     private FXMLLoader card;
@@ -61,6 +62,13 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         payBtn.setDisable(true);
+        overlay.setTranslateZ(2);
+        overlay.prefHeight(1024);
+        overlay.prefWidth(768);
+        overlay.setMinHeight(768);
+        overlay.setMinWidth(1024);
+        overlay.setStyle("-fx-background-color: rgba(0,0,0,0.7); -fx-opacity: 1");
+
     }
 
 
@@ -173,6 +181,7 @@ public class Controller implements Initializable {
 
     private void generateRandomNum(BlueCard blueCard, Player currPlayer) throws IOException {
         Popup popup = new Popup();
+        gameScreen.getChildren().add(overlay);
         try{
 
             FXMLLoader random = new FXMLLoader(getClass().getResource("randomGenPopup.fxml"));
@@ -192,6 +201,8 @@ public class Controller implements Initializable {
                 int randomNum = Integer.parseInt(randomGenPopup.getSpinButt().getText());
                 ((RandomAction)blueCard).activate(currPlayer, game.getPlayers(), randomNum);
                 popup.hide();
+                gameScreen.getChildren().remove(overlay);
+
             });
 //            popup.hide();
         }catch(IOException e){
@@ -207,10 +218,11 @@ public class Controller implements Initializable {
         String playerName = "";
         Popup popup = new Popup();
         choosePlayerPopUpController cpCont = initPopup(popup);
-        cpCont.getTextLabel().setText("Choose Player: ");
+        if(!gameScreen.getChildren().contains(overlay))
+            gameScreen.getChildren().add(overlay);
+            cpCont.getTextLabel().setText("Choose Player: ");
         cpCont.generateChoices(game.getPlayers(), currPlayer);
 
-        //confirm button action
         RadioButton[] radios;
         radios = cpCont.getRadios();
         if(radios[0] != null){
@@ -228,12 +240,14 @@ public class Controller implements Initializable {
                             } catch (Exception x){
                                 System.out.println("error" + drawnCard.getDescription());
                             }
+                            gameScreen.getChildren().remove(overlay);
                             popup.hide();
                             updatePlayerDetails();
                     }
                 }
             });
         } else{
+            gameScreen.getChildren().remove(overlay);
             popup.hide();
         }
     }
@@ -269,28 +283,27 @@ public class Controller implements Initializable {
         int numPlayers = game.getNumPlayers();
         playerDesc = new FXMLLoader[numPlayers];
         rootPane.getChildren().add(descPlayers);
+       // gameScreen.getChildren().add(overlay);
 
+
+        System.out.println(gameScreen.getChildren().toString());
         for(int i = numPlayers -1; i >= 0; i--){
-            initCareers(game.getPlayer(i));
+            initCareers(game.getPlayer(i), i);
         }
-
     }
-
-
-    public void initCareers(Player p) throws IOException{
+    public void initCareers(Player p, int count) throws IOException{
         String[] choices = new String[]{"Career", "College"};
         System.out.println(p.getName());
 
         Popup popup = new Popup();
+
         choosePlayerPopUpController cpCont = initPopup(popup);
 
         cpCont.getTextLabel().setText("Choose path for: " + p.getName());
         cpCont.generateChoices(choices);
 
-
         cpCont.getConfirm().setOnAction(e ->{
             descPlayers.getChildren().clear();
-            int choice;
             RadioButton[] radio = cpCont.getRadios();
             for(int i = 0; i < radio.length; i++){
                 if(radio[i].isSelected()){
@@ -331,6 +344,11 @@ public class Controller implements Initializable {
                 ioException.printStackTrace();
             }
             updatePlayerCardColor();
+            if(count == game.getNumPlayers() - 1)
+                gameScreen.getChildren().remove(overlay);
+        //    System.out.println(gameScreen.getChildren().toString());
+
+
         });
 
 
@@ -347,6 +365,10 @@ public class Controller implements Initializable {
             popup.getContent().add(root);
             choosePlayerPopUpController cpCont = (choosePlayerPopUpController) popChoose.<choosePlayerPopUpController>getController();
             Stage stage = (Stage) rootPane.getScene().getWindow();
+
+            if(!(gameScreen.getChildren().contains(overlay)))
+                gameScreen.getChildren().add(overlay);
+
             popup.show(stage);
             return cpCont;
 

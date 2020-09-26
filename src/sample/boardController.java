@@ -27,8 +27,16 @@ public class boardController {
     @FXML
     List<VBox> spacesView;
 
+    AnchorPane overlay = new AnchorPane();
 
     public void initialize(){
+        overlay.setTranslateZ(2);
+        overlay.prefHeight(1024);
+        overlay.prefWidth(768);
+        overlay.setMinHeight(768);
+        overlay.setMinWidth(1024);
+        overlay.setStyle("-fx-background-color: rgba(0,0,0,0.7); -fx-opacity: 1");
+
         int count = 1;
         Label label = new Label("Label");
 
@@ -156,6 +164,7 @@ public class boardController {
                            MagentaSpace magentaSpace, Game game) throws IOException{
         // TODO: pop up and return value to do action
         Popup popup = new Popup();
+        AnchorPane ap= (AnchorPane) popup.getScene();
         try{
             choosePlayerPopUpController cpCont = initPopup(popup, rootPane);
             cpCont.getTextLabel().setText("Choose path for: " + p.getName());
