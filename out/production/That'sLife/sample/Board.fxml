@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.util.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import java.util.ArrayList?>
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.boardController">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.boardController">
    <children>
        <VBox fx:id="space1" layoutX="14.0" layoutY="591.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
@@ -2020,6 +2021,26 @@
        </VBox>
 
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-15.0" layoutY="672.0" prefHeight="45.0" prefWidth="104.0" rotate="-90.0" style="-fx-background-color: #ff0000;" text="START" textAlignment="CENTER" textFill="WHITE" />
+      <Label layoutX="26.0" layoutY="541.0" prefHeight="38.0" prefWidth="175.0" text="Career Path" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="648.0" prefHeight="30.0" prefWidth="147.0" text="College Path" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="24.0" fitWidth="108.0" layoutX="67.0" layoutY="564.0" pickOnBounds="true" preserveRatio="true" scaleX="2.0">
+         <image>
+            <Image url="@../assets/Arrow.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="24.0" fitWidth="108.0" layoutX="112.0" layoutY="669.0" pickOnBounds="true" preserveRatio="true" scaleX="2.0">
+         <image>
+            <Image url="@../assets/Arrow.png" />
+         </image>
+      </ImageView>
    </children>
     <fx:define>
         <ArrayList fx:id="spacesView">

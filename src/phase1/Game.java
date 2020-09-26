@@ -187,7 +187,7 @@ public class Game {
     }
 
     public static int spinWheel() {
-        return (int) (Math.random() * (9 - 1 + 1) + 1);
+        return (int) (Math.random() * (10 - 1 + 1) + 1);
     }
 
     public int move(Player p) {
