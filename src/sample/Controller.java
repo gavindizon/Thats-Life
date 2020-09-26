@@ -9,12 +9,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import phase1.*;
@@ -43,6 +45,7 @@ public class Controller implements Initializable {
     @FXML private Label txtUpdates;
     @FXML private AnchorPane ap;
 
+    private VBox descPlayers = new VBox();
     private FXMLLoader card;
     private Game game;
     private int turn = 0;
@@ -131,7 +134,7 @@ public class Controller implements Initializable {
             playerController = (playerDescriptionController) playerDesc[i].<playerDescriptionController>getController();
 
             if(i == this.playerIndex){
-                playerController.getPlayerPane().setStyle("-fx-background-color:blue");
+                playerController.getPlayerPane().setStyle("-fx-background-color:blue; -fx-border-color: #FFF; -fx-border-width: 2;");
             }
             else{
                 playerController.getPlayerPane().setStyle("-fx-background-color:pink");
@@ -249,7 +252,7 @@ public class Controller implements Initializable {
     private FXMLLoader renderCard() throws IOException {
         FXMLLoader card = new FXMLLoader(getClass().getResource("cardContainer.fxml"));
         Parent root = (Parent) card.load();
-        root.setLayoutY(450);
+        root.setLayoutY(525);
         rootPane.getChildren().addAll(root);
 
         return card;
@@ -265,6 +268,7 @@ public class Controller implements Initializable {
         this.root = new Parent[game.getNumPlayers()];
         int numPlayers = game.getNumPlayers();
         playerDesc = new FXMLLoader[numPlayers];
+        rootPane.getChildren().add(descPlayers);
 
         for(int i = numPlayers -1; i >= 0; i--){
             initCareers(game.getPlayer(i));
@@ -285,6 +289,7 @@ public class Controller implements Initializable {
 
 
         cpCont.getConfirm().setOnAction(e ->{
+            descPlayers.getChildren().clear();
             int choice;
             RadioButton[] radio = cpCont.getRadios();
             for(int i = 0; i < radio.length; i++){
@@ -299,20 +304,24 @@ public class Controller implements Initializable {
 
             System.out.println(p.getCareer());
             popup.hide();
+
             for(int i = 0; i < game.getNumPlayers(); i++){
                 playerDesc[i] = new FXMLLoader(getClass().getResource("playerDescription.fxml"));
+                //                try {
+//                    this.root[i] = (Parent) playerDesc[i].load();
+//                } catch (IOException ioException) {
+//                    ioException.printStackTrace();
+//                }
+//
+//                this.root[i].setLayoutY(125 * i);
                 try {
-                    this.root[i] = (Parent) playerDesc[i].load();
+                    descPlayers.getChildren().add((Parent) playerDesc[i].load());
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
-
-                this.root[i].setLayoutY(125 * i);
                 playerDescriptionController playerController = (playerDescriptionController) playerDesc[i].<playerDescriptionController>getController();
                 playerController.setPlayerDetails(game.getPlayer(i));
-                rootPane.getChildren().addAll(this.root[i]);
             }
-
 
 
             try {
@@ -323,6 +332,8 @@ public class Controller implements Initializable {
             }
             updatePlayerCardColor();
         });
+
+
     }
 
     public AnchorPane getRootPane() {
