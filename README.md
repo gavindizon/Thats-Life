@@ -1,5 +1,23 @@
 # THAT'S LIFE CCPROG 3 MP 
 
+## UPDATES 1.2 (Gubeen):
+### What was done:
+- Fixed endgame logic error
+- Added endgame result
+- Added quick exit button
+
+### What needs to be fixed:
+- Green Space NPException
+- Orange Space Lawsuit when one player is retired and the player chooses the other playe
+- Job Search two buttons when no 
+
+### What is yet to be done:
+- debugging no choicespace of magenta spaces
+- improve overall UI (optional)
+
+### Blockers:
+- Nada
+
 ## UPDATES 1.1 (TYRONE) :
 ### What was done:
 - Fixed what is needed to be fixed in 1.0
