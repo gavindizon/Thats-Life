@@ -154,9 +154,11 @@ public class Player{
         if (this.cash + cash >= 0)
             this.cash += cash;
         else {
-            loanFromBank();
-            this.cash += 20000;
-            updateCash(cash);
+            if(this.isRetired == false){
+                loanFromBank();
+                this.cash += 20000;
+                updateCash(cash);
+            }
         }
     }
 
@@ -270,11 +272,11 @@ public class Player{
             if(this.house != null){
                 updateCash(this.house.getValue());
             }
-            payLoan();
-            System.out.println(this.name + " money after loan " + this.cash);
+//            payLoan();
+//            System.out.println(this.name + " money after loan " + this.cash);
 
             if(this.loan > 0){
-                System.out.println("Deducting unpayable loan " + this.name );
+                System.out.println("Payinh loan " + this.name );
                 setCash(this.cash - getLoan());
                 System.out.println(this.cash);
                 this.setLoan(0);

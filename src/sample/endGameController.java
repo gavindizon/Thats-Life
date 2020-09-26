@@ -26,7 +26,11 @@ public class endGameController {
             label.prefHeight(24);
             label.setAlignment(Pos.CENTER);
 
-            label.setText((i + 1) + " " + players[i].getName() + " - $" +players[i].getCash());
+            if(players[i].getCash() >= 0){
+                label.setText((i + 1) + " " + players[i].getName() + " : $" +players[i].getCash());
+            }else{
+                label.setText((i + 1) + " " + players[i].getName() + " : -$" +Math.abs(players[i].getCash()));
+            }
             label.setStyle("-fx-font-size: 16px; -fx-text-fill: #FFF;");
             vbox.getChildren().add(label);
         }
