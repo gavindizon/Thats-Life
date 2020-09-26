@@ -28,15 +28,12 @@ public abstract class BlueCard extends Card {
 
     public Player othersMatched(Player[] otherPlayers) {
         for (int i = 0; i < otherPlayers.length; i++) {
-            if (otherPlayers[i].getCareer().equals(this.career))
+            if (otherPlayers[i].getCareer().equals(this.career) && !otherPlayers[i].getIsRetired())
                 return otherPlayers[i];
         }
         return null;
-
-        // for(String c : otherPlayers.getCareer())
-        // return this.career(equals)
+        
     }
 
-//    public abstract void activate(Player p, Player[] otherPlayers);
 
 }
