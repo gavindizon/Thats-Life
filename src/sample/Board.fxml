@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.util.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.boardController">
+<?import java.util.ArrayList?>
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.boardController">
    <children>
-       <VBox fx:id="space1" layoutX="14.0" layoutY="591.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <TextFlow layoutX="320.0" layoutY="398.0" prefHeight="92.0" prefWidth="120.0" style="-fx-background-color: DODGERBLUE; -fx-background-radius: 8px;">
+           <children>
+               <Label alignment="TOP_CENTER" prefHeight="25.0" prefWidth="120.0" text="RETIREMENT" textFill="WHITE">
+                   <font>
+                       <Font name="System Bold" size="14.0" />
+                   </font>
+                   <padding>
+                       <Insets top="8.0" />
+                   </padding>
+               </Label>
+           </children>
+       </TextFlow>
+
+       <VBox fx:id="space1" layoutX="14.0" layoutY="606.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="1" textFill="WHITE">
                    <opaqueInsets>
@@ -29,7 +41,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space2" layoutX="60.0" layoutY="591.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space2" layoutX="60.0" layoutY="606.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="2" textFill="WHITE">
                    <opaqueInsets>
@@ -49,7 +61,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space3" layoutX="106.0" layoutY="591.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space3" layoutX="106.0" layoutY="606.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="3" textFill="WHITE">
                    <opaqueInsets>
@@ -69,7 +81,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space4" layoutX="152.0" layoutY="591.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space4" layoutX="152.0" layoutY="606.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="4" textFill="WHITE">
                    <opaqueInsets>
@@ -89,7 +101,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space5" layoutX="198.0" layoutY="591.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space5" layoutX="198.0" layoutY="606.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="5" textFill="WHITE">
                    <opaqueInsets>
@@ -109,7 +121,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space6" layoutX="244.0" layoutY="591.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space6" layoutX="244.0" layoutY="606.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="6" textFill="WHITE">
                    <opaqueInsets>
@@ -129,7 +141,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space7" layoutX="290.0" layoutY="591.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space7" layoutX="290.0" layoutY="606.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="7" textFill="WHITE">
                    <opaqueInsets>
@@ -149,7 +161,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space8" layoutX="336.0" layoutY="591.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space8" layoutX="336.0" layoutY="606.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="8" textFill="WHITE">
                    <opaqueInsets>
@@ -169,7 +181,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space9" layoutX="382.0" layoutY="591.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space9" layoutX="382.0" layoutY="606.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="9" textFill="WHITE">
                    <opaqueInsets>
@@ -189,7 +201,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space10" layoutX="428.0" layoutY="591.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space10" layoutX="428.0" layoutY="606.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="10" textFill="WHITE">
                    <opaqueInsets>
@@ -209,7 +221,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space11" layoutX="474.0" layoutY="591.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space11" layoutX="474.0" layoutY="606.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="11" textFill="WHITE">
                    <opaqueInsets>
@@ -229,7 +241,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space12" layoutX="474.0" layoutY="642.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space12" layoutX="474.0" layoutY="657.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="12" textFill="WHITE">
                    <opaqueInsets>
@@ -249,7 +261,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space13" layoutX="60.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space13" layoutX="60.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="13" textFill="WHITE">
                    <opaqueInsets>
@@ -269,7 +281,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space14" layoutX="106.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space14" layoutX="106.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="14" textFill="WHITE">
                    <opaqueInsets>
@@ -289,7 +301,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space15" layoutX="152.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space15" layoutX="152.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="15" textFill="WHITE">
                    <opaqueInsets>
@@ -309,7 +321,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space16" layoutX="198.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space16" layoutX="198.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="16" textFill="WHITE">
                    <opaqueInsets>
@@ -329,7 +341,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space17" layoutX="244.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space17" layoutX="244.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="17" textFill="WHITE">
                    <opaqueInsets>
@@ -349,7 +361,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space18" layoutX="290.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space18" layoutX="290.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="18" textFill="WHITE">
                    <opaqueInsets>
@@ -369,7 +381,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space19" layoutX="336.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space19" layoutX="336.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="19" textFill="WHITE">
                    <opaqueInsets>
@@ -389,7 +401,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space20" layoutX="382.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space20" layoutX="382.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="20" textFill="WHITE">
                    <opaqueInsets>
@@ -409,7 +421,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space21" layoutX="428.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space21" layoutX="428.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="21" textFill="WHITE">
                    <opaqueInsets>
@@ -429,7 +441,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space22" layoutX="474.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space22" layoutX="474.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="22" textFill="WHITE">
                    <opaqueInsets>
@@ -449,7 +461,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space23" layoutX="520.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space23" layoutX="520.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="23" textFill="WHITE">
                    <opaqueInsets>
@@ -469,7 +481,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space24" layoutX="566.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space24" layoutX="566.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="24" textFill="WHITE">
                    <opaqueInsets>
@@ -489,7 +501,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space25" layoutX="612.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space25" layoutX="612.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="25" textFill="WHITE">
                    <opaqueInsets>
@@ -509,7 +521,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space26" layoutX="658.0" layoutY="694.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space26" layoutX="658.0" layoutY="709.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="26" textFill="WHITE">
                    <opaqueInsets>
@@ -529,7 +541,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space27" layoutX="658.0" layoutY="643.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space27" layoutX="658.0" layoutY="658.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="27" textFill="WHITE">
                    <opaqueInsets>
@@ -549,7 +561,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space28" layoutX="658.0" layoutY="592.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space28" layoutX="658.0" layoutY="607.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="28" textFill="WHITE">
                    <opaqueInsets>
@@ -569,7 +581,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space29" layoutX="612.0" layoutY="592.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space29" layoutX="612.0" layoutY="607.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="29" textFill="WHITE">
                    <opaqueInsets>
@@ -589,7 +601,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space30" layoutX="566.0" layoutY="592.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space30" layoutX="566.0" layoutY="607.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="30" textFill="WHITE">
                    <opaqueInsets>
@@ -609,7 +621,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space31" layoutX="566.0" layoutY="541.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space31" layoutX="566.0" layoutY="556.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="31" textFill="WHITE">
                    <opaqueInsets>
@@ -629,7 +641,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space32" layoutX="566.0" layoutY="490.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space32" layoutX="566.0" layoutY="505.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="32" textFill="WHITE">
                    <opaqueInsets>
@@ -649,7 +661,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space33" layoutX="612.0" layoutY="490.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space33" layoutX="612.0" layoutY="505.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="33" textFill="WHITE">
                    <opaqueInsets>
@@ -669,7 +681,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space34" layoutX="612.0" layoutY="439.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space34" layoutX="612.0" layoutY="454.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="34" textFill="WHITE">
                    <opaqueInsets>
@@ -689,7 +701,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space35" layoutX="658.0" layoutY="439.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space35" layoutX="658.0" layoutY="454.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="35" textFill="WHITE">
                    <opaqueInsets>
@@ -709,7 +721,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space36" layoutX="658.0" layoutY="388.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space36" layoutX="658.0" layoutY="403.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="36" textFill="WHITE">
                    <opaqueInsets>
@@ -729,7 +741,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space37" layoutX="658.0" layoutY="337.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space37" layoutX="658.0" layoutY="352.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="37" textFill="WHITE">
                    <opaqueInsets>
@@ -749,7 +761,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space38" layoutX="658.0" layoutY="286.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space38" layoutX="658.0" layoutY="301.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="38" textFill="WHITE">
                    <opaqueInsets>
@@ -769,7 +781,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space39" layoutX="658.0" layoutY="235.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space39" layoutX="658.0" layoutY="250.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="39" textFill="WHITE">
                    <opaqueInsets>
@@ -790,7 +802,7 @@
            </children>
        </VBox>
 
-       <VBox fx:id="space40" layoutX="658.0" layoutY="184.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space40" layoutX="658.0" layoutY="199.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="40" textFill="WHITE">
                    <opaqueInsets>
@@ -811,7 +823,7 @@
            </children>
        </VBox>
 
-       <VBox fx:id="space41" layoutX="658.0" layoutY="133.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space41" layoutX="658.0" layoutY="148.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="41" textFill="WHITE">
                    <opaqueInsets>
@@ -832,7 +844,7 @@
            </children>
        </VBox>
 
-       <VBox fx:id="space42" layoutX="658.0" layoutY="82.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space42" layoutX="658.0" layoutY="97.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="42" textFill="WHITE">
                    <opaqueInsets>
@@ -853,7 +865,7 @@
            </children>
        </VBox>
 
-       <VBox fx:id="space43" layoutX="612.0" layoutY="82.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space43" layoutX="612.0" layoutY="97.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="43" textFill="WHITE">
                    <opaqueInsets>
@@ -874,7 +886,7 @@
            </children>
        </VBox>
 
-       <VBox fx:id="space44" layoutX="566.0" layoutY="82.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space44" layoutX="566.0" layoutY="97.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="44" textFill="WHITE">
                    <opaqueInsets>
@@ -895,7 +907,7 @@
            </children>
        </VBox>
 
-       <VBox fx:id="space45" layoutX="520.0" layoutY="82.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space45" layoutX="520.0" layoutY="97.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="45" textFill="WHITE">
                    <opaqueInsets>
@@ -916,7 +928,7 @@
            </children>
        </VBox>
 
-       <VBox fx:id="space46" layoutX="474.0" layoutY="82.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space46" layoutX="474.0" layoutY="97.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="46" textFill="WHITE">
                    <opaqueInsets>
@@ -937,7 +949,7 @@
            </children>
        </VBox>
 
-       <VBox fx:id="space47" layoutX="474.0" layoutY="133.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space47" layoutX="474.0" layoutY="148.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="47" textFill="WHITE">
                    <opaqueInsets>
@@ -958,7 +970,7 @@
            </children>
        </VBox>
 
-       <VBox fx:id="space48" layoutX="428.0" layoutY="133.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space48" layoutX="428.0" layoutY="148.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="48" textFill="WHITE">
                    <opaqueInsets>
@@ -979,7 +991,7 @@
            </children>
        </VBox>
 
-       <VBox fx:id="space49" layoutX="612.0" layoutY="235.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space49" layoutX="612.0" layoutY="250.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="49" textFill="WHITE">
                    <opaqueInsets>
@@ -999,7 +1011,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space50" layoutX="566.0" layoutY="235.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space50" layoutX="566.0" layoutY="250.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="50" textFill="WHITE">
                    <opaqueInsets>
@@ -1019,7 +1031,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space51" layoutX="520.0" layoutY="235.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space51" layoutX="520.0" layoutY="250.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="51" textFill="WHITE">
                    <opaqueInsets>
@@ -1039,7 +1051,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space52" layoutX="474.0" layoutY="235.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space52" layoutX="474.0" layoutY="250.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="52" textFill="WHITE">
                    <opaqueInsets>
@@ -1059,7 +1071,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space53" layoutX="428.0" layoutY="235.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space53" layoutX="428.0" layoutY="250.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="53" textFill="WHITE">
                    <opaqueInsets>
@@ -1079,7 +1091,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space54" layoutX="428.0" layoutY="184.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space54" layoutX="428.0" layoutY="199.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1099,7 +1111,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space55" layoutX="382.0" layoutY="184.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space55" layoutX="382.0" layoutY="199.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1119,7 +1131,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space56" layoutX="336.0" layoutY="184.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space56" layoutX="336.0" layoutY="199.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1139,7 +1151,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space57" layoutX="336.0" layoutY="133.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space57" layoutX="336.0" layoutY="148.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1159,7 +1171,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space58" layoutX="336.0" layoutY="82.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space58" layoutX="336.0" layoutY="97.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1179,7 +1191,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space59" layoutX="382.0" layoutY="56.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space59" layoutX="382.0" layoutY="71.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1199,7 +1211,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space60" layoutX="428.0" layoutY="17.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space60" layoutX="428.0" layoutY="32.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1219,7 +1231,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space61" layoutX="382.0" layoutY="-9.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space61" layoutX="382.0" layoutY="6.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1239,7 +1251,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space62" layoutX="336.0" layoutY="-9.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space62" layoutX="336.0" layoutY="6.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1259,7 +1271,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space63" layoutX="290.0" layoutY="-9.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space63" layoutX="290.0" layoutY="6.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1279,7 +1291,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space64" layoutX="244.0" layoutY="-9.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space64" layoutX="244.0" layoutY="6.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1299,7 +1311,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space65" layoutX="198.0" layoutY="-9.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space65" layoutX="198.0" layoutY="6.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1319,7 +1331,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space66" layoutX="152.0" layoutY="-9.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space66" layoutX="152.0" layoutY="6.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1339,7 +1351,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space67" layoutX="106.0" layoutY="-9.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space67" layoutX="106.0" layoutY="6.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1359,7 +1371,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space68" layoutX="60.0" layoutY="16.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space68" layoutX="60.0" layoutY="31.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1379,7 +1391,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space69" layoutX="60.0" layoutY="67.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space69" layoutX="60.0" layoutY="82.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1399,7 +1411,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space70" layoutX="106.0" layoutY="67.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space70" layoutX="106.0" layoutY="82.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="70" textFill="WHITE">
                    <opaqueInsets>
@@ -1419,7 +1431,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space71" layoutX="152.0" layoutY="67.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space71" layoutX="152.0" layoutY="82.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="71" textFill="WHITE">
                    <opaqueInsets>
@@ -1439,7 +1451,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space72" layoutX="198.0" layoutY="67.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space72" layoutX="198.0" layoutY="82.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1459,7 +1471,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space73" layoutX="244.0" layoutY="67.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space73" layoutX="244.0" layoutY="82.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1479,7 +1491,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space74" layoutX="244.0" layoutY="118.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space74" layoutX="244.0" layoutY="133.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1499,7 +1511,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space75" layoutX="244.0" layoutY="169.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space75" layoutX="244.0" layoutY="184.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1519,7 +1531,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space76" layoutX="244.0" layoutY="220.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space76" layoutX="244.0" layoutY="235.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1539,7 +1551,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space77" layoutX="244.0" layoutY="271.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space77" layoutX="244.0" layoutY="286.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1559,7 +1571,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space78" layoutX="198.0" layoutY="271.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space78" layoutX="198.0" layoutY="286.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1579,7 +1591,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space79" layoutX="152.0" layoutY="271.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space79" layoutX="152.0" layoutY="286.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1599,7 +1611,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space80" layoutX="152.0" layoutY="322.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space80" layoutX="152.0" layoutY="337.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1619,7 +1631,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space81" layoutX="106.0" layoutY="322.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space81" layoutX="106.0" layoutY="337.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1639,7 +1651,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space82" layoutX="152.0" layoutY="118.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space82" layoutX="152.0" layoutY="133.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1659,7 +1671,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space83" layoutX="152.0" layoutY="169.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space83" layoutX="152.0" layoutY="184.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1679,7 +1691,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space84" layoutX="106.0" layoutY="169.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space84" layoutX="106.0" layoutY="184.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1699,7 +1711,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space85" layoutX="60.0" layoutY="169.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space85" layoutX="60.0" layoutY="184.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1719,7 +1731,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space86" layoutX="14.0" layoutY="169.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space86" layoutX="14.0" layoutY="184.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1739,7 +1751,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space87" layoutX="14.0" layoutY="220.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space87" layoutX="14.0" layoutY="235.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1759,7 +1771,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space88" layoutX="14.0" layoutY="271.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space88" layoutX="14.0" layoutY="286.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1779,7 +1791,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space89" layoutX="14.0" layoutY="322.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space89" layoutX="14.0" layoutY="337.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1799,7 +1811,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space90" layoutX="60.0" layoutY="322.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space90" layoutX="60.0" layoutY="337.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1819,7 +1831,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space91" layoutX="83.0" layoutY="373.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space91" layoutX="83.0" layoutY="388.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1839,7 +1851,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space92" layoutX="83.0" layoutY="424.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space92" layoutX="83.0" layoutY="439.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1859,7 +1871,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space93" layoutX="83.0" layoutY="475.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space93" layoutX="83.0" layoutY="490.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1879,7 +1891,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space94" layoutX="129.0" layoutY="475.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space94" layoutX="129.0" layoutY="490.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1899,7 +1911,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space95" layoutX="175.0" layoutY="475.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space95" layoutX="175.0" layoutY="490.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1919,7 +1931,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space96" layoutX="221.0" layoutY="475.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space96" layoutX="221.0" layoutY="490.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1939,7 +1951,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space97" layoutX="267.0" layoutY="475.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space97" layoutX="267.0" layoutY="490.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1959,7 +1971,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space98" layoutX="313.0" layoutY="475.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space98" layoutX="313.0" layoutY="490.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1979,7 +1991,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space99" layoutX="359.0" layoutY="475.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space99" layoutX="359.0" layoutY="490.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -1999,7 +2011,7 @@
 
            </children>
        </VBox>
-       <VBox fx:id="space100" layoutX="359.0" layoutY="424.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
+       <VBox fx:id="space100" layoutX="359.0" layoutY="439.0" prefHeight="51.0" prefWidth="46.0" style="-fx-background-color: #000;">
            <children>
                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="45.0" text="54" textFill="WHITE">
                    <opaqueInsets>
@@ -2020,27 +2032,27 @@
            </children>
        </VBox>
 
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-15.0" layoutY="672.0" prefHeight="45.0" prefWidth="104.0" rotate="-90.0" style="-fx-background-color: #ff0000;" text="START" textAlignment="CENTER" textFill="WHITE" />
-      <Label layoutX="26.0" layoutY="541.0" prefHeight="38.0" prefWidth="175.0" text="Career Path" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-15.0" layoutY="687.0" prefHeight="45.0" prefWidth="104.0" rotate="-90.0" style="-fx-background-color: #ff0000;" text="START" textAlignment="CENTER" textFill="WHITE" />
+      <Label alignment="CENTER" layoutX="180.0" layoutY="568.0" prefHeight="38.0" prefWidth="158.0" style="-fx-background-color: DODGERBLUE; -fx-background-radius: 8px 8px 0 0;" text="Career Path" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="73.0" layoutY="648.0" prefHeight="30.0" prefWidth="147.0" text="College Path" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="180.0" layoutY="679.0" prefHeight="30.0" prefWidth="158.0" style="-fx-background-color: DODGERBLUE; -fx-background-radius: 8px 8px 0px 0px;" text="College Path" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="24.0" fitWidth="108.0" layoutX="67.0" layoutY="564.0" pickOnBounds="true" preserveRatio="true" scaleX="2.0">
-         <image>
-            <Image url="@../assets/Arrow.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="24.0" fitWidth="108.0" layoutX="112.0" layoutY="669.0" pickOnBounds="true" preserveRatio="true" scaleX="2.0">
-         <image>
-            <Image url="@../assets/Arrow.png" />
-         </image>
-      </ImageView>
+      <Label alignment="CENTER" layoutX="481.0" layoutY="59.0" prefHeight="38.0" prefWidth="219.0" style="-fx-background-color: DODGERBLUE; -fx-background-radius: 8px 8px 0 0;" text="Change Career Path" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="199.0" layoutY="191.0" prefHeight="38.0" prefWidth="219.0" rotate="90.0" style="-fx-background-color: DODGERBLUE; -fx-background-radius: 8px 8px 0 0;" text="Start a Family Path" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </Label>
    </children>
     <fx:define>
         <ArrayList fx:id="spacesView">

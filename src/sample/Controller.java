@@ -37,6 +37,7 @@ public class Controller implements Initializable {
     @FXML private AnchorPane boardPane;
     @FXML private Parent[] root;
     @FXML private Button payBtn;
+    @FXML private Button loanBtn;
     @FXML private Button exitBtn;
 
     public FXMLLoader[] playerDesc;
@@ -83,12 +84,17 @@ public class Controller implements Initializable {
                         currPlayer.payLoan();
                         finalPlayerController.setPlayerDetails(currPlayer);
                     });
+
                 }
                 else{
 //                    System.out.println(currPlayer.getName() + " Player has no loan");
-
                     payBtn.setDisable(true);
                 }
+                loanBtn.setOnAction(ey->{
+                    currPlayer.setLoan((int) currPlayer.getLoan() / 25000 + 1);
+                    currPlayer.updateCash(20000);
+                    playerController.setPlayerDetails(currPlayer);
+                });
 
                 txtUpdates.setText(currPlayer.getName() + " spinned for "+ game.move(currPlayer));
                 boardController.updateBoardState(game);

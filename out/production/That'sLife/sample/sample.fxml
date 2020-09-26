@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <AnchorPane fx:id="rootPane" prefHeight="768.0" prefWidth="314.0" style="-fx-background-color: #fff;">
          <children>
@@ -13,7 +13,7 @@
                <children>
                   <Label alignment="CENTER" contentDisplay="TOP" prefHeight="40.0" prefWidth="304.0" text="UPDATE:" textFill="#fcfafa">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="txtUpdates" layoutX="10.0" layoutY="10.0" prefHeight="29.0" prefWidth="295.0" style="-fx-background-color: #fff; -fx-background-radius: 4px;" text="Game Started!">
@@ -29,19 +29,32 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="314.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 0 0 8px 8px;">
                      <children>
-                        <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exit" prefHeight="36.0" prefWidth="90.0" style="-fx-background-color: #FF0000; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="EXIT" textFill="WHITE">
+                        <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#exit" prefHeight="41.0" prefWidth="65.0" style="-fx-background-color: #FF0000; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="EXIT" textFill="WHITE">
                            <HBox.margin>
                               <Insets right="4.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Button>
-                        <Button fx:id="payBtn" mnemonicParsing="false" onAction="#gameState" prefHeight="37.0" prefWidth="95.0" style="-fx-background-color: GREEN; -fx-background-radius: 8px;" text="Pay Loan" textFill="WHITE">
+                        <Button fx:id="payBtn" mnemonicParsing="false" onAction="#gameState" prefHeight="37.0" prefWidth="78.0" style="-fx-background-color: #fff; -fx-background-radius: 8px;" text="PAY LOAN" textFill="DODGERBLUE">
                            <HBox.margin>
                               <Insets right="4.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Button>
+                        <Button fx:id="loanBtn" layoutX="72.0" layoutY="12.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="66.0" style="-fx-background-color: #fff; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="LOAN" textFill="DODGERBLUE">
+                           <HBox.margin>
+                              <Insets left="4.0" right="4.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
             
                          <!--            <fx:include layoutY="400" source="cardContainer.fxml" />-->
-                        <Button fx:id="drawBtn" mnemonicParsing="false" onAction="#gameState" prefHeight="34.0" prefWidth="93.0" style="-fx-background-radius: 8px; -fx-background-color: #FFF; -fx-background-border-radius: transparent;" text="SPIN" textFill="DODGERBLUE">
+                        <Button fx:id="drawBtn" mnemonicParsing="false" onAction="#gameState" prefHeight="41.0" prefWidth="60.0" style="-fx-background-radius: 8px; -fx-background-color: #FFF; -fx-background-border-radius: transparent;" text="SPIN" textFill="DODGERBLUE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -56,7 +69,7 @@
 
          </children>
       </AnchorPane>
-       <AnchorPane fx:id="boardPane" layoutX="312.0" layoutY="7.0" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #96E4DF, #4DCCC6);">
+       <AnchorPane fx:id="boardPane" layoutX="312.0" layoutY="0.0" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #96E4DF, #4DCCC6);">
            <children>
                <fx:include fx:id="board" source="Board.fxml" />
            </children>
