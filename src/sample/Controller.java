@@ -110,7 +110,6 @@ public class Controller implements Initializable {
 
 
         }else{
-            game.endGameResult();
             endGame();
         }
     }

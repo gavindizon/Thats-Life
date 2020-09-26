@@ -188,48 +188,6 @@ public class Game {
         return (int) (Math.random() * (9 - 1 + 1) + 1);
     }
 
-    public void endGameResult(){
-
-        for(int i = 0; i < this.getSpace(99).getPlayers().size(); i++){
-            Player p = this.getSpace(99).getPlayers().get(i);
-            switch(i + 1){
-                case 1:
-                    p.updateCash(100000);
-                    System.out.println("Gets First Place");
-                    break;
-                case 2:
-                    p.updateCash(50000);
-                    System.out.println("Gets Second Place");
-
-                    break;
-                case 3:
-                    p.updateCash(20000);
-                    System.out.println("Gets Third Place");
-
-                    break;
-                default:
-                    break;
-            }
-            if(p.getNumKids() > 0){
-                p.updateCash(10000 * p.getNumKids());
-            }
-            if(p.getHouse() != null){
-                p.updateCash(p.getHouse().getValue());
-            }
-        p.payLoan();
-
-            if(p.getLoan() > 0){
-                System.out.println("Paying final loan of " + p.getName() );
-                p.setCash(-p.getLoan());
-                System.out.println(p.getCash());
-                p.setLoan(0);
-            }
-
-        }
-        }
-
-
-
     public int move(Player p) {
         int moveCnt = spinWheel();
         int spinHolder = moveCnt;
@@ -239,7 +197,7 @@ public class Game {
             this.spaces[p.getSpaceTracker()].getPlayers().remove(p);
             p.teleportToSpace(99);
             this.spaces[p.getSpaceTracker()].getPlayers().add(p);
-            p.setToRetire(true);
+            p.setToRetire(true, this.spaces[99].getPlayers().indexOf(p));
 
 
         }else{
@@ -383,7 +341,7 @@ public class Game {
      */
     public void retireAll() { // to be removed after phase 1(?)
         for (int i = 0; i < NUM_PLAYERS; i++) {
-            this.players[i].setToRetire(true);
+            this.players[i].setToRetire(true, 1);
         }
     }
 

@@ -160,9 +160,6 @@ public class Player{
         }
     }
 
-    public void finalCash(){
-
-    }
 
     public boolean isHasDegree() {
         return hasDegree;
@@ -243,9 +240,47 @@ public class Player{
      * 
      * @param isRetired true if the player is retired, false if not.
      */
-    public void setToRetire(boolean isRetired) {
+    public void setToRetire(boolean isRetired, int place) {
         this.isRetired = isRetired;
+        endGameResult(place);
     }
+    private void endGameResult(int place){
+
+            switch(place){
+                case 1:
+                    updateCash(100000);
+                    System.out.println("Gets First Place");
+                    break;
+                case 2:
+                    updateCash(50000);
+                    System.out.println("Gets Second Place");
+
+                    break;
+                case 3:
+                    updateCash(20000);
+                    System.out.println("Gets Third Place");
+                    break;
+                default:
+                    break;
+            }
+            System.out.println(this.name + " money after placement is " + this.cash);
+
+            updateCash(10000 * getNumKids());
+
+            if(this.house != null){
+                updateCash(this.house.getValue());
+            }
+            payLoan();
+            System.out.println(this.name + " money after loan " + this.cash);
+
+            if(this.loan > 0){
+                System.out.println("Deducting unpayable loan " + this.name );
+                setCash(this.cash - getLoan());
+                System.out.println(this.cash);
+                this.setLoan(0);
+            }
+        }
+
 
     public void setCash(double cash) {
         this.cash = cash;
