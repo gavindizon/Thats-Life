@@ -1,11 +1,15 @@
 package sample;
 
 
+import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
@@ -15,6 +19,8 @@ import phase1.Game;
 import phase1.Player;
 import phase1.Spaces.*;
 import phase1.Spaces.GreenSpace.GreenSpace;
+import phase1.Spaces.GreenSpace.PayDaySpace;
+import phase1.Spaces.GreenSpace.PayRaiseSpace;
 import phase1.Spaces.MagentaSpace.*;
 
 import java.io.IOException;
@@ -88,11 +94,18 @@ public class boardController {
 
         i = 0;
         for(VBox spaceView : spacesView){
+            ImageView imgContainer = new ImageView();
+            Image img = null;
 
             Space space = game.getSpace(i);
-            if((space instanceof GreenSpace || space instanceof MagentaSpace) && space.getPlayers().size() == 0){
+            if((space instanceof GreenSpace || space instanceof MagentaSpace) && space.getPlayers().size() == 0) {
                 spaceView.getChildren().clear();
-                Label label = new Label();
+                spaceView.setAlignment(Pos.CENTER);
+                //spaceView.setMaxWidth(45);
+                spaceView.maxWidth(10);
+                spaceView.setMaxHeight(51);
+
+            /*    Label label = new Label();
 
                 label.setStyle("-fx-text-fill:white; -fx-font-weight:bold; -fx-font-size: 10px");
                 label.setMaxHeight(50);
@@ -100,10 +113,34 @@ public class boardController {
                 label.setTextAlignment(TextAlignment.CENTER);
                 label.setWrapText(true);
                 label.setMaxWidth(45);
-
                 if(space instanceof GraduationSpace)
                     label.setText("Finished College");
-                spaceView.getChildren().add(label);
+            */
+                if (space instanceof GraduationSpace) {
+                    img = new Image(getClass().getResourceAsStream("/assets/graduate_icon.png"));
+                } else if (space instanceof GetMarriedSpace) {
+                    img = new Image(getClass().getResourceAsStream("/assets/married_icon.png"));
+                } else if (space instanceof JobSearchSpace) {
+                    img = new Image(getClass().getResourceAsStream("/assets/jobsearch_icon.png"));
+                } else if (space instanceof CollegeCareerChoiceSpace) {
+                    img = new Image(getClass().getResourceAsStream("/assets/cc_icon.png"));
+                } else if (space instanceof BuyHouseSpace) {
+                    img = new Image(getClass().getResourceAsStream("/assets/house_icon.png"));
+                } else if (space instanceof WhichPathSpace) {
+                    img = new Image(getClass().getResourceAsStream("/assets/whichpath_icon.png"));
+                } else if (space instanceof PayRaiseSpace) {
+                    img = new Image(getClass().getResourceAsStream("/assets/payraise_icon.png"));
+                } else if (space instanceof PayDaySpace) {
+                    img = new Image(getClass().getResourceAsStream("/assets/payday_icon.png"));
+                } else {
+                    img = new Image(getClass().getResourceAsStream("/assets/kids_icon.png"));
+                }
+
+                imgContainer.setImage(img);
+
+                imgContainer.setFitWidth(44);
+
+                spaceView.getChildren().add(imgContainer);
             }
             i++;
         }

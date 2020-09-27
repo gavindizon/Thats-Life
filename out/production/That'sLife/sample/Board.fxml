@@ -2048,7 +2048,7 @@
             <Font name="Arial Black" size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="199.0" layoutY="191.0" prefHeight="38.0" prefWidth="219.0" rotate="90.0" style="-fx-background-color: DODGERBLUE; -fx-background-radius: 8px 8px 0 0;" text="Start a Family Path" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="200.0" layoutY="191.0" prefHeight="38.0" prefWidth="219.0" rotate="90.0" style="-fx-background-color: DODGERBLUE; -fx-background-radius: 8px 8px 0 0;" text="Start a Family Path" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
