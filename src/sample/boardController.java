@@ -188,7 +188,6 @@ public class boardController {
 
             }else if(magentaSpace instanceof GetMarriedSpace) {
                 generateRandom(currPlayer, magentaSpace, game, gameControl);
-
                 gameControl.updatePlayerDetails();
             }else{
                 ((ActionSpace) magentaSpace).doAction(currPlayer, game.getPlayers(), game.getDecks(magentaSpace));
@@ -278,7 +277,7 @@ public class boardController {
     private void generateRandom(Player p,
                              MagentaSpace magentaSpace, Game game, Controller gameControl) throws IOException {
         Popup popup = new Popup();
-        
+
             FXMLLoader random = new FXMLLoader(getClass().getResource("randomGenPopup.fxml"));
             Parent root = (Parent) random.load();
             popup.getContent().add(root);
@@ -299,6 +298,7 @@ public class boardController {
                 gms.doAction(p, game.getPlayers(), game.getDecks(magentaSpace));
                 popup.hide();
                 gameControl.getGameScreen().getChildren().remove(gameControl.getOverlay());
+                gameControl.updatePlayerDetails();
             });
 
     }
