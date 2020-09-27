@@ -22,6 +22,7 @@ import phase1.Spaces.GreenSpace.PayDaySpace;
 import phase1.Spaces.GreenSpace.PayRaiseSpace;
 import phase1.Spaces.MagentaSpace.*;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -151,7 +152,7 @@ public class boardController {
         Space currSpace = game.getSpace(game.getPlayer(currPlayerIndex).getSpaceTracker());
         Player currPlayer = game.getPlayer(currPlayerIndex);
         if(currSpace instanceof OrangeSpace || currSpace instanceof BlueSpace){
-            currSpace.doAction(currPlayer, game.getPlayers(), game.getDecks(currSpace));
+            ((ActionSpace)currSpace).doAction(currPlayer, game.getPlayers(), game.getDecks(currSpace));
             System.out.println(currPlayer.getDrawnCard().getDescription());
             try{
                 gameControl.activateCard(currPlayer);
@@ -185,11 +186,11 @@ public class boardController {
                 }
 
             } else{
-                ((NoChoiceSpace) magentaSpace).doMagentaAction(currPlayer, game.getPlayers(), game.getDecks(magentaSpace));
+                ((ActionSpace) magentaSpace).doAction(currPlayer, game.getPlayers(), game.getDecks(magentaSpace));
                 gameControl.updatePlayerDetails();
             }
         } else {
-            currSpace.doAction(currPlayer, game.getPlayers(), game.getDecks(currSpace));
+            ((ActionSpace)currSpace).doAction(currPlayer, game.getPlayers(), game.getDecks(currSpace));
             gameControl.updatePlayerDetails();
         }
     }

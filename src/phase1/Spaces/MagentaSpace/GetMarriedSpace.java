@@ -3,8 +3,9 @@ package phase1.Spaces.MagentaSpace;
 import java.util.ArrayList;
 import phase1.Player;
 import phase1.Deck;
+import phase1.Spaces.ActionSpace;
 
-public class GetMarriedSpace extends MagentaSpace implements NoChoiceSpace {
+public class GetMarriedSpace extends MagentaSpace implements ActionSpace {
     public GetMarriedSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
         this.actionDescription = "Just Got Married";
@@ -13,7 +14,7 @@ public class GetMarriedSpace extends MagentaSpace implements NoChoiceSpace {
     }
 
     @Override
-    public void doMagentaAction(Player p, Player[] others, ArrayList<Deck> decks) {
+    public void doAction(Player p, Player[] others, ArrayList<Deck> decks) {
         System.out.println("I just got Married");
         p.setMarried(true);
 

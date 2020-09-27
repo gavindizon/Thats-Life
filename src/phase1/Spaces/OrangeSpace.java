@@ -5,7 +5,7 @@ import phase1.Deck;
 
 import java.util.ArrayList;
 
-public class OrangeSpace extends Space {
+public class OrangeSpace extends Space implements ActionSpace{
     private String deckType;
 
     public OrangeSpace(String path, int noOfPlayers) {

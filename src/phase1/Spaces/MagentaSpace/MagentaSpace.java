@@ -14,9 +14,9 @@ public abstract class MagentaSpace extends Space {
     }
 
 
-     public void doAction(Player p, Player[] others, ArrayList<Deck> decks){
-         System.out.println();
-     }
+//     public void doAction(Player p, Player[] others, ArrayList<Deck> decks){
+//         System.out.println();
+//     }
 
 
 }

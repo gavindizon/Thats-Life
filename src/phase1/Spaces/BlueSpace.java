@@ -5,7 +5,7 @@ import phase1.Deck;
 import java.util.ArrayList;
 import phase1.Cards.BlueCard.BlueCard;
 
-public class BlueSpace extends Space {
+public class BlueSpace extends Space implements ActionSpace {
     private String deckType;
 
     public BlueSpace(String path, int noOfPlayers) {

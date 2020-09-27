@@ -13,7 +13,7 @@ public abstract class GreenSpace extends Space {
         this.type = "Green Space";
 
     }
-
-    @Override
-    public abstract void doAction(Player p, Player[] others, ArrayList<Deck> decks);
+//
+////    @Override
+//    public abstract void doAction(Player p, Player[] others, ArrayList<Deck> decks);
 }

@@ -2,9 +2,11 @@ package phase1.Spaces.GreenSpace;
 
 import phase1.Player;
 import phase1.Deck;
+import phase1.Spaces.ActionSpace;
+
 import java.util.ArrayList;
 
-public class PayRaiseSpace extends GreenSpace {
+public class PayRaiseSpace extends GreenSpace implements ActionSpace {
 
     public PayRaiseSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);

@@ -47,7 +47,6 @@ public abstract class Space {
         return players;
     }
 
-    public abstract void doAction(Player p, Player[] others, ArrayList<Deck> decks);
 
 
 }
