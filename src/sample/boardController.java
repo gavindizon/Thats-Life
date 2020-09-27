@@ -168,10 +168,10 @@ public class boardController {
                     String[] choice1 = Arrays.copyOfRange(choices, 0, 2);
                     String[] choice2 = Arrays.copyOfRange(choices, 2, 4);
                     if (!choices[0].equalsIgnoreCase("No careers available")){
-                        choosePath(currPlayer, gameControl.getRootPane(), choice2, magentaSpace, game, gameControl);
-                        choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game, gameControl);
+                        choosePath(currPlayer, gameControl.getRootPane(), choice2, magentaSpace, game, gameControl, 0);
+                        choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game, gameControl, 1);
                     } else {
-                        choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game, gameControl);
+                        choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game, gameControl, 0);
 
                     }
 
@@ -181,7 +181,7 @@ public class boardController {
                         chooseHouse(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game, gameControl);
 
                 }else{
-                    choosePath(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game, gameControl);
+                    choosePath(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game, gameControl, 0);
 
                 }
 
@@ -197,15 +197,19 @@ public class boardController {
 
 
     private void choosePath(Player p, AnchorPane rootPane, String[] choices,
-                           MagentaSpace magentaSpace, Game game, Controller gameControl) throws IOException{
+                           MagentaSpace magentaSpace, Game game, Controller gameControl, int stack_cnt) throws IOException{
         Popup popup = new Popup();
+
         try{
-            ChoicePopupController cpCont = initPopup(popup, rootPane);
+            ChoicePopupController cpCont = initPopup(popup, rootPane, gameControl);
             cpCont.getTextLabel().setText("Choose path for: " + p.getName());
             cpCont.generateChoices(choices);
 
             cpCont.getConfirm().setOnAction(e->{
                 popup.hide();
+                if(stack_cnt == 0)
+                    gameControl.getGameScreen().getChildren().remove(gameControl.getOverlay());
+
                 RadioButton[] radio = cpCont.getRadios();
                 try{
                     for(int i = 0; i < radio.length; i++){
@@ -216,7 +220,7 @@ public class boardController {
                                 if (i == 1 && choices[0].equalsIgnoreCase("Retain job")){
                                     String[] choice1 = new String[]{choices[2], choices[3]};
                                     try{
-                                        choosePath(p, rootPane, choice1, magentaSpace, game, gameControl);
+                                        choosePath(p, rootPane, choice1, magentaSpace, game, gameControl, 0);
                                     }catch (Exception m){
                                         System.out.println("x");
                                     }
@@ -246,6 +250,7 @@ public class boardController {
         Parent root = (Parent) popChoose.load();
         popup.getContent().add(root);
         chooseHouseController chCont = (chooseHouseController) popChoose.<chooseHouseController>getController();
+        gameControl.getGameScreen().getChildren().add(gameControl.getOverlay());
         chCont.setPlayerText(p);
         chCont.setChoice(choices);
         Stage stage = (Stage) rootPane.getScene().getWindow();
@@ -253,6 +258,8 @@ public class boardController {
 
         chCont.getConfirm().setOnAction(e ->{
             popup.hide();
+            gameControl.getGameScreen().getChildren().remove(gameControl.getOverlay());
+
 
             RadioButton selectedRadioButton = (RadioButton) chCont.getChoicePicker().getSelectedToggle();
 
@@ -263,7 +270,7 @@ public class boardController {
     }
 
 
-    private ChoicePopupController initPopup(Popup popup, AnchorPane rootPane) throws IOException{
+    private ChoicePopupController initPopup(Popup popup, AnchorPane rootPane, Controller gameControl) throws IOException{
         try{
             FXMLLoader popChoose = new FXMLLoader(getClass().getResource("choicePopup.fxml"));
             Parent root = (Parent) popChoose.load();
@@ -271,6 +278,9 @@ public class boardController {
             ChoicePopupController cpCont = (ChoicePopupController) popChoose.<ChoicePopupController>getController();
             Stage stage = (Stage) rootPane.getScene().getWindow();
             popup.show(stage);
+            if(!(gameControl.getGameScreen().getChildren().contains(gameControl.getOverlay())))
+                gameControl.getGameScreen().getChildren().add(gameControl.getOverlay());
+
             return cpCont;
 
         } catch (IOException e){

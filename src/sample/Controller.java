@@ -147,6 +147,14 @@ public class Controller implements Initializable {
         }
     }
 
+    public AnchorPane getGameScreen() {
+        return gameScreen;
+    }
+
+    public AnchorPane getOverlay() {
+        return overlay;
+    }
+
     private void updatePlayerCardColor(){
         playerDescriptionController playerController;
         // update every player details
@@ -379,30 +387,51 @@ public class Controller implements Initializable {
 
     }
 
-    public void exit(ActionEvent ae) {
-        Stage stage = (Stage)  exitBtn.getScene().getWindow();
-        FXMLLoader menu = new FXMLLoader(getClass().getResource("menu.fxml"));
+    public void exit(ActionEvent ae) throws IOException {
+//        Stage stage = (Stage)  exitBtn.getScene().getWindow();
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        Popup popup = new Popup();
+        gameScreen.getChildren().add(overlay);
 
+        FXMLLoader exit = new FXMLLoader(getClass().getResource("exitConfirm.fxml"));
+        Parent root = (Parent) exit.load();
+        popup.getContent().add(root);
+        popup.show(stage);
+        exitConfirmController exc = (exitConfirmController) exit.<exitConfirmController>getController();
+
+        exc.getYes().setOnAction(yesBtn ->{
+            popup.hide();
+            gameScreen.getChildren().remove(overlay);
+            FXMLLoader menu = new FXMLLoader(getClass().getResource("menu.fxml"));
+
+            Parent main = null;
             try {
-                Parent root = (Parent) menu.load();
-                Scene play = new Scene(root);
-                stage.setScene(play);
-                stage.show();
-
-            } catch (IOException ex) {
-                ex.printStackTrace();
+                main = (Parent) menu.load();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            Scene play = new Scene(main);
+            stage.setScene(play);
+            stage.show();
+
             MenuController mc = menu.<MenuController>getController();
 
             if(game.getNumPlayers() == 2)
                 mc.updateFromGame(game.getPlayer(0).getName(), game.getPlayer(1).getName());
             else
                 mc.updateFromGame(game.getPlayer(0).getName(), game.getPlayer(1).getName(), game.getPlayer(2).getName());
+        });
+
+        exc.getNo().setOnAction(noBtn ->{
+            popup.hide();
+            gameScreen.getChildren().remove(overlay);
+        });
+
     }
 
     public void endGame() throws IOException{
         Popup popup = new Popup();
-
+        gameScreen.getChildren().add(overlay);
         updatePlayerDetails();
         game.rankPlayers();
 
@@ -415,9 +444,15 @@ public class Controller implements Initializable {
             endGameController egc = (endGameController) random.<endGameController>getController();
             egc.listResult(game.getPlayers());
             egc.endBtn.setOnAction(e ->{
+                gameScreen.getChildren().remove(overlay);
+
                 popup.hide();
-                exit(e);
-        });
+                try {
+                    exit(e);
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            });
 
 
 
