@@ -31,6 +31,7 @@ public class Controller implements Initializable {
 //    @FXML
 //    private Label cash;
 
+    @FXML private AnchorPane gameScreen;
     @FXML private AnchorPane rootPane;
     @FXML private AnchorPane boardPane;
     @FXML private Parent[] root;
@@ -46,6 +47,7 @@ public class Controller implements Initializable {
     @FXML private AnchorPane ap;
 
     private VBox descPlayers = new VBox();
+    private AnchorPane overlay = new AnchorPane();
     private FXMLLoader card;
     private Game game;
     private int turn = 0;
@@ -61,6 +63,11 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         payBtn.setDisable(true);
+
+        //overlay for popups
+        overlay.setStyle("-fx-background-color: rgba(0,0,0,0.7)");
+        overlay.setMinHeight(768);
+        overlay.setMinWidth(1024);
     }
 
 
@@ -193,7 +200,7 @@ public class Controller implements Initializable {
             popup.getContent().add(root);
             Stage stage = (Stage) rootPane.getScene().getWindow();
             popup.show(stage);
-
+            gameScreen.getChildren().add(overlay);
             RandomGenPopup randomGenPopup = (RandomGenPopup) random.<RandomGenPopup>getController();
 
             randomGenPopup.getSpinButt().setOnAction(event->{
@@ -206,6 +213,7 @@ public class Controller implements Initializable {
                 ((RandomAction)blueCard).activate(currPlayer, game.getPlayers(), randomNum);
                 updatePlayerDetails();
                 popup.hide();
+                gameScreen.getChildren().remove(overlay);
             });
 //            popup.hide();
         }catch(IOException e){
@@ -223,6 +231,7 @@ public class Controller implements Initializable {
         ChoicePopupController cpCont = initPopup(popup);
         cpCont.getTextLabel().setText("Choose Player: ");
         cpCont.generateChoices(game.getPlayers(), currPlayer);
+        gameScreen.getChildren().add(overlay);
 
         //confirm button action
         RadioButton[] radios;
@@ -242,6 +251,7 @@ public class Controller implements Initializable {
                             } catch (Exception x){
                                 System.out.println("error" + drawnCard.getDescription());
                             }
+                        gameScreen.getChildren().remove(overlay);
                             popup.hide();
                             updatePlayerDetails();
                     }
@@ -279,14 +289,15 @@ public class Controller implements Initializable {
         playerDesc = new FXMLLoader[numPlayers];
         rootPane.getChildren().add(descPlayers);
 
+        gameScreen.getChildren().add(overlay);
         for(int i = numPlayers -1; i >= 0; i--){
-            initCareers(game.getPlayer(i));
+            initCareers(game.getPlayer(i), i);
         }
 
     }
 
 
-    public void initCareers(Player p) throws IOException{
+    public void initCareers(Player p, int count) throws IOException{
         String[] choices = new String[]{"Career", "College"};
         System.out.println(p.getName());
 
@@ -332,7 +343,8 @@ public class Controller implements Initializable {
                 playerController.setPlayerDetails(game.getPlayer(i));
             }
 
-
+            if(count == game.getNumPlayers() - 1)
+                gameScreen.getChildren().remove(overlay);
             try {
                 card = renderCard();
 
