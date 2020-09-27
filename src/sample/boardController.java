@@ -176,7 +176,8 @@ public class boardController {
 
 
                 }else if(magentaSpace instanceof BuyHouseSpace){
-                    chooseHouse(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game);
+                    if(currPlayer.getHouse() == null)
+                        chooseHouse(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game);
 
                 }else{
                     choosePath(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game);

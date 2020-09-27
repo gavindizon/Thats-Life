@@ -70,9 +70,9 @@ public class Game {
         // Career Path
         this.spaces[0] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[1] = new OrangeSpace("career", this.NUM_PLAYERS);
-        this.spaces[2] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[2] = new BuyHouseSpace("career", this.NUM_PLAYERS);
         this.spaces[3] = new OrangeSpace("career", this.NUM_PLAYERS);
-        this.spaces[4] = new OrangeSpace("career", this.NUM_PLAYERS);
+        this.spaces[4] = new BuyHouseSpace("career", this.NUM_PLAYERS);
         this.spaces[5] = new OrangeSpace("career", this.NUM_PLAYERS);
         this.spaces[6] = new GetMarriedSpace("career", this.NUM_PLAYERS);
         this.spaces[7] = new OrangeSpace("career", this.NUM_PLAYERS);
