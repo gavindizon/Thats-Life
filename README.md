@@ -1,5 +1,9 @@
 # THAT'S LIFE CCPROG 3 MP 
 
+## HOW TO COMPILE AND RUN 
+- Compile: <code> javac --module-path "PATH TO JAVAFX LIB FOLDER" -d "PATH TO out/production" *.java  </code>
+- Run: <code> java --module-path "PATH TO JAVAFX LIB FOLDER" -cp "PATH TO out/production" Main  </code>
+
 ## UPDATES 1.2 (Gubeen):
 ### What was done:
 - Fixed endgame logic error
