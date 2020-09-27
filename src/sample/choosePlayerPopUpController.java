@@ -1,10 +1,12 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import phase1.Player;
 
@@ -37,7 +39,7 @@ public class choosePlayerPopUpController {
     public void generateChoices(String[] choices){
         radios = new RadioButton[choices.length];
         RadioButton radio;
-
+        confirm.setDisable(true);
         if(choices[1] != null){
             for(int i = 0 ; i < 2; i++){
                 if(choices[i] != null){
@@ -47,14 +49,20 @@ public class choosePlayerPopUpController {
 
                     radioCont.getChildren().addAll(radio);
                     radios[i] = radio;
+                    radios[i].addEventHandler(MouseEvent.MOUSE_CLICKED, e->{
+                        confirm.setDisable(false);
+                    });
                 }
             }
 
         } else{
             Label label = new Label(choices[0]);
             radioCont.getChildren().add(label);
+            confirm.setDisable(false);
         }
     }
+
+
 
     public Label getTextLabel() {
         return textLabel;

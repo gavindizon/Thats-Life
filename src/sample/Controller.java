@@ -123,7 +123,7 @@ public class Controller implements Initializable {
         }
     }
     
-    private void updatePlayerDetails(){
+    public void updatePlayerDetails(){
         playerDescriptionController playerController;
         // update every player details
         for(int i = 0; i < game.getNumPlayers(); i++){

@@ -161,7 +161,7 @@ public class boardController {
             }
         } else if(currSpace instanceof MagentaSpace){
             MagentaSpace magentaSpace = (MagentaSpace) currSpace;
-            String choices[];
+            String[] choices;
             if(magentaSpace instanceof ChoiceSpace){
                 choices = ((ChoiceSpace) magentaSpace).getChoices(currPlayer, game.getDecks(currSpace));
                 if(magentaSpace instanceof CollegeCareerChoiceSpace){
@@ -172,6 +172,7 @@ public class boardController {
                         choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game);
                     } else {
                         choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game);
+
                     }
 
 
@@ -195,13 +196,16 @@ public class boardController {
 
     private void choosePath(Player p, AnchorPane rootPane, String[] choices,
                            MagentaSpace magentaSpace, Game game) throws IOException{
-        // TODO: pop up and return value to do action
         Popup popup = new Popup();
         try{
             choosePlayerPopUpController cpCont = initPopup(popup, rootPane);
             cpCont.getTextLabel().setText("Choose path for: " + p.getName());
-            System.out.println("xxx"+ choices[1]);
             cpCont.generateChoices(choices);
+//            if(cpCont.getRadios()!= null && !cpCont.getRadios()[0].isSelected() && !cpCont.getRadios()[1].isSelected()){
+//                cpCont.getConfirm().setDisable(true);
+//            } else{
+//                cpCont.getConfirm().setDisable(false);
+//            }
             cpCont.getConfirm().setOnAction(e->{
                 popup.hide();
                 RadioButton[] radio = cpCont.getRadios();
