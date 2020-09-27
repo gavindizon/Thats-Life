@@ -37,6 +37,7 @@ public class Controller implements Initializable {
     @FXML private Button payBtn;
     @FXML private Button loanBtn;
     @FXML private Button exitBtn;
+    @FXML private Button drawBtn;
 
     @FXML private FXMLLoader[] playerDesc;
 
@@ -70,6 +71,7 @@ public class Controller implements Initializable {
 //            playerController.getPlayerPane().setStyle("-fx-background-color:blue");
             updatePlayerCardColor();
             Player currPlayer = game.getPlayer(this.playerIndex);
+            Player temp = null;
 
             if(!currPlayer.getIsRetired()){
                 //PLAYER PAY LOAN BUTTON
@@ -111,9 +113,16 @@ public class Controller implements Initializable {
                 updatePlayerDetails();
 
             }
+            do{
+                turn++;
+                this.playerIndex = this.turn % game.getNumPlayers();
+                temp = (Player) game.getPlayer(this.playerIndex);
+            }while(temp.getIsRetired() && !game.gameOver());
 
-            turn++;
-            this.playerIndex = this.turn % game.getNumPlayers();
+            if(game.gameOver()){
+                drawBtn.setText("FINISH");
+                drawBtn.setStyle("-fx-background-color: #228B22; -fx-border-radius: 8px; -fx-text-fill: #FFF");
+            }
 
 
         }else{
