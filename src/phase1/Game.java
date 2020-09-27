@@ -19,7 +19,7 @@ public class Game {
     private Deck careerDeck;
     private Deck blueDeck;
     private Deck houseDeck;
-    private Space spaces[];
+    private Space[] spaces;
 
     /**
      * Implements a game object that has the number of players as a parameter. The
@@ -339,36 +339,6 @@ public class Game {
         return true;
     }
 
-    /**
-     * Force retire all players to end the game. Temporary method to end the game.
-     *
-     */
-    public void retireAll() { // to be removed after phase 1(?)
-        for (int i = 0; i < NUM_PLAYERS; i++) {
-            this.players[i].setToRetire(true, 1);
-        }
-    }
-
-    /**
-     * Displays the current cash of each player and career.
-     *
-     */
-    public void displayState() {
-        System.out.println("\nCurrent State: ");
-        for (int i = 0; i < NUM_PLAYERS; i++) {
-            System.out.println(this.players[i].getName() + " : $" + this.players[i].getCash() + " Career: "
-                    + this.players[i].getCareer());
-        }
-        System.out.println();
-        for (int i = 0; i < 100; i++) {
-            if (this.spaces[i].getPlayers().size() != 0) {
-                System.out.println(" Space " + (i + 1) + " Players: ");
-                for (int j = 0; j < this.spaces[i].getPlayers().size(); j++)
-                    System.out.println(this.spaces[i].getPlayers().get(j).getName());
-
-            }
-        }
-    }
 
     /**
      * Checks if the number of players are valid or not.

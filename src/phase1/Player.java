@@ -133,11 +133,7 @@ public class Player{
         return this.cash;
     }
 
-    /**
-     * Updates the cash of the player given a value.
-     * 
-     * @param cash the amount of cash added or subtracted to the total cash.
-     */
+
     public int getSpaceTracker() {
         return spaceTracker;
     }
@@ -150,11 +146,16 @@ public class Player{
         return drawnCard;
     }
 
+    /**
+     * Updates the cash of the player given a value.
+     *
+     * @param cash the amount of cash added or subtracted to the total cash.
+     */
     public void updateCash(double cash) {
         if (this.cash + cash >= 0)
             this.cash += cash;
         else {
-            if(this.isRetired == false){
+            if(!this.isRetired){
                 loanFromBank();
                 this.cash += 20000;
                 updateCash(cash);
@@ -216,9 +217,6 @@ public class Player{
         this.loan = loan;
     }
 
-    public void updateSalary(SalaryCard salary) {
-        this.salaryCard = salary;
-    }
 
     public void updateSpaceTracker() {
         this.spaceTracker++;
@@ -288,43 +286,7 @@ public class Player{
         this.cash = cash;
     }
 
-    /**
-     * Player draws a card from the action card deck and updates it changes based on
-     * the type of card. The player's total cash will be updated based on the type
-     * of card.
-     * 
-     * Type will either be 1 (collect from the bank), 2 (pay the bank), 3 (Collect
-     * from the player), or 4 (pay player).
-     * 
-     * @param deck         chosen deck of cards
-     * @param otherPlayers array of other players
-     */
-    /*
-     * public void drawCard(Deck deck, Player[] otherPlayers, Space space) {
-     * 
-     * // // Card d; // if (space instanceof OrangeSpace) { // // Action Card Action
-     * // // d = DrawFromActionDeck(); // // this.drawnCard = (ActionCard) d; // //
-     * actionCardEffect(otherPlayers);
-     * 
-     * // } else if (space instanceof MagentaSpace) { // // Magenta Space Action //
-     * // magentaAction();
-     * 
-     * // } else if (space instanceof BlueSpace) { // // Blue Action
-     * 
-     * // // blueAction(); similar to Orange // // this.salary = d; // //
-     * this.career = a;
-     * 
-     * // } else { // // Green - Pay Day or Pay Raise Action // // greenAction(); //
-     * }
-     * 
-     * /* Card c = deck.drawCard(); if (c instanceof ActionCard) { this.drawnCard =
-     * (ActionCard) c; actionCardEffect(otherPlayers); } else if (c instanceof
-     * BlueCard) {
-     * 
-     * } else if (c instanceof SalaryCard) {
-     * 
-     * } }
-     */
+
     // Career Deck & Salary Deck
     public void drawCard(Deck deck) {
         Card c = deck.drawCard();
@@ -340,43 +302,6 @@ public class Player{
         System.out.println(getHouse().getDescription());
     }
 
-
-
-    private void blueCardEffect(BlueCard c, Player[] otherPlayers) {
-        double cash;
-        if (c.careerMatches(this.career.getCareerName())) { // if same career in the card
-            cash = 15000.00;
-            updateCash(cash);
-        }
-        /*
-         * Pwede ata to inheritance per career switch(c.getDescription()){ Player p =
-         * c.othersMatched(otherPlayers); case "Lawsuit": if(p != null){
-         * p.updateCash(500); // to be changed sa value daw ng card updateCash(-500); }
-         * else{ updateCash(-500); // pays the bank pero change pa rin to value ng card
-         * } break; case "Salary Tax Due": if(p != null){ p.updateCash(500); // to be
-         * changed sa value tax due of current player updateCash(-500); } else{
-         * updateCash(-500); // pays the bank pero to be changed sa value tax due of
-         * current player } break; case "Tip the Server": // cash = Math.random() if(p
-         * != null){ p.updateCash(500); // to be changed sa random number x 1000
-         * updateCash(-500); } else{ updateCash(-500); // pays the bank pero to be
-         * changed sa random number x 1000 } }
-         */
-    }
-
-    /**
-     * Checks if the user input is valid. The user input will only be valid if it
-     * contains at least one alphanumeric character and if the String doesn't
-     * contain all whitespaces.
-     * 
-     * @param name name entered by the player.
-     * @return true if name is valid; false otherwise
-     */
-
-    private boolean nameValid(String name) {
-        boolean checkWhiteSpaceOnly = name.trim().isEmpty();
-        boolean checkAlphaNumeric = name != null && name.matches("^[a-zA-Z0-9]*$");
-        return !checkWhiteSpaceOnly && checkAlphaNumeric;
-    }
 
     /**
      * Compares two player objects and returns true if their name and amount of cash

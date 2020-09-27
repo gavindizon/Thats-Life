@@ -45,6 +45,12 @@ public class CareerCard extends Card {
         this.careerName = careerName;
     }
 
+
+    /**
+     * Returns true if the career requires a degree, false if not.
+     *
+     * @return true if the career requires a degree, false if not.
+     */
     public boolean isDegreeRequired() {
         return degreeRequired;
     }
@@ -58,15 +64,6 @@ public class CareerCard extends Card {
         return this.MAX_PAY_RAISE;
     }
 
-    /**
-     * Returns true if the career requires a degree, false if not.
-     * 
-     * @return true if the career requires a degree, false if not.
-     */
-
-    public boolean getDegreeRequired() {
-        return this.degreeRequired;
-    }
 
     public void activate() {
         System.out.println();

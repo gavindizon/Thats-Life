@@ -10,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import phase1.Player;
 
-public class choosePlayerPopUpController {
+public class ChoicePopupController {
     @FXML private HBox radioCont;
     @FXML private Button confirm;
     @FXML private RadioButton[] radios;

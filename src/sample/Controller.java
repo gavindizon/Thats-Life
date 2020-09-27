@@ -2,14 +2,12 @@ package sample;
 //import javafx.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -40,7 +38,7 @@ public class Controller implements Initializable {
     @FXML private Button loanBtn;
     @FXML private Button exitBtn;
 
-    public FXMLLoader[] playerDesc;
+    @FXML private FXMLLoader[] playerDesc;
 
     @FXML private boardController boardController;
     @FXML private Label txtUpdates;
@@ -174,7 +172,7 @@ public class Controller implements Initializable {
                 ((NormalAction) blueCard).activate(currPlayer, game.getPlayers());
             }
         }
-
+        updatePlayerDetails();
     }
 
     private void generateRandomNum(BlueCard blueCard, Player currPlayer) throws IOException {
@@ -197,6 +195,7 @@ public class Controller implements Initializable {
             randomGenPopup.getDoneButt().setOnAction(event->{
                 int randomNum = Integer.parseInt(randomGenPopup.getSpinButt().getText());
                 ((RandomAction)blueCard).activate(currPlayer, game.getPlayers(), randomNum);
+                updatePlayerDetails();
                 popup.hide();
             });
 //            popup.hide();
@@ -212,7 +211,7 @@ public class Controller implements Initializable {
     private void choosePlayers(ActionCard drawnCard, Player currPlayer) throws IOException {
         String playerName = "";
         Popup popup = new Popup();
-        choosePlayerPopUpController cpCont = initPopup(popup);
+        ChoicePopupController cpCont = initPopup(popup);
         cpCont.getTextLabel().setText("Choose Player: ");
         cpCont.generateChoices(game.getPlayers(), currPlayer);
 
@@ -244,11 +243,6 @@ public class Controller implements Initializable {
         }
     }
 
-
-
-    private String getChosenPlayerName(){
-        return this.chosenPlayerName;
-    }
 
     private void setName(String s){
         this.chosenPlayerName = s;
@@ -288,7 +282,7 @@ public class Controller implements Initializable {
         System.out.println(p.getName());
 
         Popup popup = new Popup();
-        choosePlayerPopUpController cpCont = initPopup(popup);
+        ChoicePopupController cpCont = initPopup(popup);
 
         cpCont.getTextLabel().setText("Choose path for: " + p.getName());
         cpCont.generateChoices(choices);
@@ -346,12 +340,12 @@ public class Controller implements Initializable {
         return rootPane;
     }
 
-    private choosePlayerPopUpController initPopup(Popup popup) throws IOException {
+    private ChoicePopupController initPopup(Popup popup) throws IOException {
         try{
-            FXMLLoader popChoose = new FXMLLoader(getClass().getResource("choosePlayerPopUp.fxml"));
+            FXMLLoader popChoose = new FXMLLoader(getClass().getResource("choicePopup.fxml"));
             Parent root = (Parent) popChoose.load();
             popup.getContent().add(root);
-            choosePlayerPopUpController cpCont = (choosePlayerPopUpController) popChoose.<choosePlayerPopUpController>getController();
+            ChoicePopupController cpCont = (ChoicePopupController) popChoose.<ChoicePopupController>getController();
             Stage stage = (Stage) rootPane.getScene().getWindow();
             popup.show(stage);
             return cpCont;

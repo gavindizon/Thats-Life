@@ -50,25 +50,4 @@ public abstract class Space {
     public abstract void doAction(Player p, Player[] others, ArrayList<Deck> decks);
 
 
-      public String identifySpace() {
-          if (this instanceof OrangeSpace) return "Orange";
-          else if (this instanceof MagentaSpace){
-              if(this instanceof GraduationSpace)
-                  return "Graduation Space";
-              else if(this instanceof CollegeCareerChoiceSpace)
-                  return "College Career Choice Space";
-              else if(this instanceof GetMarriedSpace)
-                  return "Get Married Space";
-              else if(this instanceof WhichPathSpace)
-                  return "Junction";
-              else
-                  return "Magenta";
-
-          }
-          else if (this instanceof BlueSpace) return "Blue";
-          else return "Green";
-
-      }
-
-
 }

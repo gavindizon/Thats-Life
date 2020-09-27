@@ -1,7 +1,6 @@
 package sample;
 
 
-import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -168,44 +167,42 @@ public class boardController {
                     String[] choice1 = Arrays.copyOfRange(choices, 0, 2);
                     String[] choice2 = Arrays.copyOfRange(choices, 2, 4);
                     if (!choices[0].equalsIgnoreCase("No careers available")){
-                        choosePath(currPlayer, gameControl.getRootPane(), choice2, magentaSpace, game);
-                        choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game);
+                        choosePath(currPlayer, gameControl.getRootPane(), choice2, magentaSpace, game, gameControl);
+                        choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game, gameControl);
                     } else {
-                        choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game);
+                        choosePath(currPlayer, gameControl.getRootPane(), choice1, magentaSpace, game, gameControl);
 
                     }
 
 
                 }else if(magentaSpace instanceof BuyHouseSpace){
                     if(currPlayer.getHouse() == null)
-                        chooseHouse(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game);
+                        chooseHouse(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game, gameControl);
 
                 }else{
-                    choosePath(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game);
+                    choosePath(currPlayer, gameControl.getRootPane(), choices, magentaSpace, game, gameControl);
 
                 }
 
             } else{
                 ((NoChoiceSpace) magentaSpace).doMagentaAction(currPlayer, game.getPlayers(), game.getDecks(magentaSpace));
+                gameControl.updatePlayerDetails();
             }
         } else {
             currSpace.doAction(currPlayer, game.getPlayers(), game.getDecks(currSpace));
+            gameControl.updatePlayerDetails();
         }
     }
 
 
     private void choosePath(Player p, AnchorPane rootPane, String[] choices,
-                           MagentaSpace magentaSpace, Game game) throws IOException{
+                           MagentaSpace magentaSpace, Game game, Controller gameControl) throws IOException{
         Popup popup = new Popup();
         try{
-            choosePlayerPopUpController cpCont = initPopup(popup, rootPane);
+            ChoicePopupController cpCont = initPopup(popup, rootPane);
             cpCont.getTextLabel().setText("Choose path for: " + p.getName());
             cpCont.generateChoices(choices);
-//            if(cpCont.getRadios()!= null && !cpCont.getRadios()[0].isSelected() && !cpCont.getRadios()[1].isSelected()){
-//                cpCont.getConfirm().setDisable(true);
-//            } else{
-//                cpCont.getConfirm().setDisable(false);
-//            }
+
             cpCont.getConfirm().setOnAction(e->{
                 popup.hide();
                 RadioButton[] radio = cpCont.getRadios();
@@ -213,11 +210,12 @@ public class boardController {
                     for(int i = 0; i < radio.length; i++){
                         if(radio[i].isSelected() && !radio[i].getText().equalsIgnoreCase("No careers available")){
                             ((ChoiceSpace) magentaSpace).doMagentaAction(p, game.getDecks(magentaSpace), i + 1);
+                            gameControl.updatePlayerDetails();
                             if(magentaSpace instanceof JobSearchSpace){
                                 if (i == 1 && choices[0].equalsIgnoreCase("Retain job")){
                                     String[] choice1 = new String[]{choices[2], choices[3]};
                                     try{
-                                        choosePath(p, rootPane, choice1, magentaSpace, game);
+                                        choosePath(p, rootPane, choice1, magentaSpace, game, gameControl);
                                     }catch (Exception m){
                                         System.out.println("x");
                                     }
@@ -240,7 +238,7 @@ public class boardController {
 
 
     private void chooseHouse(Player p, AnchorPane rootPane, String[] choices,
-                            MagentaSpace magentaSpace, Game game) throws IOException {
+                            MagentaSpace magentaSpace, Game game, Controller gameControl) throws IOException {
         // TODO: pop up and return value to do action
         Popup popup = new Popup();
         FXMLLoader popChoose = new FXMLLoader(getClass().getResource("chooseHouse.fxml"));
@@ -258,17 +256,18 @@ public class boardController {
             RadioButton selectedRadioButton = (RadioButton) chCont.getChoicePicker().getSelectedToggle();
 
             ((ChoiceSpace) magentaSpace).doMagentaAction(p, game.getDecks(magentaSpace), (int) selectedRadioButton.getUserData());
+            gameControl.updatePlayerDetails();
         });
 
     }
 
 
-    private choosePlayerPopUpController initPopup(Popup popup, AnchorPane rootPane) throws IOException{
+    private ChoicePopupController initPopup(Popup popup, AnchorPane rootPane) throws IOException{
         try{
-            FXMLLoader popChoose = new FXMLLoader(getClass().getResource("choosePlayerPopUp.fxml"));
+            FXMLLoader popChoose = new FXMLLoader(getClass().getResource("choicePopup.fxml"));
             Parent root = (Parent) popChoose.load();
             popup.getContent().add(root);
-            choosePlayerPopUpController cpCont = (choosePlayerPopUpController) popChoose.<choosePlayerPopUpController>getController();
+            ChoicePopupController cpCont = (ChoicePopupController) popChoose.<ChoicePopupController>getController();
             Stage stage = (Stage) rootPane.getScene().getWindow();
             popup.show(stage);
             return cpCont;
