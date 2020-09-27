@@ -10,7 +10,7 @@ import phase1.Player;
 
 import java.util.ArrayList;
 
-public class endGameController {
+public class EndGameController {
 
     @FXML
     VBox vbox;

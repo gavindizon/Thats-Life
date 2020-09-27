@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <?import java.util.ArrayList?>
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.boardController">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BoardController">
    <children>
        <TextFlow layoutX="320.0" layoutY="398.0" prefHeight="92.0" prefWidth="120.0" style="-fx-background-color: DODGERBLUE; -fx-background-radius: 8px;">
            <children>

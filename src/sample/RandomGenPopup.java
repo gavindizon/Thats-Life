@@ -10,10 +10,6 @@ public class RandomGenPopup {
     @FXML private Button spinButt;
     @FXML private Button doneButt;
 
-    public int generateNum(){
-        int number = Game.spinWheel();
-        return number;
-    }
 
     public Button getSpinButt() {
         return spinButt;

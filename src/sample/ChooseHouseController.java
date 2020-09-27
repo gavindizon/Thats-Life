@@ -9,7 +9,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import phase1.Player;
 
-public class chooseHouseController {
+public class ChooseHouseController {
 
     @FXML
     private Button confirm;
@@ -21,7 +21,7 @@ public class chooseHouseController {
     @FXML
     Label textHeading;
 
-    public chooseHouseController(){
+    public ChooseHouseController(){
     }
 
 

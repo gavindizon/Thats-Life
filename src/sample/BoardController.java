@@ -14,7 +14,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import phase1.Cards.BlueCard.RandomAction;
 import phase1.Game;
 import phase1.Player;
 import phase1.Spaces.*;
@@ -23,13 +22,12 @@ import phase1.Spaces.GreenSpace.PayDaySpace;
 import phase1.Spaces.GreenSpace.PayRaiseSpace;
 import phase1.Spaces.MagentaSpace.*;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 
-public class boardController {
+public class BoardController {
 
     @FXML
     List<VBox> spacesView;
@@ -253,7 +251,7 @@ public class boardController {
         FXMLLoader popChoose = new FXMLLoader(getClass().getResource("chooseHouse.fxml"));
         Parent root = (Parent) popChoose.load();
         popup.getContent().add(root);
-        chooseHouseController chCont = (chooseHouseController) popChoose.<chooseHouseController>getController();
+        ChooseHouseController chCont = (ChooseHouseController) popChoose.<ChooseHouseController>getController();
         gameControl.getGameScreen().getChildren().add(gameControl.getOverlay());
         chCont.setPlayerText(p);
         chCont.setChoice(choices);
@@ -276,7 +274,7 @@ public class boardController {
 
     private void generateRandom(Player p,
                              MagentaSpace magentaSpace, Game game, Controller gameControl) throws IOException {
-        Popup popup = new Popup();
+            Popup popup = new Popup();
 
             FXMLLoader random = new FXMLLoader(getClass().getResource("randomGenPopup.fxml"));
             Parent root = (Parent) random.load();
@@ -285,10 +283,13 @@ public class boardController {
             popup.show(stage);
             gameControl.getGameScreen().getChildren().add(gameControl.getOverlay());
             RandomGenPopup randomGenPopup = (RandomGenPopup) random.<RandomGenPopup>getController();
+            randomGenPopup.getDoneButt().setDisable(true);
 
             randomGenPopup.getSpinButt().setOnAction(event -> {
                 randomGenPopup.getSpinButt().setText(Integer.toString(Game.spinWheel()));
                 randomGenPopup.getSpinButt().setDisable(true);
+                randomGenPopup.getDoneButt().setDisable(false);
+
             });
 
             randomGenPopup.getDoneButt().setOnAction(event -> {

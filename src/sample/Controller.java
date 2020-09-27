@@ -42,7 +42,7 @@ public class Controller implements Initializable {
 
     @FXML private FXMLLoader[] playerDesc;
 
-    @FXML private boardController boardController;
+    @FXML private BoardController boardController;
     @FXML private Label txtUpdates;
     @FXML private AnchorPane ap;
 
@@ -74,7 +74,7 @@ public class Controller implements Initializable {
     public void gameState(ActionEvent e) throws IOException {
 
         if(!game.gameOver()){
-            playerDescriptionController playerController = (playerDescriptionController) playerDesc[this.playerIndex].<playerDescriptionController>getController();
+            PlayerDescriptionController playerController = (PlayerDescriptionController) playerDesc[this.playerIndex].<PlayerDescriptionController>getController();
 //            playerController.getPlayerPane().setStyle("-fx-background-color:blue");
             updatePlayerCardColor();
             Player currPlayer = game.getPlayer(this.playerIndex);
@@ -86,7 +86,7 @@ public class Controller implements Initializable {
 //                    System.out.println(currPlayer.getName()+ " Player has loan");
                     payBtn.setDisable(false);
 
-                    playerDescriptionController finalPlayerController = playerController;
+                    PlayerDescriptionController finalPlayerController = playerController;
                     payBtn.setOnAction(ex->{
                         currPlayer.payLoan();
                         finalPlayerController.setPlayerDetails(currPlayer);
@@ -110,7 +110,7 @@ public class Controller implements Initializable {
                 card = renderCard();
 
                 try{
-                    cardContainerController cardControl = (cardContainerController) card.<cardContainerController>getController();
+                    CardContainerController cardControl = (CardContainerController) card.<CardContainerController>getController();
                     cardControl.setCard(currPlayer.getDrawnCard(), game.getSpaces()[currPlayer.getSpaceTracker()]);
 //                    System.out.println(currPlayer.getDrawnCard().getDescription());
                 } catch (Exception ex){
@@ -138,10 +138,10 @@ public class Controller implements Initializable {
     }
     
     public void updatePlayerDetails(){
-        playerDescriptionController playerController;
+        PlayerDescriptionController playerController;
         // update every player details
         for(int i = 0; i < game.getNumPlayers(); i++){
-            playerController = (playerDescriptionController) playerDesc[i].<playerDescriptionController>getController();
+            playerController = (PlayerDescriptionController) playerDesc[i].<PlayerDescriptionController>getController();
             playerController.setPlayerDetails(game.getPlayer(i));
 //            System.out.println(game.getPlayer(i).toString());
         }
@@ -156,10 +156,10 @@ public class Controller implements Initializable {
     }
 
     private void updatePlayerCardColor(){
-        playerDescriptionController playerController;
+        PlayerDescriptionController playerController;
         // update every player details
         for(int i = 0; i < game.getNumPlayers(); i++){
-            playerController = (playerDescriptionController) playerDesc[i].<playerDescriptionController>getController();
+            playerController = (PlayerDescriptionController) playerDesc[i].<PlayerDescriptionController>getController();
 
             if(i == this.playerIndex){
                 playerController.getPlayerPane().setStyle("-fx-background-color:blue; -fx-border-color: #FFF; -fx-border-width: 2;");
@@ -209,10 +209,12 @@ public class Controller implements Initializable {
             popup.show(stage);
             gameScreen.getChildren().add(overlay);
             RandomGenPopup randomGenPopup = (RandomGenPopup) random.<RandomGenPopup>getController();
-
+            randomGenPopup.getDoneButt().setDisable(true);
             randomGenPopup.getSpinButt().setOnAction(event->{
                 randomGenPopup.getSpinButt().setText(Integer.toString(Game.spinWheel()));
                 randomGenPopup.getSpinButt().setDisable(true);
+                randomGenPopup.getDoneButt().setDisable(false);
+
             });
 
             randomGenPopup.getDoneButt().setOnAction(event->{
@@ -348,7 +350,7 @@ public class Controller implements Initializable {
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
-                playerDescriptionController playerController = (playerDescriptionController) playerDesc[i].<playerDescriptionController>getController();
+                PlayerDescriptionController playerController = (PlayerDescriptionController) playerDesc[i].<PlayerDescriptionController>getController();
                 playerController.setPlayerDetails(game.getPlayer(i));
             }
 
@@ -398,7 +400,7 @@ public class Controller implements Initializable {
         Parent root = (Parent) exit.load();
         popup.getContent().add(root);
         popup.show(stage);
-        exitConfirmController exc = (exitConfirmController) exit.<exitConfirmController>getController();
+        ExitConfirmController exc = (ExitConfirmController) exit.<ExitConfirmController>getController();
 
         exc.getYes().setOnAction(yesBtn ->{
             popup.hide();
@@ -442,7 +444,7 @@ public class Controller implements Initializable {
             Stage stage = (Stage) rootPane.getScene().getWindow();
             popup.show(stage);
 
-            endGameController egc = (endGameController) random.<endGameController>getController();
+            EndGameController egc = (EndGameController) random.<EndGameController>getController();
             egc.listResult(game.getPlayers());
             egc.endBtn.setOnAction(e ->{
                 gameScreen.getChildren().remove(overlay);

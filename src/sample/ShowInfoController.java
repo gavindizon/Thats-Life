@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import phase1.Player;
 
-public class showInfoController {
+public class ShowInfoController {
 
     @FXML
     private Label sm_playername;

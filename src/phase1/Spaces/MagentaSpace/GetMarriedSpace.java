@@ -24,15 +24,15 @@ public class GetMarriedSpace extends MagentaSpace implements ActionSpace {
             if (isEven()) {
                 System.out.println("Number generated is even");
                 for (Player player : others) {
-                    if (!p.equals(player) == true && !player.getIsRetired()) {
+                    if (!p.equals(player) && !player.getIsRetired()) {
                         player.updateCash(-10000);
                         p.updateCash(10000);
                     }
                 }
             } else {
-                System.out.println("Number generated is even");
+                System.out.println("Number generated is odd");
                 for (Player player : others) {
-                    if (!p.equals(player) == true && !player.getIsRetired()) {
+                    if (!p.equals(player) && !player.getIsRetired()) {
                         player.updateCash(-5000);
                         p.updateCash(5000);
                     }

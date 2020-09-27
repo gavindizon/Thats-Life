@@ -9,7 +9,7 @@ import phase1.Spaces.*;
 import phase1.Spaces.GreenSpace.GreenSpace;
 import phase1.Spaces.MagentaSpace.MagentaSpace;
 
-public class cardContainerController {
+public class CardContainerController {
     @FXML Label cardTitle;
     @FXML Label cardType;
     @FXML Label cardDescription;

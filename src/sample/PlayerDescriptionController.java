@@ -1,7 +1,5 @@
 package sample;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,12 +12,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import phase1.*;
-import phase1.Cards.*;
 
 
-public class playerDescriptionController {
-//    private  Model model = new Model("Tyrone", 9000);
-//    private Player p = new Player("Tyrone");
+public class PlayerDescriptionController {
 
     @FXML private Label name;
     @FXML private Label cash;
@@ -85,7 +80,7 @@ public class playerDescriptionController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        showInfoController showInfoCont = (showInfoController) sm.<showInfoController>getController();
+        ShowInfoController showInfoCont = (ShowInfoController) sm.<ShowInfoController>getController();
 
         popup.getContent().add(root);
         Stage stage = (Stage) playerPane.getScene().getWindow();
