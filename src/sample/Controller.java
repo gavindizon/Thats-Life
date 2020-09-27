@@ -202,7 +202,6 @@ public class Controller implements Initializable {
     private void generateRandomNum(BlueCard blueCard, Player currPlayer) throws IOException {
         Popup popup = new Popup();
         try{
-
             FXMLLoader random = new FXMLLoader(getClass().getResource("randomGenPopup.fxml"));
             Parent root = (Parent) random.load();
             popup.getContent().add(root);

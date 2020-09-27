@@ -6,6 +6,8 @@ import phase1.Deck;
 import phase1.Spaces.ActionSpace;
 
 public class GetMarriedSpace extends MagentaSpace implements ActionSpace {
+    private int number;
+
     public GetMarriedSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
         this.actionDescription = "Just Got Married";
@@ -37,8 +39,12 @@ public class GetMarriedSpace extends MagentaSpace implements ActionSpace {
         }
     }
 
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
     private boolean isEven() {
-        if ((int) (Math.random() * (9 - 1 + 1) + 1) % 2 == 0)
+        if (this.number % 2 == 0)
             return true;
         else
             return false;

@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import phase1.Cards.BlueCard.RandomAction;
 import phase1.Game;
 import phase1.Player;
 import phase1.Spaces.*;
@@ -185,7 +186,11 @@ public class boardController {
 
                 }
 
-            } else{
+            }else if(magentaSpace instanceof GetMarriedSpace) {
+                generateRandom(currPlayer, magentaSpace, game, gameControl);
+
+                gameControl.updatePlayerDetails();
+            }else{
                 ((ActionSpace) magentaSpace).doAction(currPlayer, game.getPlayers(), game.getDecks(magentaSpace));
                 gameControl.updatePlayerDetails();
             }
@@ -270,6 +275,33 @@ public class boardController {
     }
 
 
+    private void generateRandom(Player p,
+                             MagentaSpace magentaSpace, Game game, Controller gameControl) throws IOException {
+        Popup popup = new Popup();
+        
+            FXMLLoader random = new FXMLLoader(getClass().getResource("randomGenPopup.fxml"));
+            Parent root = (Parent) random.load();
+            popup.getContent().add(root);
+            Stage stage = (Stage) gameControl.getGameScreen().getScene().getWindow();
+            popup.show(stage);
+            gameControl.getGameScreen().getChildren().add(gameControl.getOverlay());
+            RandomGenPopup randomGenPopup = (RandomGenPopup) random.<RandomGenPopup>getController();
+
+            randomGenPopup.getSpinButt().setOnAction(event -> {
+                randomGenPopup.getSpinButt().setText(Integer.toString(Game.spinWheel()));
+                randomGenPopup.getSpinButt().setDisable(true);
+            });
+
+            randomGenPopup.getDoneButt().setOnAction(event -> {
+                int randomNum = Integer.parseInt(randomGenPopup.getSpinButt().getText());
+                GetMarriedSpace gms = (GetMarriedSpace) magentaSpace;
+                gms.setNumber(randomNum);
+                gms.doAction(p, game.getPlayers(), game.getDecks(magentaSpace));
+                popup.hide();
+                gameControl.getGameScreen().getChildren().remove(gameControl.getOverlay());
+            });
+
+    }
     private ChoicePopupController initPopup(Popup popup, AnchorPane rootPane, Controller gameControl) throws IOException{
         try{
             FXMLLoader popChoose = new FXMLLoader(getClass().getResource("choicePopup.fxml"));
