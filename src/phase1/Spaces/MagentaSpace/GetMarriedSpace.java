@@ -17,26 +17,29 @@ public class GetMarriedSpace extends MagentaSpace implements ActionSpace {
 
     @Override
     public void doAction(Player p, Player[] others, ArrayList<Deck> decks) {
-        System.out.println("I just got Married");
-        p.setMarried(true);
+        if(!p.isMarried()){
+            System.out.println("I just got Married");
+            p.setMarried(true);
 
-        if (isEven()) {
-            System.out.println("Number generated is even");
-            for (Player player : others) {
-                if (!p.equals(player) == true && !player.getIsRetired()) {
-                    player.updateCash(-10000);
-                    p.updateCash(10000);
+            if (isEven()) {
+                System.out.println("Number generated is even");
+                for (Player player : others) {
+                    if (!p.equals(player) == true && !player.getIsRetired()) {
+                        player.updateCash(-10000);
+                        p.updateCash(10000);
+                    }
                 }
-            }
-        } else {
-            System.out.println("Number generated is even");
-            for (Player player : others) {
-                if (!p.equals(player) == true && !player.getIsRetired()) {
-                    player.updateCash(-5000);
-                    p.updateCash(5000);
+            } else {
+                System.out.println("Number generated is even");
+                for (Player player : others) {
+                    if (!p.equals(player) == true && !player.getIsRetired()) {
+                        player.updateCash(-5000);
+                        p.updateCash(5000);
+                    }
                 }
             }
         }
+
     }
 
     public void setNumber(int number) {
