@@ -267,6 +267,8 @@ public class Controller implements Initializable {
             });
         } else{
             popup.hide();
+            gameScreen.getChildren().remove(overlay);
+
         }
     }
 
