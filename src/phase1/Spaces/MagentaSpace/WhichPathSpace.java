@@ -4,8 +4,19 @@ import java.util.ArrayList;
 
 import phase1.Player;
 import phase1.Deck;
+/**
+ * implements a WhichPathSpace that inherits MagentaSpace and implements
+ * ChoiceSpace interface
+ */
 
 public class WhichPathSpace extends MagentaSpace implements ChoiceSpace{
+
+    /**
+     * Initializes the path and max num of players based from the inherited constructor
+     * assigns the action description and long description
+     * @param path
+     * @param noOfPlayers
+     */
 
     public WhichPathSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
@@ -14,6 +25,12 @@ public class WhichPathSpace extends MagentaSpace implements ChoiceSpace{
 
     }
 
+    /**
+     * Teleports player to a certain space depending on the choice
+     * @param p current player
+     * @param decks ArrayList of Decks in a Magenta Space
+     * @param choice choice of player
+     */
     @Override
     public void doMagentaAction(Player p, ArrayList<Deck> decks, int choice){
         if(p.getSpaceTracker() == 38){
@@ -32,7 +49,13 @@ public class WhichPathSpace extends MagentaSpace implements ChoiceSpace{
 
 //        System.out.println("choice");
     }
-
+    /**
+     * Gets the array of string of choices to be shown to the user
+     *
+     * @param p current player
+     * @param decks used in Magenta Spaces
+     * @return String of choices available
+     */
     @Override
     public String[] getChoices(Player p, ArrayList<Deck> decks){
         String[] s = new String[2];

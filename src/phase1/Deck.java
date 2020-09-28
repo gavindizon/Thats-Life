@@ -7,7 +7,7 @@ import phase1.Cards.ActionCard.*;
 import phase1.Cards.BlueCard.*;
 
 /**
- * implements a Deck object that has a color, an arrayList of the action Card,
+ * implements a Deck object that has the type, an arrayList of the Card,
  * the current number of cards left and its maximum card per deck
  */
 
@@ -21,7 +21,7 @@ public class Deck {
      * generates a Deck given the type and the max number of cards in it
      * 
      * @param type type of the card object which may either be <i>salary</i>,
-     *             <i>career</i>, <i>action</i>, and <i>blue</i>
+     *             <i>career</i>, <i>action</i>, <i>blue</i>, and <i>house</i>
      * @param max  max number of cards in a deck
      */
 
@@ -34,6 +34,11 @@ public class Deck {
         shuffleDeck();
     }
 
+    /**
+     * generates a deck given the attribute type. Calls certain type of generation since each type has a different
+     * way of generating it.
+     *
+     */
     private void generator() {
         switch (this.type) {
             case "Action":
@@ -60,7 +65,6 @@ public class Deck {
      * Player) of the total number (<b>max</b>) of cards specified.
      * 
      */
-
     private void generateActionDeck() {
         int fortyPercent = (int) (this.MAX * 0.4);
         int tenPercent = (int) (this.MAX * 0.1);
@@ -98,6 +102,10 @@ public class Deck {
 
     }
 
+    /**
+     * generates the specified career all having a random max pay raise that depends on the range
+     * with it's name and whether it requires a degree.
+     */
     private void generateCareerDeck() {
 
         this.cards.add(new CareerCard("Lawyer", rangeDomizer(5, 8), true));// pay raise [5, 8]
@@ -109,6 +117,11 @@ public class Deck {
         this.cards.add(new CareerCard("Athlete", rangeDomizer(1, 6), false));// pay raise [1, 6]
     }
 
+    /**
+     * generates a deck of 10 salary cards having a random salary which has a multiplier of 10000
+     * and tax which has a multiplier of 1000
+     *
+     */
     private void generateSalaryDeck() {
         int salaryNum = 10;
         for (int i = 0; i < salaryNum; i++) {
@@ -119,6 +132,16 @@ public class Deck {
         }
     }
 
+    /**
+     * generates a random number given its range (inclusive of min and max)
+     *
+     * @param min minimum number
+     *
+     * @param max maximum number
+     *
+     * @return int value generated
+     */
+
     private int rangeDomizer(int min, int max){
         max++;
         int value = (int)  (Math.random() * (max - min + 1) + min);
@@ -126,6 +149,9 @@ public class Deck {
         return value;
     }
 
+    /**
+     * generates the deck of blue cards with the corresponding description, career, and amount(for the lawsuit)
+     */
     private void generateBlueDeck() {
         this.cards.add(new Lawsuit("Lawsuit", "Lawyer", 10000 * ((int) (Math.random() * (15 - 5 + 1)) + 5)));
         this.cards.add(new SalaryTaxDue("Salary Tax Due", "Accountant"));
@@ -136,6 +162,10 @@ public class Deck {
         this.cards.add(new WorldCup("World Cup", "Athlete"));
     }
 
+
+    /**
+     * generates the deck of house cards which consists of 5 cards having a description and value
+     */
     private void generateHouseDeck() {
         this.cards.add(new HouseCard("The Bungalow", 45000));
         this.cards.add(new HouseCard("Small Cottage", 30000));
@@ -175,6 +205,11 @@ public class Deck {
         return text;
     }
 
+    /**
+     * Returns the list of cards
+     *
+     * @return an ArrayList of Cards in the deck
+     */
     public ArrayList<Card> getCards() {
         return cards;
     }
@@ -184,7 +219,7 @@ public class Deck {
      * 
      * returns the action card drawn
      * 
-     * @return ActionCard
+     * @return Card
      */
 
     public Card drawCard() {
@@ -193,7 +228,13 @@ public class Deck {
         this.numCards--;
         return a;
     }
-
+    /**
+     * gets the card based from the index from the deck which also decrements the current number of cards
+     *
+     * returns the card drawn
+     *
+     * @return Card
+     */
     public Card drawCard(int index){
         checkDeck();
         Card a = this.cards.remove(index);
@@ -203,6 +244,11 @@ public class Deck {
 
     }
 
+    /**
+     * Adds the card back to the deck
+     *
+     * @param a Card to be returned
+     */
     public void addCardBack(Card a) {
         cards.add(a);
         this.numCards++;

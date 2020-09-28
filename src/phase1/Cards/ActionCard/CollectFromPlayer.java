@@ -2,12 +2,27 @@ package phase1.Cards.ActionCard;
 
 import phase1.Player;
 
+/**
+ * implements a CollectFromPlayer that inherits the ActionCard
+ */
 public class CollectFromPlayer extends ActionCard {
-
+    /**
+     * access the super class constructor(from ActionCard)
+     * @param description description of the card
+     *
+     * @param toAll a boolean value whether the effect of the card is to all or not
+     */
     public CollectFromPlayer(String description, boolean toAll) {
         super(description, toAll);
     }
 
+    /**
+     * Collects from a certain player player if the toAll attribute is false and collects from
+     * all non retired players if true.
+     *
+     * @param players Array of players in the game
+     * @param currPlayerIndex current index of the player
+     */
     @Override
     public void activate(Player[] players, int currPlayerIndex) {
         System.out.println("activated collect from player");
