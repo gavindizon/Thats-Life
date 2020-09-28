@@ -65,9 +65,6 @@ public class CareerCard extends Card {
     }
 
 
-    public void activate() {
-        System.out.println();
-    }
 
     /**
      * Gets the index of the first instance of a nodegree card in a deck
