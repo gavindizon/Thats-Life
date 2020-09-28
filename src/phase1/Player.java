@@ -185,9 +185,11 @@ public class Player{
         if (decision == 1) {
             this.setLoan(2);
             this.career.setCareerName("Student");
+            this.salaryCard = null;
             this.teleportToSpace(12);
+
         } else {
-            this.salaryCard = (SalaryCard) salary.drawCard();
+            this.salaryCard = (SalaryCard) salary.drawCard(salary.getCards().size() - 1);
             for(int i = career.getCards().size() - 1; i >= 0 && !gotCareer; i--){
                 CareerCard c = (CareerCard) career.getCards().get(i);
                 if(!c.isDegreeRequired()){

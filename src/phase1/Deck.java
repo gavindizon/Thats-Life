@@ -165,11 +165,13 @@ public class Deck {
     public String showCards() {
         System.out.println("Showing Produced  and Shuffled Cards: ");
         String text = "";
-        for (int i = 0; i < this.numCards; i++) {
+        for (int i = 0; i < this.cards.size(); i++) {
             if (this.cards.get(i) instanceof ActionCard) {
                 text += ((ActionCard) this.cards.get(i)).getDescription() + "\n";
             } else if (this.cards.get(i) instanceof CareerCard) {
                 text += ((CareerCard) this.cards.get(i)).getCareerName() + "\n";
+            } else if(this.cards.get(i) instanceof SalaryCard){
+                text += (((SalaryCard) this.cards.get(i)).getSalary()+"\n");
             }
         }
         return text;
@@ -198,13 +200,14 @@ public class Deck {
         checkDeck();
         Card a = this.cards.remove(index);
         this.numCards--;
-        shuffleDeck();
         return a;
 
     }
 
+
     public void addCardBack(Card a) {
-        cards.add(a);
+        cards.add(0, a);
+        shuffleDeck();
         this.numCards++;
     }
 

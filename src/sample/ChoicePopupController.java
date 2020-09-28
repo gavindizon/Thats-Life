@@ -21,6 +21,7 @@ public class ChoicePopupController {
         radios = new RadioButton[players.length - 1];
         RadioButton radio;
         int i = 0;
+        confirm.setDisable(true);
         System.out.println("PLAYER LENGTH: " + players.length);
         for(Player p : players){
             if (!p.equals(currPlayer) && !p.getIsRetired()) {
@@ -31,6 +32,9 @@ public class ChoicePopupController {
 //                radio.setLayoutX(i * 150);
                 radioCont.getChildren().addAll(radio);
                 radios[i] = radio;
+                radios[i].addEventHandler(MouseEvent.MOUSE_CLICKED, e->{
+                    confirm.setDisable(false);
+                });
                 i++;
             }
         }
@@ -40,7 +44,7 @@ public class ChoicePopupController {
         radios = new RadioButton[choices.length];
         RadioButton radio;
         confirm.setDisable(true);
-        if(choices[1] != null){
+        if(!choices[0].equalsIgnoreCase("No careers available") || choices[1] != null){
             for(int i = 0 ; i < 2; i++){
                 if(choices[i] != null){
                     radio = new RadioButton();

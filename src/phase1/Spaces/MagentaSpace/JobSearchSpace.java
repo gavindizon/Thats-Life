@@ -22,22 +22,26 @@ public class JobSearchSpace extends MagentaSpace implements ChoiceSpace{
     @Override
     public void doMagentaAction(Player p, ArrayList<Deck> decks, int choice){
         CareerCard c;
+        Deck careerDeck = decks.get(0);
+        Deck salaryDeck = decks.get(1);
         if(p.getSalaryCard()!= null){
             if(choice == 2){
                 if(p.isHasDegree()){
-                    c = (CareerCard) decks.get(0).drawCard(decks.get(0).getCards().size() - 1);
+                    c = (CareerCard) careerDeck.drawCard(careerDeck.getCards().size() - 1);
                 } else{
-                    c = (CareerCard) decks.get(0).drawCard(CareerCard.getNoDegreeIndex(decks.get(0)));
+                    c = (CareerCard) decks.get(0).drawCard(CareerCard.getNoDegreeIndex(careerDeck));
                 }
 
-                decks.get(0).addCardBack(p.getCareerCard());
+                careerDeck.addCardBack(p.getCareerCard());
                 p.setCareer(c);
                 p.setPayRaiseCnt(0);
+                salaryDeck.getCards().add(0, p.getSalaryCard());
                 p.setSalaryCard(null);
             }
         } else{
             SalaryCard salary = (SalaryCard) decks.get(1).drawCard(decks.get(1).getCards().size() - choice);
             p.setSalaryCard(salary);
+            salaryDeck.shuffleDeck();
         }
 
     }
