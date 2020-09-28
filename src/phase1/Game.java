@@ -448,4 +448,26 @@ public class Game {
         for(Player p: this.players)
             System.out.println(p.getName() + " : " + p.getCash());
     }
+
+    /**
+     * Displays the current cash of each player and career.
+     *
+     */
+    public void displayState() {
+        System.out.println("\nCurrent State: ");
+        for (int i = 0; i < NUM_PLAYERS; i++) {
+            System.out.println(this.players[i].getName() + " : $" + this.players[i].getCash() + " Career: "
+                    + this.players[i].getCareer());
+        }
+        System.out.println();
+        for (int i = 0; i < 100; i++) {
+            if (this.spaces[i].getPlayers().size() != 0) {
+                System.out.println(" Space " + (i + 1) + " Players: ");
+                for (int j = 0; j < this.spaces[i].getPlayers().size(); j++)
+                    System.out.println(this.spaces[i].getPlayers().get(j).getName());
+
+            }
+        }
+    }
+
 }

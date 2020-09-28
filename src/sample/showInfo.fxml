@@ -8,24 +8,24 @@
          <children>
             <VBox layoutX="42.0" layoutY="26.0" prefHeight="378.0" prefWidth="485.0">
                <children>
-                  <Label fx:id="sm_playername" alignment="CENTER" prefHeight="42.0" prefWidth="485.0" text="Player Name" textAlignment="CENTER" textFill="#e8e6e6">
+                  <Label fx:id="smPlayerName" alignment="CENTER" prefHeight="42.0" prefWidth="485.0" text="Player Name" textAlignment="CENTER" textFill="#e8e6e6">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                   <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="485.0">
                      <children>
-                        <Label fx:id="sm_career" prefHeight="29.0" prefWidth="182.0" text="Career: " textFill="WHITE">
+                        <Label fx:id="smCareer" prefHeight="29.0" prefWidth="182.0" text="Career: " textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="sm_cash" layoutX="10.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Cash: " textFill="WHITE">
+                        <Label fx:id="smCash" layoutX="10.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Cash: " textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="sm_loan" layoutX="192.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Loan: " textFill="WHITE">
+                        <Label fx:id="smLoan" layoutX="192.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Loan: " textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -34,17 +34,17 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="52.0" prefHeight="51.0" prefWidth="485.0">
                      <children>
-                        <Label fx:id="sm_salary" prefHeight="29.0" prefWidth="182.0" text="Salary: " textFill="WHITE">
+                        <Label fx:id="smSalary" prefHeight="29.0" prefWidth="182.0" text="Salary: " textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="sm_tax" layoutX="10.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Tax: " textFill="WHITE">
+                        <Label fx:id="smTax" layoutX="10.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Tax: " textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="sm_payraiseCnt" layoutX="192.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Pay Raise Count: " textFill="WHITE">
+                        <Label fx:id="smPayRaiseCnt" layoutX="192.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Pay Raise Count: " textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -53,17 +53,17 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="103.0" prefHeight="51.0" prefWidth="485.0">
                      <children>
-                        <Label fx:id="sm_married" prefHeight="29.0" prefWidth="182.0" text="Civil Status:" textFill="WHITE">
+                        <Label fx:id="smMarried" prefHeight="29.0" prefWidth="182.0" text="Civil Status:" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="sm_retired" layoutX="10.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Retired: " textFill="WHITE">
+                        <Label fx:id="smRetired" layoutX="10.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Retired: " textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="sm_kidsCnt" layoutX="192.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Number of Kids: " textFill="WHITE">
+                        <Label fx:id="smKidsCnt" layoutX="192.0" layoutY="21.0" prefHeight="29.0" prefWidth="160.0" text="Number of Kids: " textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -72,12 +72,12 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="10.0" layoutY="154.0" prefHeight="51.0" prefWidth="485.0">
                      <children>
-                        <Label fx:id="sm_degree" layoutX="192.0" layoutY="21.0" prefHeight="29.0" prefWidth="204.0" text="College Graduate: " textFill="WHITE">
+                        <Label fx:id="smDegree" layoutX="192.0" layoutY="21.0" prefHeight="29.0" prefWidth="204.0" text="College Graduate: " textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                  <Label fx:id="sm_houseVal" layoutX="79.0" layoutY="21.0" prefHeight="29.0" prefWidth="207.0" text="House Value:" textFill="WHITE">
+                  <Label fx:id="smHouseVal" layoutX="79.0" layoutY="21.0" prefHeight="29.0" prefWidth="207.0" text="House Value:" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>

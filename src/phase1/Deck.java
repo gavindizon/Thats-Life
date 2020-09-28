@@ -145,7 +145,6 @@ public class Deck {
     private int rangeDomizer(int min, int max){
         max++;
         int value = (int)  (Math.random() * (max - min + 1) + min);
-        System.out.println(value);
         return value;
     }
 
