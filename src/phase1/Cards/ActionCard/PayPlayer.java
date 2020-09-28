@@ -1,16 +1,31 @@
 package phase1.Cards.ActionCard;
 
 import phase1.Player;
-
+/**
+ * implements a PayPlayer that inherits the ActionCard
+ */
 public class PayPlayer extends ActionCard {
+    /**
+     * access the super class constructor(from ActionCard)
+     * @param description description of the card
+     *
+     * @param toAll a boolean value whether the effect of the card is to all or not
+     */
 
     public PayPlayer(String description, boolean toAll) {
         super(description, toAll);
     }
 
+    /**
+     * Pays a certain player player if the toAll attribute is false and
+     * pays all non retired players if true.
+     *
+     * @param players Array of players in the game
+     * @param currPlayerIndex current index of the player
+     */
     @Override
     public void activate(Player[] players, int currPlayerIndex) {
-        // TODO:  differentiate choose players and to all from gui 
+        // differentiate choose players and to all from gui
         System.out.println("activated pay player");
         System.out.println(players.length);
         if(this.getToAll()){
@@ -24,7 +39,6 @@ public class PayPlayer extends ActionCard {
             players[currPlayerIndex].updateCash(-value);
         }
         else{
-            System.out.println("hello");
             players[0].updateCash(this.getValue());
             players[currPlayerIndex].updateCash(-this.getValue());
         }

@@ -8,7 +8,18 @@ import phase1.Cards.CareerCard;
 import phase1.Cards.SalaryCard;
 import phase1.Deck;
 
+/**
+ * implements a CollegeCareerChoiceSpace that inherits MagentaSpace and implements
+ * ChoiceSpace interface
+ */
 public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpace{
+
+    /**
+     * Initializes the path and max num of players based from the inherited constructor
+     * assigns the action description and long description
+     * @param path
+     * @param noOfPlayers
+     */
 
     public CollegeCareerChoiceSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
@@ -16,6 +27,12 @@ public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpac
         this.longDescription = "You can now choose careers with degrees :)))))))";
 
     }
+    /**
+     * Assigns the career/ salary of the player
+     * @param p player
+     * @param decks ArrayList of Decks used in magenta
+     * @param choice index value of the choice of the player
+     */
 
     @Override
     public void doMagentaAction(Player p, ArrayList<Deck> decks, int choice){
@@ -61,6 +78,14 @@ public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpac
             System.out.println("Hello");
         }
     }
+
+    /**
+     * Gets the array of string of choices to be shown to the user
+     *
+     * @param p current player
+     * @param decks used in Magenta Spaces
+     * @return String of choices available
+     */
 
     @Override
     public String[] getChoices(Player p, ArrayList<Deck> decks){

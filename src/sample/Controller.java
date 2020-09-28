@@ -132,6 +132,9 @@ public class Controller implements Initializable {
 
             }
 
+
+
+            game.displayState();
             if(game.gameOver()){
                 drawBtn.setText("FINISH");
                 drawBtn.setStyle("-fx-background-color: #228B22; -fx-border-radius: 8px; -fx-text-fill: #FFF");
@@ -316,7 +319,6 @@ public class Controller implements Initializable {
 
     public void initCareers(Player p, int count) throws IOException{
         String[] choices = new String[]{"Career", "College"};
-        System.out.println(p.getName());
 
         Popup popup = new Popup();
         ChoicePopupController cpCont = initPopup(popup);
@@ -339,7 +341,6 @@ public class Controller implements Initializable {
             game.initializeStart(p);
             boardController.updateBoardState(game);
 
-            System.out.println(p.getCareer());
             popup.hide();
 
             for(int i = 0; i < game.getNumPlayers(); i++){

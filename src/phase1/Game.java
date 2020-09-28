@@ -27,6 +27,7 @@ public class Game {
      * provided, 2 will be used.
      *
      * @param NUM_PLAYERS number of players; 2 will be used if invalid
+     * @param players String names of the players
      */
     public Game(int NUM_PLAYERS, String[] players) {
         this.NUM_PLAYERS = checkPlayerNumber(NUM_PLAYERS);
@@ -61,7 +62,9 @@ public class Game {
         return p;
     }
 
-
+    /**
+     * generates the board spaces
+     */
     public void generateSpaces() {
 //        for(int i = 0; i < 100; i++){
 //            this.spaces[i] = new BlueSpace("career", this.NUM_PLAYERS);
@@ -164,6 +167,12 @@ public class Game {
         }
     }
 
+    /**
+     * generates a random space for the board that can either be Orange, Green, or Blue
+     *
+     * @param path Sring path of the space
+     * @return the randomly generated space
+     */
     public Space spaceRandomizer(String path){
         int rand = (int) (Math.random() * (8 - 1 + 1) + 1);
 
@@ -182,27 +191,41 @@ public class Game {
 
     }
 
+    /**
+     * Initializes where the player will start at the board after choosing the path
+     *
+     * @param p Player
+     */
     public void initializeStart(Player p){
         this.spaces[p.getSpaceTracker()].getPlayers().add(p);
     }
 
+    /**
+     * generates a random number ranging 1-10
+     *
+     * @return int value of the random number generated.
+     */
     public static int spinWheel() {
         return (int) (Math.random() * (10 - 1 + 1) + 1);
     }
 
+
+    /**
+     * moves a player from an arraylist of spaces given
+     * a randomly generated number ranging 1-10.
+     *
+     * @param p Player
+     * @return  the spinned wheel count of the board
+     */
     public int move(Player p) {
         int moveCnt = spinWheel();
         int spinHolder = moveCnt;
-        // Special Treatment for Junctions
-
-
 
         if((moveCnt + p.getSpaceTracker() )>= 99){
             this.spaces[p.getSpaceTracker()].getPlayers().remove(p);
             p.teleportToSpace(99);
             this.spaces[p.getSpaceTracker()].getPlayers().add(p);
             p.setToRetire(true, this.spaces[99].getPlayers().indexOf(p));
-
 
         }else{
 
@@ -250,6 +273,14 @@ public class Game {
         return spinHolder;
     }
 
+    /**
+     * Gets the decks that will be used given the space
+     *
+     * @param s space of the current player
+     *
+     * @return ArrayList of Decks that will be used in the action of certain space
+     */
+
     public ArrayList<Deck> getDecks(Space s) {
         ArrayList<Deck> decks = new ArrayList<>();
 
@@ -277,14 +308,29 @@ public class Game {
     public Deck getActionDeck() {
         return this.actionDeck;
     }
+    /**
+     * returns Deck class of the blueDeck.
+     *
+     * @return Deck class of the blueDeck.
+     */
 
     public Deck getBlueDeck() {
         return blueDeck;
     }
+    /**
+     * returns Deck class of the careerDeck.
+     *
+     * @return Deck class of the careerDeck.
+     */
 
     public Deck getCareerDeck() {
         return careerDeck;
     }
+    /**
+     * returns Deck class of the salaryDeck.
+     *
+     * @return Deck class of the salaryDeck.
+     */
 
     public Deck getSalaryDeck() {
         return salaryDeck;
@@ -355,10 +401,21 @@ public class Game {
         return numPlayers;
     }
 
+    /**
+     * Returns the spaces of the gameboard
+     *
+     * @return Space array
+     */
     public Space[] getSpaces() {
         return spaces;
     }
 
+
+    /**
+     * used as a helper function that removes any player duplicates on the space.
+     * The first instance of the player that is considered the original is the highest
+     * space index.
+     */
     private void playerDupRemover(){
         boolean match = false;
         for(int i = 0; i < this.getNumPlayers(); i++){
@@ -373,7 +430,9 @@ public class Game {
         }
     }
 
-
+    /**
+     * rearranges the player based on the player having the highest cash value to the lowest cash value
+     */
     public void rankPlayers(){
 
         for (int i = 0; i < this.NUM_PLAYERS-1; i++){
@@ -389,4 +448,26 @@ public class Game {
         for(Player p: this.players)
             System.out.println(p.getName() + " : " + p.getCash());
     }
+
+    /**
+     * Displays the current cash of each player and career.
+     *
+     */
+    public void displayState() {
+        System.out.println("\nCurrent State: ");
+        for (int i = 0; i < NUM_PLAYERS; i++) {
+            System.out.println(this.players[i].getName() + " : $" + this.players[i].getCash() + " Career: "
+                    + this.players[i].getCareer());
+        }
+        System.out.println();
+        for (int i = 0; i < 100; i++) {
+            if (this.spaces[i].getPlayers().size() != 0) {
+                System.out.println(" Space " + (i + 1) + " Players: ");
+                for (int j = 0; j < this.spaces[i].getPlayers().size(); j++)
+                    System.out.println(this.spaces[i].getPlayers().get(j).getName());
+
+            }
+        }
+    }
+
 }

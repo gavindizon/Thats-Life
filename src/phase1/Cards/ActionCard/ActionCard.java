@@ -16,8 +16,10 @@ public abstract class ActionCard extends Card {
     /**
      * Creates an action card object with the specified type
      * 
-     * @param type type will either be 1 (collect from the bank), 2 (pay the bank),
-     *             3 (Collect from the player), or 4 (pay player).
+     * @param description description of the card
+     *
+     * @param toAll a boolean value whether the effect of the card is to all or not
+     *
      */
     public ActionCard(String description, boolean toAll) {
         super("Action Card");
@@ -75,5 +77,10 @@ public abstract class ActionCard extends Card {
 
     }
 
+    /**
+     * abstract method that activates the effect of the card
+     * @param players Array of players in the game
+     * @param currPlayerIndex current index of the player
+     */
     public abstract void activate(Player[] players, int currPlayerIndex);
 }

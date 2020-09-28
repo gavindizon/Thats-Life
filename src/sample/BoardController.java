@@ -232,7 +232,7 @@ public class BoardController {
 
                     }
                 } catch(NullPointerException d){
-                    System.out.println("hello world");
+                    System.out.println();
                 }
 
             });
