@@ -21,7 +21,8 @@ public class GetMarriedSpace extends MagentaSpace implements ActionSpace {
     public GetMarriedSpace(String path, int noOfPlayers) {
         super(path, noOfPlayers);
         this.actionDescription = "Just Got Married";
-        this.longDescription = "Congratulation You married the love of your life.";
+        this.longDescription = "Congratulation You married the love of your life. Roll a Die. If even, collect 10000 from" +
+                "each active players otherwise collect only 5000.";
 
     }
 
