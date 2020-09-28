@@ -1,5 +1,4 @@
 package sample;
-//import javafx.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +24,7 @@ import phase1.Cards.BlueCard.BlueCard;
 import phase1.Cards.BlueCard.NormalAction;
 import phase1.Cards.BlueCard.RandomAction;
 import phase1.Cards.Card;
+import phase1.Spaces.MagentaSpace.MagentaSpace;
 
 public class Controller implements Initializable {
 
@@ -72,7 +72,6 @@ public class Controller implements Initializable {
 
 
     public void gameState(ActionEvent e) throws IOException {
-
         if(!game.gameOver()){
             PlayerDescriptionController playerController = (PlayerDescriptionController) playerDesc[this.playerIndex].<PlayerDescriptionController>getController();
 //            playerController.getPlayerPane().setStyle("-fx-background-color:blue");
@@ -120,11 +119,14 @@ public class Controller implements Initializable {
                 updatePlayerDetails();
 
             }
-            do{
-                turn++;
-                this.playerIndex = this.turn % game.getNumPlayers();
-                temp = (Player) game.getPlayer(this.playerIndex);
-            }while(temp.getIsRetired() && !game.gameOver());
+            if(!(game.getSpace(currPlayer.getSpaceTracker()) instanceof MagentaSpace)){
+                do{
+                    turn++;
+                    this.playerIndex = this.turn % game.getNumPlayers();
+                    temp = (Player) game.getPlayer(this.playerIndex);
+                }while(temp.getIsRetired() && !game.gameOver());
+
+            }
 
             if(game.gameOver()){
                 drawBtn.setText("FINISH");
