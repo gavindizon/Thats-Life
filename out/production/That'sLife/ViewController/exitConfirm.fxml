@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="210.0" prefWidth="487.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 16px;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewController.ExitConfirmController">
+   <children>
+      <Label alignment="CENTER"  layoutX="32.0" layoutY="41.0" prefHeight="27.0" prefWidth="424.0" text="Confirm Exit" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="28.0" layoutY="68.0" prefHeight="47.0" prefWidth="432.0" text="Do you really wish to exit this game? Your progress will not be saved." textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="yes" layoutX="175.0"  layoutY="136.0" mnemonicParsing="false" style="-fx-background-color: #ff0000;" text="EXIT" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="no" layoutX="242.0" layoutY="136.0" mnemonicParsing="false" style="-fx-background-color: #FFF;" text="CANCEL" textFill="DODGERBLUE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

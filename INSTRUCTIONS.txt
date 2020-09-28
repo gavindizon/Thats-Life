@@ -5,9 +5,9 @@ Compile and Run:
 Go to src directory and open terminal
 
 Compile:
-javac --module-path "PATH TO JAVAFX LIB" --add-modules javafx.controls,javafx.fxml -d *.java phase1/*.java phase1/Cards/*.java phase1/Cards/ActionCard/*.java phase1/Cards/BlueCard/*.java phase1/Spaces/*.java phase1/Spaces/GreenSpace/*.java phase1/Spaces/MagentaSpace/*.java sample/*.java
+javac --module-path "PATH TO JAVAFX LIB" --add-modules javafx.controls,javafx.fxml -d *.java Model/*.java Model/Cards/*.java Model/Cards/ActionCard/*.java Model/Cards/BlueCard/*.java Model/Spaces/*.java Model/Spaces/GreenSpace/*.java Model/Spaces/MagentaSpace/*.java ViewController/*.java
 e.g.
-javac --module-path "C:\JavaFX\lib" --add-modules javafx.controls,javafx.fxml -d *.java phase1/*.java phase1/Cards/*.java phase1/Cards/ActionCard/*.java phase1/Cards/BlueCard/*.java phase1/Spaces/*.java phase1/Spaces/GreenSpace/*.java phase1/Spaces/MagentaSpace/*.java sample/*.java
+javac --module-path "C:\JavaFX\lib" --add-modules javafx.controls,javafx.fxml -d *.java Model/*.java Model/Cards/*.java Model/Cards/ActionCard/*.java Model/Cards/BlueCard/*.java Model/Spaces/*.java Model/Spaces/GreenSpace/*.java Model/Spaces/MagentaSpace/*.java ViewController/*.java
 
 Run:
 java --module-path "PATH TO JAVAFX LIB" --add-modules javafx.controls,javafx.fxml --add-modules javafx.base,javafx.graphics --add-reads javafx.base=ALL-UNNAMED --add-reads javafx.graphics=ALL-UNNAMED Main

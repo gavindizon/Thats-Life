@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+        <VBox layoutX="0.0" layoutY="0.0" prefHeight="114.0" prefWidth="279.0" style="-fx-background-color: DODGERBLUE; -fx-border-radius: 16px;"  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewController.ChoicePopupController">
+            <children>
+                <Label fx:id="textLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="288.0" style="-fx-opacity: 1;" text="Choose player:" textAlignment="CENTER" textFill="WHITE">
+                    <VBox.margin >
+                        <Insets bottom="16.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <HBox alignment="CENTER" prefHeight="33.0" prefWidth="186.0" fx:id="radioCont">
+                    <children>
+
+                    </children>
+                </HBox>
+                <Button fx:id="confirm" alignment="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="279.0" text="Confirm" />
+            </children>
+        </VBox>
