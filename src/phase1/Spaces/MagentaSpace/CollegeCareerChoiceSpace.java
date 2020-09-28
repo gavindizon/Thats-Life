@@ -2,6 +2,7 @@ package phase1.Spaces.MagentaSpace;
 
 import java.util.ArrayList;
 
+import phase1.Cards.Card;
 import phase1.Player;
 import phase1.Cards.CareerCard;
 import phase1.Cards.SalaryCard;
@@ -37,37 +38,44 @@ public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpac
     public void doMagentaAction(Player p, ArrayList<Deck> decks, int choice){
         CareerCard careerCard;
         SalaryCard salaryCard;
-        try{
+        Deck careerDeck = decks.get(0);
+        Deck salaryDeck = decks.get(1);
 
-            if(p.getCareer().equals("Student") || p.getSalaryCard() != null){
+        try{
+            Card playerSalary = p.getSalaryCard();
+            if(p.getCareer().equals("Student") || playerSalary != null){
+                System.out.println("COME HERE");
                 int chosen;
-                chosen = decks.get(0).getCards().size() - choice;
+                chosen = careerDeck.getCards().size() - choice;
                 if (!p.isHasDegree()){
                     if(choice == 1){
-                        choice = CareerCard.getNoDegreeIndex(decks.get(0));
+                        choice = CareerCard.getNoDegreeIndex(careerDeck);
                     } else if(choice == 2) {
-
-                        int index = CareerCard.getNoDegreeIndex(decks.get(0));
-                        choice = CareerCard.getNoDegreeIndex(decks.get(0), index);
+                        int index = CareerCard.getNoDegreeIndex(careerDeck);
+                        choice = CareerCard.getNoDegreeIndex(careerDeck, index);
 
                     }
                     chosen = choice;
     //                System.out.println("career "+choice);
                 }
+                Card playerCareer = p.getCareerCard();
+                careerCard = (CareerCard) careerDeck.drawCard(chosen);
                 if(!p.getCareer().equals("Student") && chosen != -1){
-                    decks.get(0).addCardBack(p.getCareerCard());
+                    careerDeck.addCardBack(playerCareer);
                     p.setCareer(null);
+                    salaryDeck.getCards().add(0, playerSalary);
                 }
-                careerCard = (CareerCard) decks.get(0).drawCard(chosen);
                 p.setCareer(careerCard);
                 p.setSalaryCard(null);
-
-            } else if(p.getSalaryCard() == null){
+            } else if(playerSalary == null){
                 salaryCard = (SalaryCard) decks.get(1).drawCard(decks.get(1).getCards().size() - choice);
                 p.setSalaryCard(salaryCard);
+                salaryDeck.shuffleDeck();
+
+//                salaryDeck.addCardBack(playerSalary);
             }
-        } catch (IndexOutOfBoundsException e){
-            System.out.println("No degree xD");
+        } catch (Exception e){
+            System.out.println("Hello");
         }
     }
 
@@ -85,6 +93,7 @@ public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpac
         String careerName = null;
         Deck careerDeck = decks.get(0);
         Deck salaryDeck = decks.get(1);
+
         int ctr = 0;
 
         for(int i = careerDeck.getCards().size() - 1; i >= 0; i--){
@@ -109,8 +118,7 @@ public class CollegeCareerChoiceSpace extends MagentaSpace implements ChoiceSpac
             ctr+=2;
             s[0] = "No careers available";
         }
-
-        for(int i = salaryDeck.getCards().size() - 1; i > salaryDeck.getCards().size() - 3; i--){
+        for(int i = salaryDeck.getCards().size() - 1; i >= salaryDeck.getCards().size() - 2; i--){
             double salary = ((SalaryCard) salaryDeck.getCards().get(i)).getSalary() ;
             if(ctr == 1){
                 ctr++;

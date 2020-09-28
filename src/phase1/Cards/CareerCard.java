@@ -73,7 +73,7 @@ public class CareerCard extends Card {
      * @return int index
      */
     public static int getNoDegreeIndex(Deck careerDeck){
-        for(int i = careerDeck.getCards().size() - 1; i > 0 ; i--){
+        for(int i = careerDeck.getCards().size() - 1; i >= 0 ; i--){
             if( !(((CareerCard) careerDeck.getCards().get(i)).isDegreeRequired())){
                 return i ;
             }
@@ -89,7 +89,7 @@ public class CareerCard extends Card {
      */
 
     public static int getNoDegreeIndex(Deck careerDeck, int index){
-        for(int i = careerDeck.getCards().size() - 1; i > 0 ; i--){
+        for(int i = careerDeck.getCards().size() - 1; i >= 0 ; i--){
             if( !(((CareerCard) careerDeck.getCards().get(i)).isDegreeRequired()) && i != index){
                 return i ;
             }

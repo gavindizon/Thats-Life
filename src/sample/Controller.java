@@ -116,7 +116,11 @@ public class Controller implements Initializable {
                     System.out.println("error");
                 }
 
-                updatePlayerDetails();
+                try{
+                    updatePlayerDetails();
+                } catch (NullPointerException a){
+                    System.out.println("null");
+                }
 
             }
             if(!(game.getSpace(currPlayer.getSpaceTracker()) instanceof MagentaSpace)){
