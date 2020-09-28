@@ -69,6 +69,12 @@ public class CareerCard extends Card {
         System.out.println();
     }
 
+    /**
+     * Gets the index of the first instance of a nodegree card in a deck
+     *
+     * @param careerDeck Deck of CareerCards
+     * @return int index
+     */
     public static int getNoDegreeIndex(Deck careerDeck){
         for(int i = careerDeck.getCards().size() - 1; i > 0 ; i--){
             if( !(((CareerCard) careerDeck.getCards().get(i)).isDegreeRequired())){
@@ -77,6 +83,13 @@ public class CareerCard extends Card {
         }
         return -1;
     }
+
+    /**
+     * Gets the index of the first instance of a nodegree card in a deck withan accompanying index
+     *
+     * @param careerDeck Deck of CareerCards
+     * @return int index
+     */
 
     public static int getNoDegreeIndex(Deck careerDeck, int index){
         for(int i = careerDeck.getCards().size() - 1; i > 0 ; i--){
