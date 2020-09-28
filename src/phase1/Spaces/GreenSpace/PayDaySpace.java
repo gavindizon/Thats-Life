@@ -16,7 +16,9 @@ public class PayDaySpace extends GreenSpace implements ActionSpace {
 
     @Override
     public void doAction(Player p, Player[] others, ArrayList<Deck> decks) {
-        p.updateCash(p.getSalaryCard().getSalary());
+
+        if(p.getSalaryCard() != null)
+            p.updateCash(p.getSalaryCard().getSalary());
     }
 
 }
