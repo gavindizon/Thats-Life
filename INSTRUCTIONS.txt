@@ -1,0 +1,19 @@
+
+Download JavaFX sdk at https://gluonhq.com/products/javafx/
+
+Compile and Run:
+Go to src directory and open terminal
+
+Compile:
+javac --module-path "PATH TO JAVAFX LIB" --add-modules javafx.controls,javafx.fxml -d *.java phase1/*.java phase1/Cards/*.java phase1/Cards/ActionCard/*.java phase1/Cards/BlueCard/*.java phase1/Spaces/*.java phase1/Spaces/GreenSpace/*.java phase1/Spaces/MagentaSpace/*.java sample/*.java
+e.g.
+javac --module-path "C:\JavaFX\lib" --add-modules javafx.controls,javafx.fxml -d *.java phase1/*.java phase1/Cards/*.java phase1/Cards/ActionCard/*.java phase1/Cards/BlueCard/*.java phase1/Spaces/*.java phase1/Spaces/GreenSpace/*.java phase1/Spaces/MagentaSpace/*.java sample/*.java
+
+Run:
+java --module-path "PATH TO JAVAFX LIB" --add-modules javafx.controls,javafx.fxml --add-modules javafx.base,javafx.graphics --add-reads javafx.base=ALL-UNNAMED --add-reads javafx.graphics=ALL-UNNAMED Main
+e.g.
+java --module-path "C:\JavaFX\lib" --add-modules javafx.controls,javafx.fxml --add-modules javafx.base,javafx.graphics --add-reads javafx.base=ALL-UNNAMED --add-reads javafx.graphics=ALL-UNNAMED Main
+
+
+
+
